@@ -10,13 +10,13 @@
     <title>{{ config('app.name', 'Banco de Alimentos') }}</title>
 
     <!-- Scripts -->
-    <script src="{{ asset('js/bootstrap.min.js') }}" defer></script>
-    <script src="{{ asset('js/mdb.min.js') }}" defer></script>
-    <script src="{{ asset('js/jquery-3.4.1.min.js') }}" defer></script>
-    <script src="{{ asset('js/popper.min.js') }}" defer></script>
-    <script src="{{ asset('js/app.js') }}" defer></script>
+    <script src="{{ asset('js/bootstrap.min.js') }}" ></script>
+    <script src="{{ asset('js/mdb.min.js') }}" ></script>
+    <script src="{{ asset('js/jquery-3.4.1.min.js') }}" ></script>
+    <script src="{{ asset('js/popper.min.js') }}" ></script>
+    <script src="{{ asset('js/app.js') }}" ></script>
             <!-- Archivo Propio -->
-    <script src="{{ asset('js/main.js') }}" defer></script>
+    <script src="{{ asset('js/main.js') }}" ></script>
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">

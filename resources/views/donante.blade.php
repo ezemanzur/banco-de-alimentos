@@ -66,8 +66,34 @@
                                                 <h4 class="cursor-p add-product" data-toggle="collapse" data-target="#collapseProduct" aria-expanded="true" aria-controls="collapseProduct">Agregar un nuevo producto<i class="fas fa-plus-square ml-2 p-2"></i></h4>
                                             </div>
                                             <div id="collapseProduct" class="collapse" aria-labelledby="headingProduct" data-parent="#productAccordion">
-                                                <!-- Agregado de producto -->
-                                                campos ...
+                                                <form method="POST" action="{{route('donation.save')}}"  enctype="multipart/form-data">
+                                                    @csrf
+                                                    <div class="table-responsive">
+                                                        <table class="table table-bordered" id="dynamic_field">
+                                                            <tr>
+                                                                <th>Cantidad</th>
+                                                                <th>Categoria</th>
+                                                                <th>vencimiento</th>
+                                                            </tr>
+                                                            <tr>
+                                                                <td><input type="number" name="cantidad[]" placeholder="Cantidad de productos" class="form-control name_list" /></td>
+                                                                <td><select id="category" type="text" class="form-control browser-default custom-select" name="category_id[]" autofocus>
+                                                                        <option selected disabled>Categoria</option>
+                                                                        <option value="1">Leche 1L</option>
+                                                                        <option value="2">Leche Tetra 1L</option>
+                                                                        <option value="3">Arroz 1KG</option>
+                                                                    </select>
+                                                                </td>
+                                                                <td><input type="date" name="expiration_date[]" class="form-control name_list" /></td>
+                                                                <td><button type="button" name="add" id="add" class="btn btn-success">Agregar otro</button></td>
+                                                            </tr>
+                                                        </table>
+                                                        <input type="submit" name="submit" id="submit" class="btn btn-info" value="Enviar" />
+                                                    </div>
+
+                                                </form>
+
+
                                             </div>
                                         </div>
                                     </div>
@@ -82,9 +108,9 @@
                                             </div>
                                         </div>
                                     </div>
-                                </div>  
+                                </div>
                             </div>
-                                
+
                             <!-- Ver donaciones vigentes -->
                             <div class="col-md-12 subItem">
                                 <div class="table-responsive">
@@ -195,7 +221,7 @@
                                                 <!-- Nombre de la empresa -->
                                                 <div class="form-group row">
                                                     <div class="col-md-12">
-                                                        <label for="company-name" class="req-tooltip">Nombre de la empresa @include('components.required_tool')</label>
+                                                        <label for="company-name" class="req-tooltip">Nombre de la empresa label>
 
                                                         <input id="company-name" type="text" class="form-control @error('company-name') is-invalid @enderror" name="company-name" value="{{ old('company-name') }}" required autocomplete="company-name" autofocus>
 
@@ -210,7 +236,7 @@
                                                 <!-- CUIT -->
                                                 <div class="form-group row">
                                                     <div class="col-md-12">
-                                                        <label for="company-cuit" class="req-tooltip">CUIT @include('components.required_tool')</label>
+                                                        <label for="company-cuit" class="req-tooltip">CUIT label>
 
                                                         <input id="company-cuit" type="number" class="form-control @error('company-cuit') is-invalid @enderror" name="company-cuit" value="{{ old('company-cuit') }}" required autocomplete="company-cuit" autofocus>
 
@@ -225,7 +251,7 @@
                                                 <!-- Numero de telefono -->
                                                 <div class="form-group row">
                                                     <div class="col-md-12">
-                                                        <label for="company-phone" class="req-tooltip">Número de teléfono @include('components.required_tool')</label>
+                                                        <label for="company-phone" class="req-tooltip">Número de teléfono label>
 
                                                         <input id="company-phone" type="number" class="form-control @error('company-phone') is-invalid @enderror" name="company-phone" value="{{ old('company-phone') }}" required autocomplete="company-phone" autofocus>
 
@@ -243,7 +269,7 @@
                                                 <div class="form-group row">
                                                     <!-- Calle -->
                                                     <div class="col-md-7">
-                                                        <label for="address-street" class="req-tooltip">Calle @include('components.required_tool')</label>
+                                                        <label for="address-street" class="req-tooltip">Calle /label>
 
                                                         <input id="address-street" type="text" class="form-control @error('address-street') is-invalid @enderror" name="address-street" value="{{ old('address-street') }}" required autocomplete="address-street" autofocus>
 
@@ -255,7 +281,7 @@
                                                     </div>
                                                     <!-- Numero -->
                                                     <div class="col-md-5">
-                                                        <label for="address-number" class="req-tooltip">Número @include('components.required_tool')</label>
+                                                        <label for="address-number" class="req-tooltip">Número /label>
 
                                                         <input id="address-number" type="number" class="form-control @error('address-number') is-invalid @enderror" name="address-number" value="{{ old('address-number') }}" required autocomplete="address-number" autofocus>
 
@@ -298,7 +324,7 @@
                                                 <!-- Barrio -->
                                                 <div class="form-group row">
                                                     <div class="col-md-6">
-                                                        <label for="neighborhood" class="req-tooltip">Barrio @include('components.required_tool')</label>
+                                                        <label for="neighborhood" class="req-tooltip">Barrio /label>
 
                                                         <select id="neighborhood" type="text" class="form-control browser-default custom-select @error('neighborhood') is-invalid @enderror" name="neighborhood" value="{{ old('neighborhood') }}" autocomplete="neighborhood" autofocus>
                                                             <option selected disabled>Barrio</option>
@@ -339,7 +365,7 @@
                                                 <!-- Nombre y apellido -->
                                                 <div class="form-group row">
                                                     <div class="col-md-12">
-                                                        <label for="name" class="req-tooltip">Ingresar nombre y apellido @include('components.required_tool')</label>
+                                                        <label for="name" class="req-tooltip">Ingresar nombre y apellido </label>
 
                                                         <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
 
@@ -354,8 +380,8 @@
                                                 <!-- DNI -->
                                                 <div class="form-group row">
                                                     <div class="col-md-12">
-                                                        <label for="dni" class="req-tooltip">DNI (Documento Nacional de Identidad) @include('components.required_tool')</label>
-                                                        
+                                                        <label for="dni" class="req-tooltip">DNI (Documento Nacional de Identidad) </label>
+
                                                         <input id="dni" type="number" class="form-control @error('dni') is-invalid @enderror" name="dni" value="{{ old('dni') }}" required autocomplete="dni" autofocus>
 
                                                         @error('dni')
@@ -369,8 +395,8 @@
                                                 <!-- Número de teléfono -->
                                                 <div class="form-group row">
                                                     <div class="col-md-12">
-                                                        <label for="phone" class="req-tooltip">Número de teléfono @include('components.required_tool')</label>
-                                                        
+                                                        <label for="phone" class="req-tooltip">Número de teléfono </label>
+
                                                         <input id="phone" type="number" class="form-control @error('phone') is-invalid @enderror" name="phone" value="{{ old('phone') }}" required autocomplete="phone" autofocus>
 
                                                         @error('phone')
@@ -384,8 +410,8 @@
                                                 <!-- Email -->
                                                 <div class="form-group row">
                                                     <div class="col-md-12">
-                                                        <label for="email" class="req-tooltip">Email @include('components.required_tool')</label>
-                                                        
+                                                        <label for="email" class="req-tooltip">Email </label>
+
                                                         <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
 
                                                         @error('email')
@@ -422,7 +448,7 @@
                                         <!-- Contraseña actual -->
                                         <div class="form-group row">
                                             <div class="col-md-6">
-                                                <label for="password-actual" class="req-tooltip">Ingrese la contraseña actual @include('components.required_tool')</label>
+                                                <label for="password-actual" class="req-tooltip">Ingrese la contraseña actual </label>
 
                                                 <input id="password-actual" type="password" class="form-control @error('password-actual') is-invalid @enderror" name="password-actual" required autocomplete="password-actual">
 
@@ -436,7 +462,7 @@
                                         <!-- Nueva contraseña -->
                                         <div class="form-group row pt-5">
                                             <div class="col-md-6">
-                                                <label for="password-new" class="req-tooltip">Ingrese la nueva contraseña @include('components.required_tool')</label>
+                                                <label for="password-new" class="req-tooltip">Ingrese la nueva contraseña </label>
 
                                                 <input id="password-new" type="password" class="form-control @error('password-new') is-invalid @enderror" name="password-new" required autocomplete="new-password">
 
@@ -446,12 +472,12 @@
                                                     </span>
                                                 @enderror
                                             </div>
-                                        </div>  
+                                        </div>
 
                                         <!-- Repetir nueva contraseña -->
                                         <div class="form-group row">
                                             <div class="col-md-6">
-                                                <label for="password-new-confirm" class="req-tooltip">Repita la nueva contraseña @include('components.required_tool')</label>
+                                                <label for="password-new-confirm" class="req-tooltip">Repita la nueva contraseña </label>
 
                                                 <input id="password-new-confirm" type="password" class="form-control" name="password-new-confirm" required autocomplete="new-password">
                                             </div>
@@ -469,7 +495,7 @@
                                                 </button>
                                             </div>
                                         </div>
-                                    </form>                            
+                                    </form>
                                 </div>
                                 <!-- /Cambiar contraseña -->
                             </div>
@@ -479,10 +505,48 @@
             </div>
         </div>
     </div>
+    <script>
+        $(document).ready(function() {
 
+            var i = 1;
+            $('#add').click(function() {
+                i++;
+
+
+                $.ajax({
+                    url: '/donation/addProductInputs',
+                    method: "POST",
+                    data: {
+                        'i': i
+                    },
+                    type: 'json',
+                    success: function(data) {
+                        console.log('prueba');
+                        if (data.error) {
+                            printErrorMsg(data.error);
+                        } else {
+                            $('#dynamic_field').append(data.inputs);
+                        }
+                    }
+                });
+
+
+
+            });
+            $(document).on('click', '.btn_remove', function() {
+                var button_id = $(this).attr("id");
+                $('#row' + button_id + '').remove();
+            });
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
+        });
+    </script>
     <!-- Modals -->
     <!-- Modal cerrar sesión -->
-    @include('components.modal', [
+    {{--@include('components.modal', [
         'modal_id' => 'logOutModal',
         'mainTitle' => "Cerrar sesión",
         'mainIcon' => 'fas fa-power-off',
@@ -490,9 +554,9 @@
         'cancelLink' => '/',
         'cancel' => "Si, salir",
         'accept' => "No, seguir aquí",
-    ])
+    ])--}}
     <!-- Modal cancelar cambio de perfil -->
-    @include('components.modal', [
+    {{--@include('components.modal', [
         'modal_id' => 'cancelarModificarPerfil',
         'mainTitle' => "¿Está seguro que desea cancelar las modificaciones?",
         'mainIcon' => 'fas fa-exclamation-triangle',
@@ -510,8 +574,8 @@
         'cancelLink' => '/donante',
         'cancel' => "Si, cancelar",
         'accept' => "No, seguir",
-    ])
-    
-    @include('components.footer')
+    ])--}}
+
+{{--    @include('components.footer')--}}
 
 @endsection
