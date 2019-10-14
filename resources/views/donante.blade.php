@@ -14,9 +14,9 @@
 
         @if(!Auth::user()->isActive)
 
-            <div class="row justify-content-center">
-                <div class="col-md-11">
-                    <img src="{{ asset('img/esperando_donante.jpg') }}" class="w-100">
+            <div class="row justify-content-center uns">
+                <div class="col-md-11 uns">
+                    <img src="{{ asset('img/esperando_donante.jpg') }}" class="w-100 uns">
                 </div>
             </div>
 

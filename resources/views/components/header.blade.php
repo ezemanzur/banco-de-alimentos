@@ -25,6 +25,14 @@
                             <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
                         </li>
                     @endif
+                @else
+                    @php
+                        if(Auth::user()->rol == 'giver') {
+                            $link = 'donante';
+                        }
+                        //Ampliar
+                    @endphp
+                    <a class="btn btn-info" href="{{ $link }}">Mi perfil</a>
                 @endguest
             </ul>
         </div>

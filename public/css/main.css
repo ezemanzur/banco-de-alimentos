@@ -52,6 +52,10 @@ body {
 .cursor-p {
     cursor: pointer !important;
 }
+.mxl-2 {
+    margin-left: -14px !important;
+    margin-right: -14px !important;
+}
 /* Clases genéricas */
 .uns { /* Deshabilita seleccion */
     user-select: none;
