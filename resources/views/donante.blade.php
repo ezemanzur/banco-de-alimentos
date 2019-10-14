@@ -22,15 +22,31 @@
 
         @else
 
-        <div class="row my-4">
+        <div class="row my-5">
             <div class="col-md-9">
                 <h1>Perfil del donante<span id="panel-title"></span></h1>
             </div>
             <div class="col-md-3 text-right">
                 <!-- Basic dropdown -->
-                <button class="btn logout-dropdown dropdown-toggle m-0 py-2 px-1 shadow-none" type="button" data-toggle="dropdown"
-                aria-haspopup="true" aria-expanded="false">Donante</button>
+                <ul class="navbar-nav ml-auto btn logout-dropdown m-0 py-1 px-1 shadow-none">
+                    <li class="nav-item dropdown">
+                        <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                            {{ Auth::user()->name }} <span class="caret"></span>
+                        </a>
 
+                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="{{ route('logout') }}"
+                               onclick="event.preventDefault();
+                                             document.getElementById('logout-form').submit();"><i class="fas fa-power-off"></i>
+                                {{ __('Cerrar sesión') }}
+                            </a>
+
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                @csrf
+                            </form>
+                        </div>
+                    </li>
+                </ul>
                 <div class="dropdown-menu">
                     <a class="dropdown-item" data-toggle="modal" data-target="#logOutModal"><i class="fas fa-power-off mr-1"></i><span>Cerrar sesión</a>
                 </div>

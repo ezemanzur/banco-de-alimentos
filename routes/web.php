@@ -17,8 +17,6 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/donante', function () {
-    return view('donante');
-});
+Route::get('/donante', 'GiverController@index')->name('donante');
 
 Route::get('/home', 'HomeController@index')->name('home');

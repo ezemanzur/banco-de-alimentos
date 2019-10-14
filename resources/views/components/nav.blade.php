@@ -18,10 +18,10 @@
             <!-- Dropdown -->
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown"
-                    aria-haspopup="true" aria-expanded="false">Asociate</a>
+                aria-haspopup="true" aria-expanded="false">Asociate</a>
                 <div class="dropdown-menu dropdown-primary" aria-labelledby="navbarDropdownMenuLink">
-                <a class="dropdown-item" href="/register_giver">Como donante</a>
-                <a class="dropdown-item" href="#">Como voluntario</a>
+                    <a class="dropdown-item" href="/register">Como donante</a>
+                    <a class="dropdown-item" href="#">Como voluntario</a>
                 </div>
             </li>
 
