@@ -28,3 +28,5 @@ Route::post('donation/save', 'DonationController@save')->name('donation.save');
 
 //Cambiar contraseña usuario
 Route::post('change_password', 'UserController@changePassword');
+//Cancelar cambio de perfil
+Route::post('change_giver_profile', 'UserController@changeGiverProfile');

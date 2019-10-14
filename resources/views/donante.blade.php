@@ -97,12 +97,11 @@
             </div>
         </div>
 
-        
         <div class="row">
             <div class="col-md-12">
                 @if(Session::has('success'))                
                     <div class="alert alert-success alert-dismissible fade show" role="alert">
-                        <strong>{{ Session::get('success') }}</strong>
+                        <strong><i class="fas fa-check-circle mr-2"></i>{{ Session::get('success') }}</strong>
                         <button type="button" class="close text-right" data-dismiss="alert" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
@@ -110,7 +109,7 @@
                 @endif
                 @if(Session::has('error'))                
                     <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                        <strong>{{ Session::get('error') }}</strong>
+                        <strong><i class="fas fa-exclamation-circle mr-2"></i>{{ Session::get('error') }}</strong>
                         <button type="button" class="close text-right" data-dismiss="alert" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
@@ -311,20 +310,20 @@
 
                                 <!-- Modificar perfil -->
                                 <div class="col-md-12 subItem">
-                                    <div class="row">
-                                        <!-- Información donante -->
-                                        <div class="col-md-6">
-                                            <form>
-                                                @csrf
+                                    <!-- Información donante -->
+                                    <form method="POST" action="/change_giver_profile">
+                                        @csrf
+                                        <div class="row">
+                                            <div class="col-md-6">
                                                 <h3 class="py-3">Información donante</h3>
                                                 <!-- Nombre de la empresa -->
                                                 <div class="form-group row">
                                                     <div class="col-md-12">
-                                                        <label for="company-name" class="req-tooltip">Nombre de la empresa @include('components.required_tool')</label>
+                                                        <label for="company_name" class="req-tooltip">Nombre de la empresa @include('components.required_tool')</label>
 
-                                                        <input id="company-name" type="text" class="form-control @error('company-name') is-invalid @enderror" name="company-name" value="{{ $giver->first()->company_name }}"  required autocomplete="company-name" autofocus>
+                                                        <input id="company_name" type="text" class="form-control @error('company_name') is-invalid @enderror" name="company_name" placeholder="Enterprise SRL" value="{{ $giver->first()->company_name }}" required autocomplete="company_name" autofocus>
 
-                                                        @error('company-name')
+                                                        @error('company_name')
                                                             <span class="invalid-feedback" role="alert">
                                                                 <strong>{{ $message }}</strong>
                                                             </span>
@@ -337,7 +336,7 @@
                                                     <div class="col-md-12">
                                                         <label for="company-cuit" class="req-tooltip">CUIT @include('components.required_tool')</label>
 
-                                                        <input id="company-cuit" type="number" class="form-control @error('company-cuit') is-invalid @enderror" name="company-cuit" value="{{ $giver->first()->company_cuit }}" required autocomplete="company-cuit" autofocus>
+                                                        <input id="company-cuit" type="number" class="form-control @error('company-cuit') is-invalid @enderror" name="company-cuit" placeholder="xxxxxxxx" value="{{ $giver->first()->company_cuit }}" required autocomplete="company-cuit" autofocus>
 
                                                         @error('company-cuit')
                                                             <span class="invalid-feedback" role="alert">
@@ -352,7 +351,7 @@
                                                     <div class="col-md-12">
                                                         <label for="company-phone" class="req-tooltip">Número de teléfono @include('components.required_tool')</label>
 
-                                                        <input id="company-phone" type="number" class="form-control @error('company-phone') is-invalid @enderror" name="company-phone"  value="{{ $giver->first()->company_phone }}" required autocomplete="company-phone" autofocus>
+                                                        <input id="company-phone" type="number" class="form-control @error('company-phone') is-invalid @enderror" name="company-phone" placeholder="xxxxxxxx" value="{{ $giver->first()->company_phone }}" required autocomplete="company-phone" autofocus>
 
                                                         @error('company-phone')
                                                             <span class="invalid-feedback" role="alert">
@@ -370,7 +369,7 @@
                                                     <div class="col-md-7">
                                                         <label for="address-street" class="req-tooltip">Calle @include('components.required_tool')</label>
 
-                                                        <input id="address-street" type="text" class="form-control @error('address-street') is-invalid @enderror" name="address-street"  value="{{ $giver->first()->address_street }}" required autocomplete="address-street" autofocus>
+                                                        <input id="address-street" type="text" class="form-control @error('address-street') is-invalid @enderror" name="address-street" placeholder="Avenida xx" value="{{ $giver->first()->address_street }}" required autocomplete="address-street" autofocus>
 
                                                         @error('address-street')
                                                             <span class="invalid-feedback" role="alert">
@@ -382,7 +381,7 @@
                                                     <div class="col-md-5">
                                                         <label for="address-number" class="req-tooltip">Número @include('components.required_tool')</label>
 
-                                                        <input id="address-number" type="number" class="form-control @error('address-number') is-invalid @enderror" name="address-number" value="{{ $giver->first()->address_number }}" required autocomplete="address-number" autofocus>
+                                                        <input id="address-number" type="number" class="form-control @error('address-number') is-invalid @enderror" name="address-number" placeholder="xxx" value="{{ $giver->first()->address_number }}" required autocomplete="address-number" autofocus>
 
                                                         @error('address-number')
                                                             <span class="invalid-feedback" role="alert">
@@ -398,7 +397,7 @@
                                                     <div class="col-md-5">
                                                         <label for="address-floor">Piso</label>
 
-                                                        <input id="address-floor" type="number" class="form-control @error('address-floor') is-invalid @enderror" name="address-floor" value="{{ $giver->first()->address_floor }}" autocomplete="address-floor" autofocus>
+                                                        <input id="address-floor" type="number" class="form-control @error('address-floor') is-invalid @enderror" name="address-floor" placeholder="xx" value="{{ $giver->first()->address_floor }}" autocomplete="address-floor" autofocus>
 
                                                         @error('address-floor')
                                                             <span class="invalid-feedback" role="alert">
@@ -410,7 +409,7 @@
                                                     <div class="col-md-5">
                                                         <label for="address-apartment">Depto</label>
 
-                                                        <input id="address-apartment" type="text" class="form-control @error('address-apartment') is-invalid @enderror" name="address-apartment" value="{{ $giver->first()->address_apartment }}" autocomplete="address-apartment" autofocus>
+                                                        <input id="address-apartment" type="text" class="form-control @error('address-apartment') is-invalid @enderror" name="address-apartment" placeholder="xx" value="{{ $giver->first()->address_apartment }}" autocomplete="address-apartment" autofocus>
 
                                                         @error('address-apartment')
                                                             <span class="invalid-feedback" role="alert">
@@ -442,34 +441,17 @@
                                                         @enderror
                                                     </div>
                                                 </div>
+                                            </div>
 
-                                                <!-- Botones -->
-                                                <div class="form-group row pt-3 mb-0">
-                                                    <div class="col-md-6 text-left">
-                                                        <button type="button" class="btn btn-outline-danger btn-n m-0" data-toggle="modal" data-target="#cancelarModificarPerfil">
-                                                            Cancelar
-                                                        </button>
-                                                    </div>
-                                                    <div class="col-md-6 text-right">
-                                                        <button type="submit" class="btn btn-primary m-0">
-                                                            {{ __('Guardar cambios') }}
-                                                        </button>
-                                                    </div>
-                                                </div>
-                                            </form>
-                                        </div>
-
-                                        <!-- Persona responsable -->
-                                        <div class="col-md-6 bl-1">
-                                            <form>
-                                                @csrf
+                                            <!-- Persona responsable -->
+                                            <div class="col-md-6 bl-1">
                                                 <h3 class="py-3">Persona responsable</h3>
                                                 <!-- Nombre y apellido -->
                                                 <div class="form-group row">
                                                     <div class="col-md-12">
                                                         <label for="name" class="req-tooltip">Nombre y apellido @include('components.required_tool')</label>
 
-                                                        <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ $user->name }}" required autocomplete="name" autofocus>
+                                                        <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" placeholder="John Smith" value="{{ $user->name }}" required autocomplete="name" autofocus>
 
                                                         @error('name')
                                                             <span class="invalid-feedback" role="alert">
@@ -484,7 +466,7 @@
                                                     <div class="col-md-12">
                                                         <label for="dni" class="req-tooltip">DNI (Documento Nacional de Identidad) @include('components.required_tool')</label>
 
-                                                        <input id="dni" type="number" class="form-control @error('dni') is-invalid @enderror" name="dni" value="{{ $user->dni }}" required autocomplete="dni" autofocus>
+                                                        <input id="dni" type="number" class="form-control @error('dni') is-invalid @enderror" name="dni" placeholder="xxxxxxxx" value="{{ $user->dni }}" required autocomplete="dni" autofocus>
 
                                                         @error('dni')
                                                             <span class="invalid-feedback" role="alert">
@@ -499,7 +481,7 @@
                                                     <div class="col-md-12">
                                                         <label for="phone" class="req-tooltip">Número de teléfono @include('components.required_tool')</label>
 
-                                                        <input id="phone" type="number" class="form-control @error('phone') is-invalid @enderror" name="phone" value="{{ $user->phone }}" required autocomplete="phone" autofocus>
+                                                        <input id="phone" type="number" class="form-control @error('phone') is-invalid @enderror" name="phone" placeholder="xxxxxxxx" value="{{ $user->phone }}" required autocomplete="phone" autofocus>
 
                                                         @error('phone')
                                                             <span class="invalid-feedback" role="alert">
@@ -514,7 +496,7 @@
                                                     <div class="col-md-12">
                                                         <label for="email" class="req-tooltip">Email @include('components.required_tool')</label>
 
-                                                        <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ $user->email }}" required autocomplete="email">
+                                                        <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" placeholder="johnsmith@dominio.com" value="{{ $user->email }}" required autocomplete="email">
 
                                                         @error('email')
                                                             <span class="invalid-feedback" role="alert">
@@ -523,23 +505,25 @@
                                                         @enderror
                                                     </div>
                                                 </div>
+                                            </div>
 
-                                                <!-- Botones -->
+                                            <!-- Botones -->
+                                            <div class="col-md-12">
                                                 <div class="form-group row pt-3 mb-0">
-                                                    <div class="col-md-6 text-left">
+                                                    <div class="col-md-3 text-left offset-md-6">
                                                         <button type="button" class="btn btn-outline-danger btn-n m-0" data-toggle="modal" data-target="#cancelarModificarPerfil">
                                                             Cancelar
                                                         </button>
                                                     </div>
-                                                    <div class="col-md-6 text-right">
+                                                    <div class="col-md-3 text-right">
                                                         <button type="submit" class="btn btn-primary m-0">
                                                             {{ __('Guardar cambios') }}
                                                         </button>
                                                     </div>
                                                 </div>
-                                            </form>
+                                            </div>
                                         </div>
-                                    </div>
+                                    </form>
                                 </div>
                                 <!-- /Modificar perfil -->
 
@@ -552,15 +536,15 @@
                                                 
                                                 <div class="form-group">
                                                     <label>Contraseña actual</label>
-                                                    <input type="password" class="form-control" id="password" name="password" required>
+                                                    <input type="password" class="form-control" id="password" name="password" placeholder="Contraseña" required>
                                                 </div>
                                                 <div class="form-group">
                                                     <label>Nueva Contraseña:</label>
-                                                    <input type="password" class="form-control" id="new_password" name="new_password" required>
+                                                    <input type="password" class="form-control" id="new_password" name="new_password" placeholder="Nueva Contraseña" required>
                                                 </div>
                                                 <div class="form-group">
                                                     <label>Repetir nueva contraseña:</label>
-                                                    <input type="password" class="form-control" id="repeat_new" name="repeat_new" required>
+                                                    <input type="password" class="form-control" id="repeat_new" name="repeat_new" placeholder="Repetir Nueva Contraseña" required>
                                                 </div>
                                                 <br>
                                                 <div class="form-group row pt-5 mb-0">
