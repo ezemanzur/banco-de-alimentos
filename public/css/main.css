@@ -1,0 +1,219 @@
+/* Tipografías */
+@font-face {
+    font-family: 'Roboto';
+    src: url('../fonts/Roboto/Roboto-Regular.ttf');
+}
+@font-face {
+    font-family: 'SourceSansPro';
+    src: url('../fonts/Source_Sans_Pro/SourceSansPro-Regular.ttf');
+}
+
+/* Variables */
+:root {
+    /* Colors */
+    --color-1: #f2713d;
+    --color-2:#ffa891;
+    --color-3:#fbd8c9;
+    --color-4:#faeeea;
+    --color-5:#444;
+    --color-6: #3e64ff;
+    --color-7: #5edfff;
+    /* Fonts */
+    --font-1: 'Roboto', sans-serif;
+    --font-2: 'SourceSansPro', sans-serif;
+}
+* {
+    color: var(--color-5);
+}
+body {
+    background: #f9f9f9;
+}
+.o-h {
+    overflow: hidden !important;
+}
+.btn-unselected {
+    opacity: 0.3 !important;
+    cursor: pointer;
+}
+.link {
+    color: blue !important;
+    cursor: pointer !important;
+    transition: 0.09s all !important;
+}
+.link:hover {
+    color: #039dfc !important;
+}
+.simple-margin {
+    margin-top: 4em;
+}
+.shadow-none {
+    box-shadow: none;
+}
+.cursor-p {
+    cursor: pointer !important;
+}
+/* Clases genéricas */
+.uns { /* Deshabilita seleccion */
+    user-select: none;
+    -moz-user-select: none;
+    -khtml-user-select: none;
+    -webkit-user-select: none;
+    -o-user-select: none;
+}
+.btn {
+    padding: 8px 18px;
+    transition: 0.1s all !important;
+    cursor: pointer !important;
+    box-shadow: 0px 1px 2px 1.5px rgba(0, 0, 0, 0.09); 
+    font-family: var(--font-1) !important;
+    border-radius: 4px;
+}
+.btn:hover {
+    opacity: 0.8 !important;
+}
+.btn-n {
+    padding: 8px 18px !important;
+}
+.btn-1 {
+    background: var(--color-1);
+    border: 1px var(--color-1) solid;
+    color: #fff;
+}
+.btn-1:hover {
+    color: #fff !important;
+}
+.btn-outline-1 {
+    border: 1px var(--color-1) solid;
+    color: var(--color-1);
+}
+.btn-outline-1:hover {
+    background: var(--color-1);
+    color: #fff;
+}
+.btn-rounded {
+    border-radius: 50px !important;
+}
+.btn-rounded-l {
+    border-top-left-radius: 50px;
+    border-bottom-left-radius: 50px;
+}
+.btn-rounded-r {
+    border-top-right-radius: 50px;
+    border-bottom-right-radius: 50px;
+}
+.m-auto {
+    margin: 4em auto 0 auto !important;
+    vertical-align: bottom;
+}
+.big-icon {
+    font-size: 36px;
+}
+.bl-1 {
+    border-left: 1px solid #eee;
+}
+/* Sombras */
+.shadow-1 {
+    box-shadow: 0 10px 20px rgba(0,0,0,0.05), 0 6px 6px rgba(0,0,0,0.1);
+}
+
+
+
+/* Texto */
+h1, h2, h3, h4, h5, h6, p, a {
+    font-family: var(--font-1) !important;
+    color: var(--color-5);
+}
+h1 { font-size: 28px; }
+h2 { font-size: 25px; }
+h3 { font-size: 22px; }
+h4 { font-size: 20px; }
+h5 { font-size: 18px; }
+h6 { font-size: 16px; }
+
+/* Navbar */
+nav {
+    background: var(--color-1) !important;
+}
+.img-logo {
+    height: 100px;
+}
+nav .nav-item {
+    margin: 0 20px !important;
+}
+nav .nav-link {
+    font-size: 18px;
+}
+
+/* Login & Register */
+.donate-image {
+    width: 60%;
+    margin: 35% auto;
+}
+.register-form {
+    overflow-y: scroll;
+    overflow-x: hidden;
+    max-height: 65vh;
+    border-left: 1px solid #f3f3f3;
+}
+    /* Campos obligatorios */
+.req-tooltip {
+    position: relative;
+    display: inline-block;
+}
+.req-tooltip .req-tooltip-text {
+    visibility: hidden;
+    width: 150px;
+    background-color: rgba(0, 0, 0, 0.04);
+    border: 1px solid #ddd;
+    color: #444;
+    text-align: center;
+    border-radius: 6px;
+    margin: -7px 0 0 10px;
+    padding: 1px 5px !important;
+    box-shadow: 0 10px 10px rgba(0,0,0,0.05), 0 3px 3px rgba(0,0,0,0.1);
+    /* Position the tooltip */
+    position: absolute;
+    z-index: 1;
+}
+.req-tooltip:hover .req-tooltip-text {
+    visibility: visible;
+}
+
+
+/* Paneles de administracion, donante, empleado*/
+.menu-panel {
+    border-bottom: 1px solid #eee !important;
+}
+.menuItem {
+	transition: 0.2s all;
+}
+.menuItem:hover {
+	cursor: pointer;
+	background: #eee !important;
+}
+.menuItem:active {
+	background: #ddd !important;
+}
+.menuItemActive {
+    background: #eee;
+}
+.menuItemActive i, .menuItemActive span {
+    color: var(--color-6) !important;
+}
+.subItem {
+	display: none;
+}
+.add-product {
+    transition: 0.1s all !important;
+}
+.add-product:hover {
+    opacity: 0.8;
+}
+.card-menu {
+    border-left: 1px solid #eee !important;
+}
+.logout-dropdown {
+    background: #fff !important;
+    border: 1px solid #eee !important;
+    width: 80% !important;
+}   

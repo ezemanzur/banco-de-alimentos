@@ -4,9 +4,11 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\User;
+use App\Giver;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\DB;
 
 class RegisterController extends Controller
 {
@@ -52,6 +54,8 @@ class RegisterController extends Controller
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'dni' => ['required', 'integer'],
+            'phone' => ['required', 'integer'],
         ]);
     }
 
@@ -63,10 +67,47 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
+
+        $user = User::create([
+            'name' => $data['name'],
+            'email' => $data['email'],
+            'password' => Hash::make($data['password']),
+            'dni' => $data['dni'],
+            'phone' => $data['phone'],
+            'rol' => 'giver',
+            'isActive' => 0,
+        ]);
+
+        //ID de usuario
+        $new_user = DB::table('users')
+            ->select('id')
+            ->where('email', $data['email'])
+            ->get();
+
+        /* Creación de donante */
+        Giver::create([
+            'user_id' => $new_user[0]->id,
+            'company-name' => $data['company-name'],
+            'company-cuit' => $data['company-cuit'],
+            'company-phone' => $data['company-phone'],
+            'address-street' => $data['address-street'],
+            'address-number' => $data['address-number'],
+            'address-floor' => $data['address-floor'],
+            'address-apartment' => $data['address-apartment'],
+        ]);
+
+        return $user;
+
+        /*
         return User::create([
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
+            'dni' => $data['dni'],
+            'phone' => $data['phone'],
+            'rol' => 'giver',
+            'isActive' => 0,
         ]);
+        */
     }
 }
