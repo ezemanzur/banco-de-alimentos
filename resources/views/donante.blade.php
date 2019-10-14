@@ -6,13 +6,56 @@
 
 @include('components.nav')
 
-@section('onload', 'onload=panelSwitch(0);')
+@if(Session::has('codigo'))
+    @php
+        $code = Session::get('codigo');
+        Session()->forget('codigo');
+    @endphp
+@else
+    @php
+        $code = 0;   
+    @endphp    
+@endif
+
+@section('onload', 'onload=panelSwitch('.$code.');')
 
 @section('content')
 
     <div class="container my-5">
 
         @if(!Auth::user()->isActive)
+        
+            <div class="row my-5">
+                <div class="col-md-9">
+                    
+                </div>
+                <div class="col-md-3 text-right">
+                    <!-- Basic dropdown -->
+                    <ul class="navbar-nav ml-auto btn logout-dropdown m-0 py-1 px-1 shadow-none">
+                        <li class="nav-item dropdown">
+                            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                {{ Auth::user()->name }} <span class="caret"></span>
+                            </a>
+
+                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="{{ route('logout') }}"
+                                onclick="event.preventDefault();
+                                                document.getElementById('logout-form').submit();"><i class="fas fa-power-off"></i>
+                                    {{ __('Cerrar sesión') }}
+                                </a>
+
+                                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                    @csrf
+                                </form>
+                            </div>
+                        </li>
+                    </ul>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" data-toggle="modal" data-target="#logOutModal"><i class="fas fa-power-off mr-1"></i><span>Cerrar sesión</a>
+                    </div>
+                    <!-- Basic dropdown -->
+                </div>
+            </div>
 
             <div class="row justify-content-center uns">
                 <div class="col-md-11 uns">
@@ -54,6 +97,28 @@
             </div>
         </div>
 
+        
+        <div class="row">
+            <div class="col-md-12">
+                @if(Session::has('success'))                
+                    <div class="alert alert-success alert-dismissible fade show" role="alert">
+                        <strong>{{ Session::get('success') }}</strong>
+                        <button type="button" class="close text-right" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                @endif
+                @if(Session::has('error'))                
+                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                        <strong>{{ Session::get('error') }}</strong>
+                        <button type="button" class="close text-right" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                @endif
+            </div>
+        </div>
+
         <div class="row">
             <div class="col-md-12 card">
                 <div class="row">
@@ -75,7 +140,15 @@
                                 <!-- Cambiar contraseña -->
                                 <li class="list-group-item menuItem" onclick="panelSwitch(5)"><i class="fas fa-unlock-alt mr-2 p-2"></i><span>Cambiar contraseña</span></li>
                                 <!-- Cerrar sesión -->
-                                <li class="list-group-item menuItem" data-toggle="modal" data-target="#logOutModal"><i class="fas fa-power-off mr-2 p-2"></i><span>Cerrar sesión</span></li>
+                                    <a href="{{ route('logout') }}" class="list-group-item menuItem"
+                                    onclick="event.preventDefault();
+                                                    document.getElementById('logout-form').submit();"><i class="fas fa-power-off mr-2 p-2"></i>
+                                        {{ __('Cerrar sesión') }}
+                                    </a>
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                        @csrf
+                                    </form>
+                                
                             </ul>
                         </div>
                     </div>
@@ -86,7 +159,7 @@
                             <!-- Crear donación -->
                             <div class="col-md-12 subItem">
                                 <div class="row">
-                                    <div class="col-md-7">
+                                    <div class="col-md-8">
                                         <div class="accordion" id="productAccordion">
                                             <div id="headingProduct">
                                                 <h4 class="cursor-p add-product" data-toggle="collapse" data-target="#collapseProduct" aria-expanded="true" aria-controls="collapseProduct">Agregar un nuevo producto<i class="fas fa-plus-square ml-2 p-2"></i></h4>
@@ -123,7 +196,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-md-5">
+                                    <div class="col-md-4">
                                         <div class="card">
                                             <div class="card-header">
                                                 Resumen
@@ -247,9 +320,9 @@
                                                 <!-- Nombre de la empresa -->
                                                 <div class="form-group row">
                                                     <div class="col-md-12">
-                                                        <label for="company-name" class="req-tooltip">Nombre de la empresa label>
+                                                        <label for="company-name" class="req-tooltip">Nombre de la empresa @include('components.required_tool')</label>
 
-                                                        <input id="company-name" type="text" class="form-control @error('company-name') is-invalid @enderror" name="company-name" value="{{ old('company-name') }}" required autocomplete="company-name" autofocus>
+                                                        <input id="company-name" type="text" class="form-control @error('company-name') is-invalid @enderror" name="company-name" value="{{ $giver->first()->company_name }}"  required autocomplete="company-name" autofocus>
 
                                                         @error('company-name')
                                                             <span class="invalid-feedback" role="alert">
@@ -262,9 +335,9 @@
                                                 <!-- CUIT -->
                                                 <div class="form-group row">
                                                     <div class="col-md-12">
-                                                        <label for="company-cuit" class="req-tooltip">CUIT label>
+                                                        <label for="company-cuit" class="req-tooltip">CUIT @include('components.required_tool')</label>
 
-                                                        <input id="company-cuit" type="number" class="form-control @error('company-cuit') is-invalid @enderror" name="company-cuit" value="{{ old('company-cuit') }}" required autocomplete="company-cuit" autofocus>
+                                                        <input id="company-cuit" type="number" class="form-control @error('company-cuit') is-invalid @enderror" name="company-cuit" value="{{ $giver->first()->company_cuit }}" required autocomplete="company-cuit" autofocus>
 
                                                         @error('company-cuit')
                                                             <span class="invalid-feedback" role="alert">
@@ -277,9 +350,9 @@
                                                 <!-- Numero de telefono -->
                                                 <div class="form-group row">
                                                     <div class="col-md-12">
-                                                        <label for="company-phone" class="req-tooltip">Número de teléfono label>
+                                                        <label for="company-phone" class="req-tooltip">Número de teléfono @include('components.required_tool')</label>
 
-                                                        <input id="company-phone" type="number" class="form-control @error('company-phone') is-invalid @enderror" name="company-phone" value="{{ old('company-phone') }}" required autocomplete="company-phone" autofocus>
+                                                        <input id="company-phone" type="number" class="form-control @error('company-phone') is-invalid @enderror" name="company-phone"  value="{{ $giver->first()->company_phone }}" required autocomplete="company-phone" autofocus>
 
                                                         @error('company-phone')
                                                             <span class="invalid-feedback" role="alert">
@@ -295,9 +368,9 @@
                                                 <div class="form-group row">
                                                     <!-- Calle -->
                                                     <div class="col-md-7">
-                                                        <label for="address-street" class="req-tooltip">Calle /label>
+                                                        <label for="address-street" class="req-tooltip">Calle @include('components.required_tool')</label>
 
-                                                        <input id="address-street" type="text" class="form-control @error('address-street') is-invalid @enderror" name="address-street" value="{{ old('address-street') }}" required autocomplete="address-street" autofocus>
+                                                        <input id="address-street" type="text" class="form-control @error('address-street') is-invalid @enderror" name="address-street"  value="{{ $giver->first()->address_street }}" required autocomplete="address-street" autofocus>
 
                                                         @error('address-street')
                                                             <span class="invalid-feedback" role="alert">
@@ -307,9 +380,9 @@
                                                     </div>
                                                     <!-- Numero -->
                                                     <div class="col-md-5">
-                                                        <label for="address-number" class="req-tooltip">Número /label>
+                                                        <label for="address-number" class="req-tooltip">Número @include('components.required_tool')</label>
 
-                                                        <input id="address-number" type="number" class="form-control @error('address-number') is-invalid @enderror" name="address-number" value="{{ old('address-number') }}" required autocomplete="address-number" autofocus>
+                                                        <input id="address-number" type="number" class="form-control @error('address-number') is-invalid @enderror" name="address-number" value="{{ $giver->first()->address_number }}" required autocomplete="address-number" autofocus>
 
                                                         @error('address-number')
                                                             <span class="invalid-feedback" role="alert">
@@ -325,7 +398,7 @@
                                                     <div class="col-md-5">
                                                         <label for="address-floor">Piso</label>
 
-                                                        <input id="address-floor" type="number" class="form-control @error('address-floor') is-invalid @enderror" name="address-floor" value="{{ old('address-floor') }}" autocomplete="address-floor" autofocus>
+                                                        <input id="address-floor" type="number" class="form-control @error('address-floor') is-invalid @enderror" name="address-floor" value="{{ $giver->first()->address_floor }}" autocomplete="address-floor" autofocus>
 
                                                         @error('address-floor')
                                                             <span class="invalid-feedback" role="alert">
@@ -337,7 +410,7 @@
                                                     <div class="col-md-5">
                                                         <label for="address-apartment">Depto</label>
 
-                                                        <input id="address-apartment" type="text" class="form-control @error('address-apartment') is-invalid @enderror" name="address-apartment" value="{{ old('address-apartment') }}" autocomplete="address-apartment" autofocus>
+                                                        <input id="address-apartment" type="text" class="form-control @error('address-apartment') is-invalid @enderror" name="address-apartment" value="{{ $giver->first()->address_apartment }}" autocomplete="address-apartment" autofocus>
 
                                                         @error('address-apartment')
                                                             <span class="invalid-feedback" role="alert">
@@ -350,15 +423,18 @@
                                                 <!-- Barrio -->
                                                 <div class="form-group row">
                                                     <div class="col-md-6">
-                                                        <label for="neighborhood" class="req-tooltip">Barrio /label>
-
-                                                        <select id="neighborhood" type="text" class="form-control browser-default custom-select @error('neighborhood') is-invalid @enderror" name="neighborhood" value="{{ old('neighborhood') }}" autocomplete="neighborhood" autofocus>
-                                                            <option selected disabled>Barrio</option>
-                                                            <option value="1">Barrio 1</option>
-                                                            <option value="2">Barrio 2</option>
-                                                            <option value="3">Barrio 3</option>
+                                                        <label for="neighborhood" class="req-tooltip">Barrio @include('components.required_tool')</label>
+            
+                                                        <select id="neighborhood" type="text" class="form-control browser-default custom-select @error('neighborhood') is-invalid @enderror" name="neighborhood" value="{{ old('neighborhood') }}" autocomplete="neighborhood" required autofocus>
+                                                            @foreach ($neighborhoods as $n)
+                                                                <option value="{{ $n->neighborhood_id }}"
+                                                                        @if($giver->first()->neighborhood_id == $n->neighborhood_id)
+                                                                        selected
+                                                                    @endif
+                                                                >{{ $n->name }}</option>
+                                                            @endforeach
                                                         </select>
-
+            
                                                         @error('neighborhood')
                                                             <span class="invalid-feedback" role="alert">
                                                                 <strong>{{ $message }}</strong>
@@ -391,9 +467,9 @@
                                                 <!-- Nombre y apellido -->
                                                 <div class="form-group row">
                                                     <div class="col-md-12">
-                                                        <label for="name" class="req-tooltip">Ingresar nombre y apellido </label>
+                                                        <label for="name" class="req-tooltip">Nombre y apellido @include('components.required_tool')</label>
 
-                                                        <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
+                                                        <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ $user->name }}" required autocomplete="name" autofocus>
 
                                                         @error('name')
                                                             <span class="invalid-feedback" role="alert">
@@ -406,9 +482,9 @@
                                                 <!-- DNI -->
                                                 <div class="form-group row">
                                                     <div class="col-md-12">
-                                                        <label for="dni" class="req-tooltip">DNI (Documento Nacional de Identidad) </label>
+                                                        <label for="dni" class="req-tooltip">DNI (Documento Nacional de Identidad) @include('components.required_tool')</label>
 
-                                                        <input id="dni" type="number" class="form-control @error('dni') is-invalid @enderror" name="dni" value="{{ old('dni') }}" required autocomplete="dni" autofocus>
+                                                        <input id="dni" type="number" class="form-control @error('dni') is-invalid @enderror" name="dni" value="{{ $user->dni }}" required autocomplete="dni" autofocus>
 
                                                         @error('dni')
                                                             <span class="invalid-feedback" role="alert">
@@ -421,9 +497,9 @@
                                                 <!-- Número de teléfono -->
                                                 <div class="form-group row">
                                                     <div class="col-md-12">
-                                                        <label for="phone" class="req-tooltip">Número de teléfono </label>
+                                                        <label for="phone" class="req-tooltip">Número de teléfono @include('components.required_tool')</label>
 
-                                                        <input id="phone" type="number" class="form-control @error('phone') is-invalid @enderror" name="phone" value="{{ old('phone') }}" required autocomplete="phone" autofocus>
+                                                        <input id="phone" type="number" class="form-control @error('phone') is-invalid @enderror" name="phone" value="{{ $user->phone }}" required autocomplete="phone" autofocus>
 
                                                         @error('phone')
                                                             <span class="invalid-feedback" role="alert">
@@ -436,9 +512,9 @@
                                                 <!-- Email -->
                                                 <div class="form-group row">
                                                     <div class="col-md-12">
-                                                        <label for="email" class="req-tooltip">Email </label>
+                                                        <label for="email" class="req-tooltip">Email @include('components.required_tool')</label>
 
-                                                        <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
+                                                        <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ $user->email }}" required autocomplete="email">
 
                                                         @error('email')
                                                             <span class="invalid-feedback" role="alert">
@@ -469,59 +545,39 @@
 
                                 <!-- Cambiar contraseña -->
                                 <div class="col-md-12 subItem">
-                                    <form>
-                                        @csrf
-                                        <!-- Contraseña actual -->
-                                        <div class="form-group row">
-                                            <div class="col-md-6">
-                                                <label for="password-actual" class="req-tooltip">Ingrese la contraseña actual </label>
-
-                                                <input id="password-actual" type="password" class="form-control @error('password-actual') is-invalid @enderror" name="password-actual" required autocomplete="password-actual">
-
-                                                @error('password-actual')
-                                                    <span class="invalid-feedback" role="alert">
-                                                        <strong>{{ $message }}</strong>
-                                                    </span>
-                                                @enderror
-                                            </div>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <form method="post" action="/change_password" enctype="multipart/form-data">
+                                                @csrf
+                                                
+                                                <div class="form-group">
+                                                    <label>Contraseña actual</label>
+                                                    <input type="password" class="form-control" id="password" name="password" required>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label>Nueva Contraseña:</label>
+                                                    <input type="password" class="form-control" id="new_password" name="new_password" required>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label>Repetir nueva contraseña:</label>
+                                                    <input type="password" class="form-control" id="repeat_new" name="repeat_new" required>
+                                                </div>
+                                                <br>
+                                                <div class="form-group row pt-5 mb-0">
+                                                    <div class="col-md-6 text-left">
+                                                        <button type="button" class="btn btn-outline-danger btn-n m-0" data-toggle="modal" data-target="#cancelarCambiarContraseña">
+                                                            Cancelar
+                                                        </button>
+                                                    </div>
+                                                    <div class="col-md-6 text-right">
+                                                        <button type="submit" class="btn btn-primary m-0">
+                                                            {{ __('Guardar cambios') }}
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </form>
                                         </div>
-                                        <!-- Nueva contraseña -->
-                                        <div class="form-group row pt-5">
-                                            <div class="col-md-6">
-                                                <label for="password-new" class="req-tooltip">Ingrese la nueva contraseña </label>
-
-                                                <input id="password-new" type="password" class="form-control @error('password-new') is-invalid @enderror" name="password-new" required autocomplete="new-password">
-
-                                                @error('password-new')
-                                                    <span class="invalid-feedback" role="alert">
-                                                        <strong>{{ $message }}</strong>
-                                                    </span>
-                                                @enderror
-                                            </div>
-                                        </div>
-
-                                        <!-- Repetir nueva contraseña -->
-                                        <div class="form-group row">
-                                            <div class="col-md-6">
-                                                <label for="password-new-confirm" class="req-tooltip">Repita la nueva contraseña </label>
-
-                                                <input id="password-new-confirm" type="password" class="form-control" name="password-new-confirm" required autocomplete="new-password">
-                                            </div>
-                                        </div>
-
-                                        <div class="form-group row pt-5 mb-0">
-                                            <div class="col-md-3 text-left">
-                                                <button type="button" class="btn btn-outline-danger btn-n m-0" data-toggle="modal" data-target="#cancelarCambiarContraseña">
-                                                    Cancelar
-                                                </button>
-                                            </div>
-                                            <div class="col-md-3 text-right">
-                                                <button type="submit" class="btn btn-primary m-0">
-                                                    {{ __('Guardar cambios') }}
-                                                </button>
-                                            </div>
-                                        </div>
-                                    </form>
+                                    </div>
                                 </div>
                                 <!-- /Cambiar contraseña -->
                             </div>
@@ -599,15 +655,5 @@
 
     </div>
 
-        <!-- Modal cerrar sesión -->
-        @include('components.modal', [
-            'modal_id' => 'logOutModal',
-            'mainTitle' => "Cerrar sesión",
-            'mainIcon' => 'fas fa-power-off',
-            'mainContent' => "¿Está seguro que desea cerrar sesión?",
-            'cancelLink' => '/',
-            'cancel' => "Si, salir",
-            'accept' => "No, seguir aquí",
-        ])
 
 @endsection

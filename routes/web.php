@@ -26,8 +26,5 @@ Route::get('donation/create', 'DonationController@create');
 Route::post('donation/addProductInputs', 'DonationController@addProductInput');
 Route::post('donation/save', 'DonationController@save')->name('donation.save');
 
-
-//Hacer en un controlador para manejar los paneles una vez autenticados
-Route::get('/donante', function () {
-    return view('donante');
-});
+//Cambiar contraseña usuario
+Route::post('change_password', 'UserController@changePassword');

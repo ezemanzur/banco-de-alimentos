@@ -7,6 +7,6 @@ use Illuminate\Database\Eloquent\Model;
 class Giver extends Model
 {
     protected $fillable = [
-        'giver_id', 'user_id', 'company-name', 'company-cuit', 'company-phone', 'address-street', 'address-number', 'address-floor', 'address-apartment',
+        'giver_id', 'user_id', 'company_name', 'company_cuit', 'company_phone', 'address_street', 'address_number', 'address_floor', 'address_apartment', 'neighborhood_id',
     ];
 }
