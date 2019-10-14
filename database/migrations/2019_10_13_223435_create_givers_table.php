@@ -19,11 +19,11 @@ class CreateGiversTable extends Migration
             $table->bigInteger('user_id')->unsigned();
             $table->foreign('user_id')->references('id')->on('users');
             $table->string('company-name');
-            $table->integer('company-cuit');
-            $table->integer('company-phone');
+            $table->bigInteger('company-cuit');
+            $table->bigInteger('company-phone');
             $table->string('address-street');
-            $table->integer('address-number');
-            $table->integer('address-floor')->nullable()->default(NULL);
+            $table->bigInteger('address-number');
+            $table->bigInteger('address-floor')->nullable()->default(NULL);
             $table->string('address-apartment')->nullable()->default(NULL);
         });
     }

@@ -12,6 +12,16 @@
 
     <div class="container my-5">
 
+        @if(!Auth::user()->isActive)
+
+            <div class="row justify-content-center">
+                <div class="col-md-11">
+                    <img src="{{ asset('img/esperando_donante.jpg') }}" class="w-100">
+                </div>
+            </div>
+
+        @else
+
         <div class="row my-4">
             <div class="col-md-9">
                 <h1>Perfil del donante<span id="panel-title"></span></h1>
@@ -478,6 +488,31 @@
                 </div>
             </div>
         </div>
+
+    <!-- Modal cancelar cambio de perfil -->
+    @include('components.modal', [
+        'modal_id' => 'cancelarModificarPerfil',
+        'mainTitle' => "¿Está seguro que desea cancelar las modificaciones?",
+        'mainIcon' => 'fas fa-exclamation-triangle',
+        'mainContent' => "Los cambios que haya realizado no serán guardados.",
+        'cancelLink' => '/donante',
+        'cancel' => "Si, cancelar",
+        'accept' => "No, seguir",
+    ])
+    
+    <!-- Modal cancelar cambio de contraseña -->
+    @include('components.modal', [
+        'modal_id' => 'cancelarCambiarContraseña',
+        'mainTitle' => "Cambiar contraseña",
+        'mainIcon' => 'fas fa-exclamation-triangle',
+        'mainContent' => "¿Está seguro que desea cancelar el cambio de contraseña?",
+        'cancelLink' => '/donante',
+        'cancel' => "Si, cancelar",
+        'accept' => "No, seguir",
+    ])
+
+        @endif
+
     </div>
 
     <!-- Modals -->
@@ -490,26 +525,6 @@
         'cancelLink' => '/',
         'cancel' => "Si, salir",
         'accept' => "No, seguir aquí",
-    ])
-    <!-- Modal cancelar cambio de perfil -->
-    @include('components.modal', [
-        'modal_id' => 'cancelarModificarPerfil',
-        'mainTitle' => "¿Está seguro que desea cancelar las modificaciones?",
-        'mainIcon' => 'fas fa-exclamation-triangle',
-        'mainContent' => "Los cambios que haya realizado no serán guardados.",
-        'cancelLink' => '/donante',
-        'cancel' => "Si, cancelar",
-        'accept' => "No, seguir",
-    ])
-    <!-- Modal cancelar cambio de contraseña -->
-    @include('components.modal', [
-        'modal_id' => 'cancelarCambiarContraseña',
-        'mainTitle' => "Cambiar contraseña",
-        'mainIcon' => 'fas fa-exclamation-triangle',
-        'mainContent' => "¿Está seguro que desea cancelar el cambio de contraseña?",
-        'cancelLink' => '/donante',
-        'cancel' => "Si, cancelar",
-        'accept' => "No, seguir",
     ])
     
     @include('components.footer')
