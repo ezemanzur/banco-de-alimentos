@@ -22,6 +22,10 @@ class Giver extends Model
                 'address_street' => $request['address-street'],
                 'address_number' => $request['address-number'],
                 'neighborhood_id' => $request['neighborhood'],
-            ]);   
+            ]);
+    }
+    public function user()
+    {
+        return $this->belongsTo('App\User');
     }
 }

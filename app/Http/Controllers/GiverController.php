@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Donation;
 use Illuminate\Http\Request;
 use Auth;
 use App\Neighborhood;
@@ -25,7 +26,10 @@ class GiverController extends Controller
             //$neighborhoods = Neighborhood::all();
             $neighborhoods = DB::table('neighborhoods')
                 ->get();
-            return view('donante', ['user' => $user, 'giver' => $giver, 'neighborhoods' => $neighborhoods]);
+            $categories = DB::table('categories')
+                ->get();
+            $donations= Donation::all()->where('user_id', $user->id);
+            return view('donante', ['user' => $user, 'giver' => $giver, 'neighborhoods' => $neighborhoods,'categories' => $categories, 'donations'=>  $donations]);
         }
         else {
             return view('/home');

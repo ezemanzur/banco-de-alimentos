@@ -7,14 +7,19 @@ use Illuminate\Database\Eloquent\Model;
 class
 Donation extends Model
 {
+
+    const ESTADO_VIGENTE = 'VIGENTE';
+    const ESTADO_COMPLETADO = 'COMPLETADA';
+    const ESTADO_RECHAZADO = 'RACHAZADA';
+
     protected $fillable = [
-        'id'
+        'id','state'
     ];
 
     public function products(){
         return $this->hasMany('App\Product');
     }
-    public function giver(){
-        return $this->belongsTo('App\Giver','giver_id');
+    public function user(){
+        return $this->belongsTo('App\User');
     }
 }
