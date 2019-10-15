@@ -21,7 +21,7 @@
 
 @section('content')
 
-    <div class="container my-5">
+    <div class="container my-5 pb-5">
 
         @if(!Auth::user()->isActive)
         
@@ -67,7 +67,7 @@
 
         <div class="row my-5">
             <div class="col-md-9">
-                <h1>Perfil del donante<span id="panel-title"></span></h1>
+                <h1>Donante<span id="panel-title"></span></h1>
             </div>
             <div class="col-md-3 text-right">
                 <!-- Basic dropdown -->
@@ -138,16 +138,17 @@
                                 <li class="list-group-item menuItem" onclick="panelSwitch(4)"><i class="far fa-user-circle mr-2 p-2"></i><span>Modificar perfil</span></li>
                                 <!-- Cambiar contraseña -->
                                 <li class="list-group-item menuItem" onclick="panelSwitch(5)"><i class="fas fa-unlock-alt mr-2 p-2"></i><span>Cambiar contraseña</span></li>
+                                <!-- Solicitar dejar de ser donante -->
+                                <li class="list-group-item menuItem" onclick="panelSwitch(6)"><i class="far fa-times-circle mr-2 p-2"></i><span>Solicitar baja de cuenta</span></li>
                                 <!-- Cerrar sesión -->
-                                    <a href="{{ route('logout') }}" class="list-group-item menuItem"
-                                    onclick="event.preventDefault();
-                                                    document.getElementById('logout-form').submit();"><i class="fas fa-power-off mr-2 p-2"></i>
-                                        {{ __('Cerrar sesión') }}
-                                    </a>
-                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                        @csrf
-                                    </form>
-                                
+                                <a href="{{ route('logout') }}" class="list-group-item menuItem"
+                                onclick="event.preventDefault();
+                                                document.getElementById('logout-form').submit();"><i class="fas fa-power-off mr-2 p-2"></i>
+                                    {{ __('Cerrar sesión') }}
+                                </a>
+                                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                    @csrf
+                                </form>                            
                             </ul>
                         </div>
                     </div>
@@ -564,6 +565,36 @@
                                     </div>
                                 </div>
                                 <!-- /Cambiar contraseña -->
+                                
+                                <!-- Cambiar contraseña -->
+                                <div class="col-md-12 subItem">
+                                    @if(1 < 2)
+                                        <form method="post">
+                                            @csrf
+                                            <div class="row py-4">
+                                                <div class="col-md-12">
+                                                    <h3>Solicitar dar de baja la cuenta</h3>
+                                                    <hr>
+                                                    <p>Puedes solicitar dar de baja tu cuenta como donante en con el siguiente botón.</p>
+                                                </div>
+                                                <div class="col-md-12">
+                                                    <button type="submit" class="btn btn-danger m-0">Solicitar baja</button>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    @else
+                                        <div class="row py-4">
+                                            <div class="col-md-12">
+                                                <div class="alert bg-notify-down p-4" role="alert">
+                                                    <h5>Ya se ha solicitado la baja, pronto recibirá una respuesta al email con el que se encuentra registrado.</h5>
+                                                    <div class="row justify-content-center mt-2">
+                                                        <i class="fas fa-envelope big-icon"></i>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    @endif
+                                </div>
                             </div>
                         </div>
                     </div>

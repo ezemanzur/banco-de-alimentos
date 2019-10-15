@@ -26,7 +26,7 @@
     color: var(--color-5);
 }
 body {
-    background: #f9f9f9;
+    background: #fbfbfb;
 }
 .o-h {
     overflow: hidden !important;
@@ -68,6 +68,10 @@ body {
 ::-ms-input-placeholder { /* Microsoft Edge */
     color: #aaa !important;
 }
+.bg-notify-down {
+    background: rgba(143, 237, 194, 0.5) !important;
+}
+
 /* Clases genéricas */
 .uns { /* Deshabilita seleccion */
     user-select: none;
@@ -125,7 +129,7 @@ body {
     font-size: 36px;
 }
 .bl-1 {
-    border-left: 1px solid #eee;
+    border-left: 1px solid #ddd;
 }
 /* Sombras */
 .shadow-1 {
