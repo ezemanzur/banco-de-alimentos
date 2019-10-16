@@ -49,4 +49,13 @@ class User extends Authenticatable
                 'phone' => $request['phone'],
             ]);
     }
+
+    public function giver()
+    {
+        return $this->hasOne('App\Giver','giver_id');
+    }
+    public function donations(){
+        return $this->hasMany('App\Donation');
+    }
+
 }

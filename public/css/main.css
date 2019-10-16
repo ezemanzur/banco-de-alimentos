@@ -15,9 +15,10 @@
     --color-2:#ffa891;
     --color-3:#fbd8c9;
     --color-4:#faeeea;
-    --color-5:#444;
+    --color-5:#474747;
     --color-6: #3e64ff;
     --color-7: #5edfff;
+    --color-8: #ff8767;
     /* Fonts */
     --font-1: 'Roboto', sans-serif;
     --font-2: 'SourceSansPro', sans-serif;
@@ -71,6 +72,28 @@ body {
 .bg-notify-down {
     background: rgba(143, 237, 194, 0.5) !important;
 }
+.border-none {
+    border: 0 none !important;
+}
+#collapseProduct {
+    display: none;
+}
+.formato-24 {
+    color: #777 !important;
+    font-size: 15px;
+    margin: 0 !important;
+    padding: 0 !important;
+    text-align: left;
+}
+.resume-table {
+    height: 300px !important;
+    scroll-behavior: smooth;
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+.donationResumeVigente, .modifyAmountForm {
+    display: none;
+}
 
 /* Clases genéricas */
 .uns { /* Deshabilita seleccion */
@@ -92,12 +115,15 @@ body {
     opacity: 0.8 !important;
 }
 .btn-n {
-    padding: 8px 18px !important;
+    padding: 7px 18px !important;
 }
 .btn-1 {
     background: var(--color-1);
     border: 1px var(--color-1) solid;
     color: #fff;
+}
+.btn-2 {
+    background: #41719f !important;
 }
 .btn-1:hover {
     color: #fff !important;
@@ -131,6 +157,25 @@ body {
 .bl-1 {
     border-left: 1px solid #ddd;
 }
+.c-checkbox {
+    padding: 2px !important;
+    border: 3px solid #eee !important;
+    background: #f9f9f9 !important;
+    border-radius: 4px !important;
+    width: 24px !important;
+    height: 24px !important;
+    transition: 0.1s all !important;
+    margin-top: 10px !important;
+}
+.bg-blue-new {
+    background: #19d4ee !important;
+}
+.button-details{
+    border-radius: 15px;
+    padding: 8px 50px !important;
+    font-size: 12px;
+    margin: 0 auto;
+}
 /* Sombras */
 .shadow-1 {
     box-shadow: 0 10px 20px rgba(0,0,0,0.05), 0 6px 6px rgba(0,0,0,0.1);
@@ -149,6 +194,7 @@ h3 { font-size: 22px; }
 h4 { font-size: 20px; }
 h5 { font-size: 18px; }
 h6 { font-size: 16px; }
+p { font-size: 16px; }
 
 /* Navbar */
 nav {
@@ -161,7 +207,8 @@ nav .nav-item {
     margin: 0 20px !important;
 }
 nav .nav-link {
-    font-size: 18px;
+    font-size: 20px;
+    margin: 0px 30px;
 }
 
 /* Login & Register */
@@ -198,8 +245,22 @@ nav .nav-link {
 .req-tooltip:hover .req-tooltip-text {
     visibility: visible;
 }
-
-
+.main-content {
+    position: absolute;
+    bottom: 0;
+}
+.nuestro-equipo {
+    background: #f4f4f4;
+}
+.orange-hr {
+    height: 3px !important;
+    background: var(--color-1);
+    border: 0 none !important;
+}
+.quienes-somos {
+    background-image: url(../img/wall.png);
+    background-repeat: no-repeat;
+}
 /* Paneles de administracion, donante, empleado*/
 .menu-panel {
     border-bottom: 1px solid #eee !important;

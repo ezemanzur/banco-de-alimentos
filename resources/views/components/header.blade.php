@@ -18,13 +18,8 @@
                 <!-- Authentication Links -->
                 @guest
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                        <a class="btn btn-mdb-color py-2 px-4 m-0" href="{{ route('login') }}">{{ __('Iniciar sesión') }}</a>
                     </li>
-                    @if (Route::has('register'))
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
-                        </li>
-                    @endif
                 @else
                     @php
                         if(Auth::user()->rol == 'giver') {
@@ -32,7 +27,7 @@
                         }
                         //Ampliar
                     @endphp
-                    <a class="btn btn-info" href="{{ $link }}">Mi perfil</a>
+                    <a class="btn btn-info m-0" href="{{ $link }}">Mi perfil</a>
                 @endguest
             </ul>
         </div>

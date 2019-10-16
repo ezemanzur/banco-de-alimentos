@@ -7,13 +7,6 @@ use Illuminate\Database\Eloquent\Model;
 class Product extends Model
 {
     protected $fillable = [
-        'id', 'expiration_date',
+        'product_id', 'name', 'amount', 'has_exp_date', 'exp_date', 'category_id', 'type_id', 'donation_id',
     ];
-
-    public function category(){
-        return $this->belongsTo('App\Category','category_id');
-    }
-    public function donation(){
-        return $this->belongsTo('App\Donation','donation_id');
-    }
 }

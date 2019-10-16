@@ -11,6 +11,20 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // $this->call(UsersTableSeeder::class);
+        DB::table('neighborhoods')->insert(array(
+            'name' => 'La Plata',
+            'created_at'=> date('Y-m-d H:i:s'),
+            'updated_at' => date('Y-m-d H:i:s'),
+        ));
+        DB::table('neighborhoods')->insert(array(
+            'name' => 'Tolosa',
+            'created_at'=> date('Y-m-d H:i:s'),
+            'updated_at' => date('Y-m-d H:i:s'),
+        ));
+        DB::table('neighborhoods')->insert(array(
+            'name' => 'City Bell',
+            'created_at'=> date('Y-m-d H:i:s'),
+            'updated_at' => date('Y-m-d H:i:s'),
+        ));
     }
 }

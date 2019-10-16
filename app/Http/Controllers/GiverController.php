@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Donation;
 use Illuminate\Http\Request;
 use Auth;
 use App\Neighborhood;
@@ -18,15 +19,44 @@ class GiverController extends Controller
     public function index(){
         //Redirección
         if (Auth::user()->rol === 'giver'){
+            //Usuario
             $user = auth()->user();
-            $giver = DB::table('givers')
-                ->where('user_id', $user->id)
+            //Donante
+            $giver = DB::table('givers')->where('user_id', $user->id)->get();
+            //Barrios
+            $neighborhoods = DB::table('neighborhoods')->get();
+            //Categorías
+            $categories = DB::table('product_categories')->get();
+            //Tipos
+            $types = DB::table('product_types')->get();
+            //Donaciones
+            $donations= Donation::all()->where('user_id', $user->id);
+            //Donación actual
+            $products = DB::table('products')
+                ->join('donations', 'products.donation_id', '=', 'donations.donation_id')
+                ->where([
+                    ['donations.status', '=', 'CREANDO'],
+                    ['donations.user_id', '=', Auth::user()->id]
+                ])
                 ->get();
-            //$neighborhoods = Neighborhood::all();
-            $neighborhoods = DB::table('neighborhoods')
+            $allproducts = DB::table('products')
+                ->join('donations', 'products.donation_id', '=', 'donations.donation_id')
+                ->where('donations.user_id', '=', Auth::user()->id)
                 ->get();
-            return view('donante', ['user' => $user, 'giver' => $giver, 'neighborhoods' => $neighborhoods]);
+            $status = 'panelA';
+            if (count($products) == 0) {
+                $products = DB::table('products')
+                    ->join('donations', 'products.donation_id', '=', 'donations.donation_id')
+                    ->where('donations.status', '=', 'FINALIZANDO')
+                    ->get();
+                if (count($products) > 0) {
+                    $status = 'panelB';
+                }
+            }
+
+            return view('donante', ['user' => $user, 'giver' => $giver, 'categories' => $categories, 'types' => $types, 'neighborhoods' => $neighborhoods, 'donations' => $donations, 'products' => $products, 'allproducts' => $allproducts, 'status' => $status]);
         }
+        //
         else {
             return view('/home');
         }
