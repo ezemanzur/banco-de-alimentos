@@ -31,41 +31,9 @@
 
 @section('content')
 
-    <div class="container my-5 pb-5">
+    <div class="container-fluid my-5 pb-5">
 
         @if(!Auth::user()->isActive)
-
-            <div class="row my-5">
-                <div class="col-md-9">
-
-                </div>
-                <div class="col-md-3 text-right">
-                    <!-- Basic dropdown -->
-                    <ul class="navbar-nav ml-auto btn logout-dropdown m-0 py-1 px-1 shadow-none">
-                        <li class="nav-item dropdown">
-                            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
-                               data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                {{ Auth::user()->name }} <span class="caret"></span>
-                            </a>
-
-                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="{{ route('logout') }}"
-                                   onclick="event.preventDefault();
-                                                document.getElementById('logout-form').submit();"><i
-                                        class="fas fa-power-off"></i>
-                                    {{ __('Cerrar sesión') }}
-                                </a>
-
-                                <form id="logout-form" action="{{ route('logout') }}" method="POST"
-                                      style="display: none;">
-                                    @csrf
-                                </form>
-                            </div>
-                        </li>
-                    </ul>
-                    <!-- Basic dropdown -->
-                </div>
-            </div>
 
             <div class="row justify-content-center uns">
                 <div class="col-md-11 uns">
@@ -75,33 +43,14 @@
 
         @else
 
-
-        <div class="row my-5">
+        <div class="row my-5 justify-content-center">
             <div class="col-md-9">
                 <h1>Donante<span id="panel-title"></span></h1>
             </div>
-            <div class="col-md-3 text-right">
-                <!-- Basic dropdown -->
-                <ul class="navbar-nav ml-auto btn logout-dropdown m-0 py-1 px-1 shadow-none">
-                    <li class="nav-item dropdown">
-                        <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                            {{ Auth::user()->name }} <span class="caret"></span>
-                        </a>
-
-                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="{{ route('logout') }}"
-                               onclick="event.preventDefault();
-                                    document.getElementById('logout-form').submit();"><i class="fas fa-power-off"></i>
-                                {{ __('Cerrar sesión') }}
-                        </a>
-                        </div>
-                    </li>
-                </ul>
-            </div>
         </div>
 
-        <div class="row">
-            <div class="col-md-12">
+        <div class="row justify-content-center">
+            <div class="col-md-9">
                 @if(Session::has('success'))
                     <div class="alert alert-success alert-dismissible fade show" role="alert">
                         <strong><i class="fas fa-check-circle mr-2"></i>{{ Session::get('success') }}</strong>
@@ -121,14 +70,16 @@
             </div>
         </div>
 
-        <div class="row">
-            <div class="col-md-12 card">
+        <div class="row justify-content-center">
+            <div class="col-md-9 card">
                 <div class="row">
                     <!-- Menú izquierdo -->
                     <div class="col-md-3 p-0">
                         <div class="shadow-none m-0 p-0">
                             <!-- Elementos del menú -->
                             <ul class="list-group list-group-flush menu-panel">
+                                <!-- Donaciones -->
+                                <li class="list-group-item menuDivisor py-2">Donaciones</li>
                                 <!-- Crear una donación -->
                                 <li class="list-group-item menuItem" onclick="panelSwitch(0)"><i class="fas fa-plus-square mr-2 p-2"></i><span>Crear una donación</span></li>
                                 <!-- Ver donaciones vigentes -->
@@ -137,6 +88,7 @@
                                 <li class="list-group-item menuItem" onclick="panelSwitch(2)"><i class="fas fa-box mr-2 p-2"></i><span>Ver donaciones pasadas</span></li>
                                 <!-- Ver donaciones rechazadas -->
                                 <li class="list-group-item menuItem" onclick="panelSwitch(3)"><i class="fas fa-ban mr-2 p-2"></i><span>Ver donaciones rechazadas</span></li>
+                                <li class="list-group-item menuDivisor py-2">Configuración personal</li>
                                 <!-- Modificar perfil -->
                                 <li class="list-group-item menuItem" onclick="panelSwitch(4)"><i class="far fa-user-circle mr-2 p-2"></i><span>Modificar perfil</span></li>
                                 <!-- Cambiar contraseña -->
@@ -146,7 +98,7 @@
                                 <!-- Cerrar sesión -->
                                 <a href="{{ route('logout') }}" class="list-group-item menuItem"
                                     onclick="event.preventDefault();
-                                        document.getElementById('logout-form').submit();"><i class="fas fa-power-off mr-2 p-2"></i>
+                                        document.getElementById('logout-form').submit();"><i class="fas fa-sign-out-alt mr-2 p-2"></i>
                                     {{ __('Cerrar sesión') }}
                                 </a>
                                 <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">

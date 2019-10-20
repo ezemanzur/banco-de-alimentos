@@ -22,12 +22,29 @@
                     </li>
                 @else
                     @php
+                        //Rol url profile
                         if(Auth::user()->rol == 'giver') {
                             $link = 'donante';
                         }
                         //Ampliar
                     @endphp
-                    <a class="btn btn-info m-0" href="{{ $link }}">Mi perfil</a>
+                    <div class="dropdown">
+                        <button class="btn btn-indigo dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        {{ Auth::user()->name }}
+                        </button>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                            <a class="dropdown-item" href="{{ $link }}"><i class="fas fa-user mr-2"></i>Mi panel</a>
+                            <a class="dropdown-item" href="{{ route('logout') }}"
+                               onclick="event.preventDefault();
+                                             document.getElementById('logout-form').submit();">
+                                <i class="fas fa-sign-out-alt mr-2"></i>Cerrar sesión
+                            </a>
+
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                @csrf
+                            </form>
+                        </div>
+                    </div>
                 @endguest
             </ul>
         </div>
