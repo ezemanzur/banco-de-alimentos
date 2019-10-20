@@ -24,7 +24,7 @@
                                     <div class="col-md-10">
                                         <label for="password">Ingresar email</label>
 
-                                        <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" placeholder="E-mail" value="{{ old('email') }}" required autocomplete="email" autofocus>
+                                        <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" placeholder="enterprise@dominio.com" value="{{ old('email') }}" required autocomplete="email" autofocus>
 
                                         @error('email')
                                             <span class="invalid-feedback" role="alert">

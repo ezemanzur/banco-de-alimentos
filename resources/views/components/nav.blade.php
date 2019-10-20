@@ -13,26 +13,25 @@
         <!-- Links -->
         <ul class="navbar-nav mx-auto">
             <li class="nav-item">
-                <a class="nav-link" href="#">Que hacemos</a>
+                <a class="nav-link" href="/">Que hacemos</a>
             </li>
             <!-- Dropdown -->
             <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown"
-                aria-haspopup="true" aria-expanded="false">Asociate</a>
+                <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Asociate</a>
                 <div class="dropdown-menu dropdown-primary" aria-labelledby="navbarDropdownMenuLink">
                     <a class="dropdown-item" href="/register">Como donante</a>
-                    <a class="dropdown-item" href="#">Como voluntario</a>
+                    <!--a class="dropdown-item" href="#">Como voluntario</a-->
                 </div>
             </li>
 
             <li class="nav-item">
-                <a class="nav-link" href="#">Destinatarios</a>
+                <a class="nav-link" href="/">Destinatarios</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">Donantes</a>
+                <a class="nav-link" href="/">Donantes</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">Contacto</a>
+                <a class="nav-link" href="/contact">Contacto</a>
             </li>
 
         </ul>

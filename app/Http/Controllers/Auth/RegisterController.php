@@ -5,10 +5,12 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\User;
 use App\Giver;
+use App\Neighborhood;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\DB;
+Use Auth;
 
 class RegisterController extends Controller
 {
@@ -30,7 +32,17 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+    //    protected $redirectTo = '/home';
+    protected function redirectTo()
+    {
+        if (Auth::user()->rol=='giver') {
+            return '/donante';
+        }
+        else {
+            return '/home';
+        }
+    }
+    
 
     /**
      * Create a new controller instance.
@@ -42,6 +54,13 @@ class RegisterController extends Controller
         $this->middleware('guest');
     }
 
+    //@Override showRegistrationForm()
+    public function showRegistrationForm()
+    {
+        $neighborhoods = Neighborhood::all();
+        return view('auth.register', compact('neighborhoods'));
+    }
+
     /**
      * Get a validator for an incoming registration request.
      *
@@ -51,11 +70,19 @@ class RegisterController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
+            'company_name' => ['required', 'string', 'max:255', 'unique:givers'],
+            'company-cuit' => ['required'],
+            'company-phone' => ['required'],
+            'address-street' => ['required'],
+            'address-number' => ['required'],
+            'address-floor' => ['required'],
+            'address-apartment' => ['required'],
+            'neighborhood' => ['required'],
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
-            'dni' => ['required', 'integer'],
-            'phone' => ['required', 'integer'],
+            'dni' => ['required'],
+            'phone' => ['required'],
         ]);
     }
 
@@ -67,7 +94,7 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-
+        /* Creación de usuario */
         $user = User::create([
             'name' => $data['name'],
             'email' => $data['email'],
@@ -87,13 +114,14 @@ class RegisterController extends Controller
         /* Creación de donante */
         Giver::create([
             'user_id' => $new_user[0]->id,
-            'company-name' => $data['company-name'],
-            'company-cuit' => $data['company-cuit'],
-            'company-phone' => $data['company-phone'],
-            'address-street' => $data['address-street'],
-            'address-number' => $data['address-number'],
-            'address-floor' => $data['address-floor'],
-            'address-apartment' => $data['address-apartment'],
+            'company_name' => $data['company_name'],
+            'company_cuit' => $data['company-cuit'],
+            'company_phone' => $data['company-phone'],
+            'address_street' => $data['address-street'],
+            'address_number' => $data['address-number'],
+            'address_floor' => $data['address-floor'],
+            'address_apartment' => $data['address-apartment'],
+            'neighborhood_id' => $data['neighborhood'],
         ]);
 
         return $user;
