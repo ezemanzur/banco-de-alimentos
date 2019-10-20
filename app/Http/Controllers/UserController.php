@@ -107,4 +107,16 @@ class UserController extends Controller
 
         return redirect()->back()->with('success', 'Los datos se han modificado con éxito');
     }
+
+    public function unsubscribeRequest(){
+
+        $id = auth()->user()->id;
+        DB::table('unsubscribe_requests')->insert(
+            ['user_id' => $id, 'status' => 1]
+        );
+
+        return redirect()->back()->with('success', 'Has solicitado la baja con éxito');
+    }
+
+    
 }

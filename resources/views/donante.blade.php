@@ -638,13 +638,13 @@
                                                         <tr>
                                                             <th scope="row">{{ $d->created_at }}</th>
                                                             <td>
-                                                                {{ $d->created_at }}
+                                                                2019-10-18 15:07:01
                                                             </td>
                                                             <td class="text-center">
                                                                 <a class="link" onclick="showResumeDonation({{ $count }},'donationResumeRechazada')">Ver resumen</a>
                                                             </td>
                                                             <td>
-                                                                Razon de cancelación
+                                                                Los productos están proximos a vencer.
                                                             </td>
                                                         </tr>
                                                         @php $count++; @endphp
@@ -719,9 +719,9 @@
                                                         <label for="company-cuit"
                                                                class="req-tooltip">CUIT @include('components.required_tool')</label>
 
-                                                        <input id="company-cuit" type="number"
+                                                        <input id="company-cuit" type="number" min="0"
                                                                class="form-control @error('company-cuit') is-invalid @enderror"
-                                                               name="company-cuit" placeholder="xxxxxxxx"
+                                                               name="company-cuit" placeholder="ej: 204445559"
                                                                value="{{ $giver->first()->company_cuit }}" required
                                                                autocomplete="company-cuit" autofocus>
 
@@ -739,9 +739,9 @@
                                                         <label for="company-phone" class="req-tooltip">Número de
                                                             teléfono @include('components.required_tool')</label>
 
-                                                        <input id="company-phone" type="number"
+                                                        <input id="company-phone" type="number" min="0"
                                                                class="form-control @error('company-phone') is-invalid @enderror"
-                                                               name="company-phone" placeholder="xxxxxxxx"
+                                                               name="company-phone" placeholder="ej: 221444555"
                                                                value="{{ $giver->first()->company_phone }}" required
                                                                autocomplete="company-phone" autofocus>
 
@@ -761,7 +761,11 @@
                                                     <div class="col-md-7">
                                                         <label for="address-street" class="req-tooltip">Calle @include('components.required_tool')</label>
 
-                                                        <input id="address-street" type="text" class="form-control @error('address-street') is-invalid @enderror" name="address-street" placeholder="Avenida xx" value="{{ $giver->first()->address_street }}" required autocomplete="address-street" autofocus>
+                                                        <input id="address-street" type="text"
+                                                            class="form-control @error('address-street') is-invalid @enderror"
+                                                            name="address-street" placeholder="Calle 0"
+                                                            value="{{ $giver->first()->address_street }}" required
+                                                            autocomplete="address-street" autofocus>
 
                                                         @error('address-street')
                                                         <span class="invalid-feedback" role="alert">
@@ -773,7 +777,11 @@
                                                     <div class="col-md-5">
                                                         <label for="address-number" class="req-tooltip">Número @include('components.required_tool')</label>
 
-                                                        <input id="address-number" type="number" class="form-control @error('address-number') is-invalid @enderror" name="address-number" placeholder="xxx" value="{{ $giver->first()->address_number }}" required autocomplete="address-number" autofocus>
+                                                        <input id="address-number" type="number" min="0"
+                                                            class="form-control @error('address-number') is-invalid @enderror"
+                                                            name="address-number" placeholder="0"
+                                                            value="{{ $giver->first()->address_number }}"
+                                                            required autocomplete="address-number" autofocus>
 
                                                         @error('address-number')
                                                         <span class="invalid-feedback" role="alert">
@@ -789,7 +797,11 @@
                                                     <div class="col-md-5">
                                                         <label for="address-floor">Piso</label>
 
-                                                        <input id="address-floor" type="number" class="form-control @error('address-floor') is-invalid @enderror" name="address-floor" placeholder="xx" value="{{ $giver->first()->address_floor }}" autocomplete="address-floor" autofocus>
+                                                        <input id="address-floor" type="number" min="0"
+                                                            class="form-control @error('address-floor') is-invalid @enderror"
+                                                            name="address-floor" placeholder="0"
+                                                            value="{{ $giver->first()->address_floor }}"
+                                                            autocomplete="address-floor" autofocus>
 
                                                         @error('address-floor')
                                                         <span class="invalid-feedback" role="alert">
@@ -801,7 +813,11 @@
                                                     <div class="col-md-5">
                                                         <label for="address-apartment">Depto</label>
 
-                                                        <input id="address-apartment" type="text" class="form-control @error('address-apartment') is-invalid @enderror" name="address-apartment" placeholder="xx" value="{{ $giver->first()->address_apartment }}" autocomplete="address-apartment" autofocus>
+                                                        <input id="address-apartment" type="text"
+                                                            class="form-control @error('address-apartment') is-invalid @enderror"
+                                                            name="address-apartment" placeholder="0"
+                                                            value="{{ $giver->first()->address_apartment }}"
+                                                            autocomplete="address-apartment" autofocus>
 
                                                         @error('address-apartment')
                                                         <span class="invalid-feedback" role="alert">
@@ -842,10 +858,13 @@
                                                 <!-- Nombre y apellido -->
                                                 <div class="form-group row">
                                                     <div class="col-md-12">
-                                                        <label for="name" class="req-tooltip">Nombre y
-                                                            apellido @include('components.required_tool')</label>
+                                                        <label for="name" class="req-tooltip">Nombre y apellido @include('components.required_tool')</label>
 
-                                                        <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" placeholder="John Smith" value="{{ $user->name }}" required autocomplete="name" autofocus>
+                                                        <input id="name" type="text"
+                                                            class="form-control @error('name') is-invalid @enderror"
+                                                            name="name" placeholder="John Smith"
+                                                            value="{{ $user->name }}" required
+                                                            autocomplete="name" autofocus>
 
                                                         @error('name')
                                                         <span class="invalid-feedback" role="alert">
@@ -858,10 +877,13 @@
                                                 <!-- DNI -->
                                                 <div class="form-group row">
                                                     <div class="col-md-12">
-                                                        <label for="dni" class="req-tooltip">DNI (Documento Nacional de
-                                                            Identidad) @include('components.required_tool')</label>
+                                                        <label for="dni" class="req-tooltip">DNI (Solo números) @include('components.required_tool')</label>
 
-                                                        <input id="dni" type="number" class="form-control @error('dni') is-invalid @enderror" name="dni" placeholder="xxxxxxxx" value="{{ $user->dni }}" required autocomplete="dni" autofocus>
+                                                        <input id="dni" type="number" min="0"
+                                                            class="form-control @error('dni') is-invalid @enderror"
+                                                            name="dni" placeholder="ej: 381234567"
+                                                            value="{{ $user->dni }}" required
+                                                            autocomplete="dni" autofocus>
 
                                                         @error('dni')
                                                         <span class="invalid-feedback" role="alert">
@@ -874,10 +896,13 @@
                                                 <!-- Número de teléfono -->
                                                 <div class="form-group row">
                                                     <div class="col-md-12">
-                                                        <label for="phone" class="req-tooltip">Número de
-                                                            teléfono @include('components.required_tool')</label>
+                                                        <label for="phone" class="req-tooltip">Número de teléfono (Solo números) @include('components.required_tool')</label>
 
-                                                        <input id="phone" type="number" class="form-control @error('phone') is-invalid @enderror" name="phone" placeholder="xxxxxxxx" value="{{ $user->phone }}" required autocomplete="phone" autofocus>
+                                                        <input id="phone" type="number" min="0"
+                                                            class="form-control @error('phone') is-invalid @enderror"
+                                                            name="phone" placeholder="ej: 2214567890"
+                                                            value="{{ $user->phone }}" required
+                                                            autocomplete="phone" autofocus>
 
                                                         @error('phone')
                                                         <span class="invalid-feedback" role="alert">
@@ -892,7 +917,11 @@
                                                     <div class="col-md-12">
                                                         <label for="email" class="req-tooltip">Email @include('components.required_tool')</label>
 
-                                                        <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" placeholder="johnsmith@dominio.com" value="{{ $user->email }}" required autocomplete="email">
+                                                        <input id="email" type="email"
+                                                            class="form-control @error('email') is-invalid @enderror"
+                                                            name="email" placeholder="johnsmith@dominio.com"
+                                                            value="{{ $user->email }}" required
+                                                            autocomplete="email">
 
                                                         @error('email')
                                                         <span class="invalid-feedback" role="alert">
@@ -964,8 +993,8 @@
                                 
                                 <!-- Cambiar contraseña -->
                                 <div class="col-md-12 subItem">
-                                    @if(1 < 2)
-                                        <form method="post">
+                                    @if(count($requests) == 0)
+                                        <form method="post" action="unsubscribe/request">
                                             @csrf
                                             <div class="row py-4">
                                                 <div class="col-md-12">

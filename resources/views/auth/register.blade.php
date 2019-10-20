@@ -41,9 +41,9 @@
                                     <!-- CUIT -->
                                     <div class="form-group row">
                                         <div class="col-md-10">
-                                            <label for="company-cuit" class="req-tooltip">CUIT @include('components.required_tool')</label>
+                                            <label for="company-cuit" class="req-tooltip">CUIT (Solo números) @include('components.required_tool')</label>
 
-                                            <input id="company-cuit" type="number" class="form-control @error('company-cuit') is-invalid @enderror" name="company-cuit" placeholder="xxxxxxxx" value="{{ old('company-cuit') }}" required autocomplete="company-cuit" autofocus>
+                                            <input id="company-cuit" type="number" class="form-control @error('company-cuit') is-invalid @enderror" name="company-cuit" placeholder="ej: 20301111119" min="0" value="{{ old('company-cuit') }}" required autocomplete="company-cuit" autofocus>
 
                                             @error('company-cuit')
                                                 <span class="invalid-feedback" role="alert">
@@ -56,9 +56,9 @@
                                     <!-- Numero de telefono -->
                                     <div class="form-group row">
                                         <div class="col-md-10">
-                                            <label for="company-phone" class="req-tooltip">Número de teléfono @include('components.required_tool')</label>
+                                            <label for="company-phone" class="req-tooltip">Número de teléfono (Solo números) @include('components.required_tool')</label>
 
-                                            <input id="company-phone" type="number" class="form-control @error('company-phone') is-invalid @enderror" name="company-phone" placeholder="xxxxxxxx" value="{{ old('company-phone') }}" required autocomplete="company-phone" autofocus>
+                                            <input id="company-phone" type="number" class="form-control @error('company-phone') is-invalid @enderror" name="company-phone" placeholder="ej: 2211234567" min="0" value="{{ old('company-phone') }}" required autocomplete="company-phone" autofocus>
 
                                             @error('company-phone')
                                                 <span class="invalid-feedback" role="alert">
@@ -76,7 +76,7 @@
                                         <div class="col-md-6">
                                             <label for="address-street" class="req-tooltip">Calle @include('components.required_tool')</label>
 
-                                            <input id="address-street" type="text" class="form-control @error('address-street') is-invalid @enderror" name="address-street" placeholder="Avenida xx" value="{{ old('address-street') }}" required autocomplete="address-street" autofocus>
+                                            <input id="address-street" type="text" class="form-control @error('address-street') is-invalid @enderror" name="address-street" placeholder="Calle 0" value="{{ old('address-street') }}" required autocomplete="address-street" autofocus>
 
                                             @error('address-street')
                                                 <span class="invalid-feedback" role="alert">
@@ -88,7 +88,7 @@
                                         <div class="col-md-4">
                                             <label for="address-number" class="req-tooltip">Número @include('components.required_tool')</label>
 
-                                            <input id="address-number" type="number" class="form-control @error('address-number') is-invalid @enderror" name="address-number" placeholder="xxx" value="{{ old('address-number') }}" required autocomplete="address-number" autofocus>
+                                            <input id="address-number" type="number" class="form-control @error('address-number') is-invalid @enderror" name="address-number" placeholder="0" min="0" value="{{ old('address-number') }}" required autocomplete="address-number" autofocus>
 
                                             @error('address-number')
                                                 <span class="invalid-feedback" role="alert">
@@ -104,7 +104,7 @@
                                         <div class="col-md-4">
                                             <label for="address-floor">Piso</label>
 
-                                            <input id="address-floor" type="number" class="form-control @error('address-floor') is-invalid @enderror" name="address-floor" placeholder="xx" value="{{ old('address-floor') }}" autocomplete="address-floor" autofocus>
+                                            <input id="address-floor" type="number" class="form-control @error('address-floor') is-invalid @enderror" name="address-floor" placeholder="0" min="0" value="{{ old('address-floor') }}" autocomplete="address-floor" autofocus>
 
                                             @error('address-floor')
                                                 <span class="invalid-feedback" role="alert">
@@ -116,7 +116,7 @@
                                         <div class="col-md-4">
                                             <label for="address-apartment">Depto</label>
 
-                                            <input id="address-apartment" type="text" class="form-control @error('address-apartment') is-invalid @enderror" name="address-apartment" placeholder="xx" value="{{ old('address-apartment') }}" autocomplete="address-apartment" autofocus>
+                                            <input id="address-apartment" type="text" class="form-control @error('address-apartment') is-invalid @enderror" name="address-apartment" placeholder="0" value="{{ old('address-apartment') }}" autocomplete="address-apartment" autofocus>
 
                                             @error('address-apartment')
                                                 <span class="invalid-feedback" role="alert">
@@ -166,9 +166,9 @@
                                     <!-- DNI -->
                                     <div class="form-group row">
                                         <div class="col-md-8">
-                                            <label for="dni" class="req-tooltip">DNI (Documento Nacional de Identidad) @include('components.required_tool')</label>
+                                            <label for="dni" class="req-tooltip">DNI (Documento Nacional de Identidad) (Solo números) @include('components.required_tool')</label>
                                             
-                                            <input id="dni" type="number" class="form-control @error('dni') is-invalid @enderror" name="dni" placeholder="xxxxxxxx" value="{{ old('dni') }}" required autocomplete="dni" autofocus>
+                                            <input id="dni" type="number" class="form-control @error('dni') is-invalid @enderror" name="dni" placeholder="ej: 12345678" min="0" value="{{ old('dni') }}" required autocomplete="dni" autofocus>
 
                                             @error('dni')
                                                 <span class="invalid-feedback" role="alert">
@@ -183,7 +183,7 @@
                                         <div class="col-md-8">
                                             <label for="phone" class="req-tooltip">Número de teléfono @include('components.required_tool')</label>
 
-                                            <input id="phone" type="number" class="form-control @error('phone') is-invalid @enderror" name="phone" placeholder="xxxxxxxx" value="{{ old('phone') }}" required autocomplete="phone" autofocus>
+                                            <input id="phone" type="number" class="form-control @error('phone') is-invalid @enderror" name="phone" placeholder="ej: 2211234567" min="0" value="{{ old('phone') }}" required autocomplete="phone" autofocus>
 
                                             @error('phone')
                                                 <span class="invalid-feedback" role="alert">

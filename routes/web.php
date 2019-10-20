@@ -39,5 +39,7 @@ Route::get('donation/delete', 'DonationController@delete');
 
 //Cambiar contraseña usuario
 Route::post('change_password', 'UserController@changePassword');
+Route::post('unsubscribe/request', 'UserController@unsubscribeRequest');
+
 //Cancelar cambio de perfil
 Route::post('change_giver_profile', 'UserController@changeGiverProfile');
