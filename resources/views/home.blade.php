@@ -69,9 +69,9 @@
     <div class="row py-4 justify-content-center">
         <div class="col-md-11">
             <div class="card o-h">
-                <div class="card-body text-center px-5 quienes-somos o-h">
+                <div class="card-body text-center px-5 py-5 quienes-somos o-h">
                     <h2 class="mt-2 mb-4">¿Quienes somos?</h2>
-                    <p>
+                    <p class="mx-5">
                         Somos una Organización de la Sociedad Civil (OSC), que tiene como objetivo disminuir el hambre y la desnutrición a través del recupero de alimentos.
                         Nacimos como Asociación Civil sin fines de lucro en el año 2000, como uno de los primeros Bancos de Alimentos del país.
                         Somos socios fundadores de la Red Argentina de Bancos de Alimentos, que nuclea a otros 14 Bancos constituidos en el país, 3 en formación, 2 organizaciones adherentes y 4 iniciativas de Bancos de Alimentos.
@@ -82,6 +82,24 @@
         </div>
     </div>
     <!-- -->
+</div>
+
+<div class="call-register-div my-5 card">
+    <div class="h-100 w-100 mask-custom">
+        <!-- Dona hoy! -->
+        <div class="row justify-content-center h-100 p-5">
+            <div class="col-md-12 text-center">
+                <h1 class="mb-5">Asociate como donante hoy mismo</h1>
+                <a href="register" class="btn btn-primary c-btn btn-lg btn-link">
+                    Asociate
+                </a>
+            </div>
+        </div>
+        <!-- /.Dona hoy! -->
+    </div>
+</div>
+
+<div class="container">
     <div class="row py-4 row-eq-height">
         <div class="col-md-4">
             <!-- Card -->

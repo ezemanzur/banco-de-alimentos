@@ -18,7 +18,7 @@
                 <!-- Authentication Links -->
                 @guest
                     <li class="nav-item">
-                        <a class="btn btn-mdb-color py-2 px-4 m-0" href="{{ route('login') }}">{{ __('Iniciar sesión') }}</a>
+                        <a class="btn btn-primary py-2 px-4 m-0" href="{{ route('login') }}">{{ __('Iniciar sesión') }}</a>
                     </li>
                 @else
                     @php
@@ -29,7 +29,7 @@
                         //Ampliar
                     @endphp
                     <div class="dropdown">
-                        <button class="btn btn-indigo dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         {{ Auth::user()->name }}
                         </button>
                         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">

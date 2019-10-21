@@ -110,144 +110,152 @@
 
                     <!-- Elementos del menu -->
                     <div class="col-md-9 card-menu">
-                        <div class="row justify-content-center p-4">
+                        <!-- Row -->
+                        <div class="row justify-content-center px-2 py-3">
+                            
                             <!-- Crear donación -->
                             <div class="col-md-12 subItem">
+                                <!-- Row -->
                                 <div class="row">
+                                    <!-- Col 12 -->
                                     <div class="col-md-12">
+                                        <!-- IF -->
                                         @if($status == 'panelA')
                                             <div class="accordion" id="productAccordion">
                                                 <div id="headingProduct">
                                                     <h4 class="cursor-p add-product" onclick="hideProductAdd()">Agregar un nuevo producto<i class="fas fa-plus-square ml-2 p-2"></i></h4>
                                                 </div>
                                                 <div id="collapseProduct">
-                                                    <!-- Carga de producto -->
-                                                    <form method="POST" action="/product/save">
-                                                        @csrf
-                                                        <!-- Título de producto -->
-                                                        <div class="row py-3">
-                                                            <div class="col-md-6">
-                                                                <label for="product-title" class="req-tooltip">Título de producto @include('components.required_tool')</label>
-                                                                <input id="product-title" type="text" class="form-control @error('product-title') is-invalid @enderror" name="product-title" placeholder="Titulo de producto" value="" required autocomplete="product-title" autofocus>
-                                                                @error('product-title')
-                                                                <span class="invalid-feedback" role="alert">
-                                                                        <strong>{{ $message }}</strong>
-                                                                    </span>
-                                                                @enderror
-                                                            </div>
+                                                    <div class="row">
+                                                        <div class="col-md-5">
+                                                            <!-- Carga de producto -->
+                                                            <form method="POST" action="/product/save">
+                                                                @csrf
+                                                                <!-- Título de producto -->
+                                                                <div class="row py-2">
+                                                                    <div class="col-md-12">
+                                                                        <label for="product-title" class="req-tooltip">Título de producto @include('components.required_tool')</label>
+                                                                        <input id="product-title" type="text" class="form-control @error('product-title') is-invalid @enderror" name="product-title" placeholder="Titulo de producto" value="" required autocomplete="product-title" autofocus>
+                                                                        @error('product-title')
+                                                                        <span class="invalid-feedback" role="alert">
+                                                                                <strong>{{ $message }}</strong>
+                                                                            </span>
+                                                                        @enderror
+                                                                    </div>
+                                                                </div>
+                                                                <div class="row py-2">
+                                                                    <!-- Categoría -->
+                                                                    <div class="col-md-6">
+                                                                        <label for="product-category" class="req-tooltip">Categoría @include('components.required_tool')</label>
+                                                                        <select id="product-category" type="text" class="form-control browser-default custom-select @error('neighborhood') is-invalid @enderror" name="product-category" value="{{ old('product-category') }}" autocomplete="product-category" required autofocus>
+                                                                            <option selected disabled>Elegir</option>
+                                                                            @foreach ($categories as $c)
+                                                                                <option value="{{ $c->category_id }}">{{ $c->category_name }}</option>
+                                                                            @endforeach
+                                                                        </select>
+                                                                    </div>
+                                                                    <!-- Tipo de producto -->
+                                                                    <div class="col-md-6">
+                                                                        <label for="product-type" class="req-tooltip">Tipo @include('components.required_tool')</label>
+                                                                        <select id="product-type" type="text" class="form-control browser-default custom-select @error('product-type') is-invalid @enderror" name="product-type" value="{{ old('product-type') }}" autocomplete="product-type" required autofocus>
+                                                                            <option selected disabled>Elegir</option>
+                                                                            @foreach ($types as $t)
+                                                                                <option value="{{ $t->type_id }}">{{ $t->type_name }}</option>
+                                                                            @endforeach
+                                                                        </select>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="row py-2">
+                                                                    <!-- Cantidad -->
+                                                                    <div class="col-md-6">
+                                                                        <label for="amount">Cantidad @include('components.required_tool')</label>
+                                                                        <input id="amount" type="number" class="form-control @error('amount') is-invalid @enderror" name="amount" placeholder="0" min="0" value="{{ old('amount') }}" autocomplete="amount" autofocus>
+                                                                        @error('amount')
+                                                                        <span class="invalid-feedback" role="alert">
+                                                                            <strong>{{ $message }}</strong>
+                                                                            </span>
+                                                                        @enderror
+                                                                    </div>
+                                                                </div>
+                                                                <hr>
+                                                                <!-- Fecha de vencimiento -->
+                                                                <div class="row py-2">
+                                                                    <div class="col-md-6">
+                                                                        <label class="req-tooltip">Fecha de vencimiento: @include('components.required_tool')</label>
+                                                                    </div>
+                                                                    <div class="col-md-6">
+                                                                        <!-- Default unchecked -->
+                                                                        <input id="has_exp_date" class="c-checkbox" type="button"/>
+                                                                        <script>
+                                                                            function enable() {
+                                                                                var date = document.getElementById("exp_date").disabled;
+                                                                                if (date) {
+                                                                                    var date = document.getElementById("exp_date").disabled= false;
+                                                                                    var check = document.getElementById("has_exp_date");
+                                                                                    check.classList.remove('bg-blue-new');
+                                                                                }
+                                                                                else {
+                                                                                    var date = document.getElementById("exp_date");
+                                                                                    date.valueAsDate = null;
+                                                                                    date.disabled= true;
+                                                                                    var check = document.getElementById("has_exp_date");
+                                                                                    
+                                                                                    check.classList.add('bg-blue-new');
+                                                                                }
+                                                                            }
+                                                                            function disable() {
+                                                                                var x = document.getElementById("exp_date");
+                                                                                    document.getElementById("exp_date").disabled= true;
+                                                                                }
+                                                                                document.getElementById("has_exp_date").addEventListener("click", enable);
+                                                                        </script>
+                                                                        <label class="mr-2">No tiene</label>
+                                                                    </div>
+                                                                </div>
+                                                                <!-- /.Fecha de vencimiento -->
+                                                                <hr>
+                                                                <!-- Fecha -->
+                                                                <div class="row py-2">
+                                                                    <div class="col-md-4">
+                                                                        Fecha:
+                                                                    </div>
+                                                                    <div class="col-md-8">
+                                                                        <input id="exp_date" type="date" class="form-control @error('exp_date') is-invalid @enderror" name="exp_date" value="" autocomplete="exp_date" autofocus>
+                                                                        @error('exp_date')
+                                                                        <span class="invalid-feedback" role="alert">
+                                                                            <strong>{{ $message }}</strong>
+                                                                        </span>
+                                                                        @enderror
+                                                                    </div>
+                                                                </div>
+                                                                <!-- /.Fecha -->
+                                                                <hr>
+                                                                <!-- Buttons -->
+                                                                <div class="row py-2">
+                                                                    <div class="col-md-6">
+                                                                        <button type="button" class="btn btn-n btn-outline-danger" data-toggle="modal" data-target="#cancelarDonacion">
+                                                                            Cancelar producto
+                                                                        </button>
+                                                                    </div>
+                                                                    <div class="col-md-6 text-right">
+                                                                        <button type="submit" class="btn btn-n btn-light-blue">
+                                                                            Guardar Producto
+                                                                        </button>
+                                                                    </div>
+                                                                </div>
+                                                                <!-- /.Buttons -->
+                                                            </form>
+                                                            <!-- /.Form -->
                                                         </div>
-                                                        <div class="row py-3">
-                                                            <!-- Categoría -->
-                                                            <div class="col-md-3">
-                                                                <label for="product-category" class="req-tooltip">Categoría @include('components.required_tool')</label>
-                                                                <select id="product-category" type="text" class="form-control browser-default custom-select @error('neighborhood') is-invalid @enderror" name="product-category" value="{{ old('product-category') }}" autocomplete="product-category" required autofocus>
-                                                                    <option selected disabled>Elegir</option>
-                                                                    @foreach ($categories as $c)
-                                                                        <option value="{{ $c->category_id }}">{{ $c->category_name }}</option>
-                                                                    @endforeach
-                                                                </select>
-                                                            </div>
-                                                            <!-- Tipo de producto -->
-                                                            <div class="col-md-3">
-                                                                <label for="product-type" class="req-tooltip">Tipo @include('components.required_tool')</label>
-                                                                <select id="product-type" type="text" class="form-control browser-default custom-select @error('product-type') is-invalid @enderror" name="product-type" value="{{ old('product-type') }}" autocomplete="product-type" required autofocus>
-                                                                    <option selected disabled>Elegir</option>
-                                                                    @foreach ($types as $t)
-                                                                        <option value="{{ $t->type_id }}">{{ $t->type_name }}</option>
-                                                                    @endforeach
-                                                                </select>
-                                                            </div>
-                                                        </div>
-                                                        <div class="row py-3">
-                                                            <!-- Cantidad -->
-                                                            <div class="col-md-2">
-                                                                <label for="amount">Cantidad @include('components.required_tool')</label>
-                                                            </div>
-                                                            <div class="col-md-2">
-                                                                <input id="amount" type="number" class="form-control @error('amount') is-invalid @enderror" name="amount" placeholder="xx" value="{{ old('amount') }}" autocomplete="amount" autofocus>
-                                                                @error('amount')
-                                                                <span class="invalid-feedback" role="alert">
-                                                                    <strong>{{ $message }}</strong>
-                                                                    </span>
-                                                                @enderror
-                                                            </div>
-                                                        </div>
-                                                        <!-- Fecha de vencimiento -->
-                                                        <div class="row py-3">
-                                                            <div class="col-md-12">
-                                                                <h5 class="req-tooltip">Fecha de vencimiento @include('components.required_tool')</h5>
-                                                            </div>
-                                                            <div class="col-md-12">
-                                                                <!-- Default unchecked -->
-                                                                <input id="has_exp_date" class="c-checkbox" type="button"/>
-                                                                <script>
-                                                                    function enable() {
-                                                                        var date = document.getElementById("exp_date").disabled;
-                                                                        if (date) {
-                                                                            var date = document.getElementById("exp_date").disabled= false;
-                                                                            var check = document.getElementById("has_exp_date");
-                                                                            check.classList.remove('bg-blue-new');
-                                                                        }
-                                                                        else {
-                                                                            var date = document.getElementById("exp_date");
-                                                                            date.valueAsDate = null;
-                                                                            date.disabled= true;
-                                                                            var check = document.getElementById("has_exp_date");
-                                                                            
-                                                                            check.classList.add('bg-blue-new');
-                                                                        }
-                                                                    }
-                                                                    function disable() {
-                                                                        var x = document.getElementById("exp_date");
-                                                                            document.getElementById("exp_date").disabled= true;
-                                                                        }
-                                                                        document.getElementById("has_exp_date").addEventListener("click", enable);
-                                                                </script>
-                                                                <label class="mr-2 py-0">No tiene fecha de vencimiento</label>
-                                                                </div>
-                                                            </div>
-                                                            <!-- Fecha de vencimiento -->
-                                                            <div class="row py-3">
-                                                                <div class="col-md-2">
-                                                                    Fecha:
-                                                                </div>
-                                                                <div class="col-md-3">
-                                                                    <input id="exp_date" type="date" class="form-control @error('exp_date') is-invalid @enderror" name="exp_date" value="" autocomplete="exp_date" autofocus>
-                                                                    @error('exp_date')
-                                                                    <span class="invalid-feedback" role="alert">
-                                                                        <strong>{{ $message }}</strong>
-                                                                    </span>
-                                                                    @enderror
-                                                                </div>
-                                                            </div>
-                                                            <!-- Buttons -->
-                                                            <div class="row py-4">
-                                                                <div class="col-md-2">
-                                                                    <button type="button" class="btn btn-n btn-outline-danger m-0" data-toggle="modal" data-target="#cancelarDonacion">
-                                                                        Cancelar
-                                                                    </button>
-                                                                </div>
-                                                                <div class="col-md-5">
-                                                                    <button type="submit" class="btn btn-n btn-lg btn-light-blue btn-2 m-0">Guardar Producto</button>
-                                                                </div>
-                                                    </form>
-                                                                <div class="col-md-5 text-right">
-                                                                    @if(count($products) > 0)
-                                                                        <form method="POST" action="donation/end">
-                                                                            @csrf
-                                                                            <button type="submit" class="btn btn-n btn-lg btn-deep-orange m-0">Finalizar carga de productos<i class="fas fa-arrow-right ml-3 text-white"></i></button>
-                                                                        </form>
-                                                                    @else
-                                                                        <button type="button" class="btn btn-n btn-lg btn-deep-orange m-0" disabled>Finalizar carga de productos<i class="fas fa-arrow-right ml-3 text-white"></i></button>
-                                                                    @endif
-                                                                </div>
-                                                            </div>
-                                                            <hr>
-                                                            <!-- Resumen -->
+                                                        <!-- /.Col 7 -->
+                                                        <div class="col-md-5 offset-md-2">
+                                                            <!-- Resumen Card -->
                                                             <div class="card">
+                                                                <!-- Card Header -->
                                                                 <div class="card-header py-0 px-2">
                                                                     Resumen
                                                                 </div>
+                                                                <!-- Card Body -->
                                                                 <div class="card-body p-3 border-none shadow-none">
                                                                     <ul class="list-group p-0">
                                                                         @forelse ($products as $p)
@@ -292,10 +300,36 @@
                                                                         @endforelse
                                                                     </ul>
                                                                 </div>
-                                                            </div>                                        
+                                                                <!-- Card Body -->
+                                                            </div>
+                                                            <!-- Resumen Card -->
                                                         </div>
+                                                        <!-- /.Col 5 -->
+                                                    </div>
+                                                    <!-- /.Row -->
+                                                    <hr>
+                                                    <!-- Row -->
+                                                    <div class="row">
+                                                        <div class="col-md-9 offset-md-3 text-right">
+                                                            <button type="button" class="btn btn-n btn-outline-danger ml-3" data-toggle="modal" data-target="#cancelarDonacion">
+                                                                Cancelar donación
+                                                            </button>
+                                                            @if(count($products) > 0)
+                                                                <form method="POST" action="donation/end">
+                                                                    @csrf
+                                                                    <button type="submit" class="btn btn-n btn-lg btn-deep-orange m-0">Finalizar carga de productos<i class="fas fa-arrow-right ml-3 text-white"></i></button>
+                                                                </form>
+                                                            @else
+                                                                <button type="button" class="btn btn-n btn-lg btn-deep-orange m-0" disabled>Finalizar carga de productos<i class="fas fa-arrow-right ml-3 text-white"></i></button>
+                                                            @endif
+                                                        </div>
+                                                    </div>
+                                                    <!-- /.Row -->
                                                 </div>
+                                                <!-- /.Collapse -->
                                             </div>
+                                        </div>
+                                        <!-- Else -->
                                         @else
                                             <!-- Coordinar la fecha de entrega -->
                                             <form method="POST" action="/donation/save">
@@ -317,9 +351,6 @@
                                                         </span>
                                                         @enderror
                                                     </div>
-                                                    <div class="col-md-1">
-                                                        <i class="fas fa-calendar-alt big-icon"></i>
-                                                    </div>
                                                 </div>
                                                 <!-- Hasta -->
                                                 <div class="row py-3">
@@ -334,9 +365,6 @@
                                                         </span>
                                                         @enderror
                                                     </div>
-                                                    <div class="col-md-1">
-                                                        <i class="fas fa-calendar-alt big-icon"></i>
-                                                    </div>
                                                 </div>
                                                 <!-- Hora de entrega -->
                                                 <div class="row mt-4">
@@ -348,15 +376,12 @@
                                                         Desde
                                                     </div>
                                                     <div class="col-md-3">
-                                                        <input id="hour-between1" type="time" class="form-control @error('hour-between1') is-invalid @enderror" name="hour-between1" autocomplete="hour-between1" required autofocus>
+                                                        <input id="hour-between1" type="time" class="form-control @error('hour-between1') is-invalid @enderror" placeholder="00:00" name="hour-between1" autocomplete="hour-between1" required autofocus>
                                                         @error('hour-between1')
                                                         <span class="invalid-feedback" role="alert">
                                                             <strong>{{ $message }}</strong>
                                                         </span>
                                                         @enderror
-                                                    </div>
-                                                    <div class="col-md-1">
-                                                        <i class="far fa-clock big-icon"></i>
                                                     </div>
                                                 </div>
                                                 <!-- Hora Hasta -->
@@ -365,15 +390,12 @@
                                                         Hasta
                                                     </div>
                                                     <div class="col-md-3">
-                                                        <input id="hour-between2" type="time" class="form-control @error('hour-between2') is-invalid @enderror" name="hour-between2" autocomplete="hour-between2" required autofocus>
+                                                        <input id="hour-between2" type="time" class="form-control @error('hour-between2') is-invalid @enderror" placeholder="00:00" name="hour-between2" autocomplete="hour-between2" required autofocus>
                                                         @error('hour-between2')
                                                         <span class="invalid-feedback" role="alert">
                                                             <strong>{{ $message }}</strong>
                                                         </span>
                                                         @enderror
-                                                    </div>
-                                                    <div class="col-md-1">
-                                                        <i class="far fa-clock big-icon"></i>
                                                     </div>
                                                 </div>
                                                 <div class="row m-0 p-0">
@@ -417,13 +439,16 @@
                                                 </div>
                                             </form>
                                         @endif
+                                        <!-- /.IF -->
                                     </div>
+                                    <!-- /.Col -->
                                 </div>
+                                <!-- /.Row -->
                             </div>
+                            <!-- /.Crear donación -->
 
-
-                                <!-- Ver donaciones vigentes -->
-                                <div class="col-md-12 subItem">
+                            <!-- Ver donaciones vigentes -->
+                            <div class="col-md-12 subItem">
                                     <div class="table-responsive resume-table">
                                         <table class="table table-bordered">
                                             <thead>
@@ -493,11 +518,11 @@
                                     @empty
 
                                     @endforelse
-                                </div>
-                                <!-- Ver donaciones vigentes -->
+                            </div>
+                            <!-- Ver donaciones vigentes -->
 
-                                <!-- Ver donaciones pasadas -->
-                                <div class="col-md-12 subItem">
+                            <!-- Ver donaciones pasadas -->
+                            <div class="col-md-12 subItem">
                                     <div class="table-responsive resume-table">
                                         <table class="table table-bordered">
                                             <thead>
@@ -568,11 +593,11 @@
                                     @empty
 
                                     @endforelse
-                                </div>
-                                <!-- /Ver donaciones pasadas -->
+                            </div>
+                            <!-- /Ver donaciones pasadas -->
 
-                                <!-- Ver donaciones rechazadas -->
-                                <div class="col-md-12 subItem">
+                            <!-- Ver donaciones rechazadas -->
+                            <div class="col-md-12 subItem">
                                     <div class="table-responsive resume-table">
                                         <table class="table table-bordered">
                                             <thead>
@@ -634,11 +659,11 @@
                                     @empty
 
                                     @endforelse
-                                </div>
-                                <!-- /Ver donaciones rechazadas -->
+                            </div>
+                            <!-- /Ver donaciones rechazadas -->
 
-                                <!-- Modificar perfil -->
-                                <div class="col-md-12 subItem">
+                            <!-- Modificar perfil -->
+                            <div class="col-md-12 subItem">
                                     <!-- Información donante -->
                                     <form method="POST" action="/change_giver_profile">
                                         @csrf
@@ -899,11 +924,11 @@
                                             </div>
                                         </div>
                                     </form>
-                                </div>
-                                <!-- /Modificar perfil -->
+                            </div>
+                            <!-- /Modificar perfil -->
 
-                                <!-- Cambiar contraseña -->
-                                <div class="col-md-12 subItem">
+                            <!-- Cambiar contraseña -->
+                            <div class="col-md-12 subItem">
                                     <div class="row">
                                         <div class="col-md-6">
                                             <form method="post" action="/change_password" enctype="multipart/form-data">
@@ -940,8 +965,8 @@
                                             </form>
                                         </div>
                                     </div>
-                                </div>
-                                <!-- /Cambiar contraseña -->
+                            </div>
+                            <!-- /Cambiar contraseña -->
                                 
                                 <!-- Cambiar contraseña -->
                                 <div class="col-md-12 subItem">
