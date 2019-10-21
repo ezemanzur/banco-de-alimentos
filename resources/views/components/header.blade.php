@@ -33,7 +33,8 @@
                         {{ Auth::user()->name }}
                         </button>
                         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                            <a class="dropdown-item" href="{{ $link }}"><i class="fas fa-user mr-2"></i>Mi panel</a>
+                                <a class="dropdown-item" href="/profile"><i class="fas fa-user mr-2"></i>Mi perfil</a>
+                            <a class="dropdown-item" href="{{ $link }}"><i class="fas fa-columns mr-2"></i>Panel</a>
                             <a class="dropdown-item" href="{{ route('logout') }}"
                                onclick="event.preventDefault();
                                              document.getElementById('logout-form').submit();">

@@ -17,6 +17,24 @@ use Session;
 
 class UserController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
+    public function showProfile() {
+        $user = auth()->user();
+        $giver = DB::table('givers')->where('user_id', $user->id)->get();
+        $neighborhoods = DB::table('neighborhoods')->get();
+        $requests = DB::table('unsubscribe_requests')->where('user_id', '=', $user->id)->get();
+        return view('user/profile', [
+            'user' => $user,
+            'giver' => $giver,
+            'requests' => $requests,
+            'neighborhoods' => $neighborhoods,
+        ]);
+    }
+
     public function changePassword(Request $request) {
         
         $code = 5;

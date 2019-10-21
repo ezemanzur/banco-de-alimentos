@@ -15,6 +15,7 @@
     Vistas publicas
 --------------------------------------------------------------*/
 Route::get('/', 'HomeController@index')->name('home');
+Route::get('/home', 'HomeController@index')->name('/home');
 Route::get('/contact', 'HomeController@contactView')->name('contacto');
 
 /*--------------------------------------------------------------
@@ -22,6 +23,7 @@ Route::get('/contact', 'HomeController@contactView')->name('contacto');
 --------------------------------------------------------------*/
 Auth::routes();
 Route::get('/donante', 'GiverController@index')->name('donante');
+Route::get('/profile', 'UserController@showProfile')->name('profile');
 
 //Route::get('donation/create', 'DonationController@create');
 //Route::post('donation/addProductInputs', 'DonationController@addProductInput');

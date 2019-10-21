@@ -57,7 +57,7 @@ class GiverController extends Controller
                 }
             }
 
-            return view('donante', [
+            return view('user/donante', [
                 'user' => $user,
                 'giver' => $giver,
                 'categories' => $categories,
