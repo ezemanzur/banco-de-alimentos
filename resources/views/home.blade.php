@@ -11,12 +11,12 @@
         <!-- Noticias -->
         <div class="col-md-6">
             <!--Carousel Wrapper-->
-                <div id="carousel-example-1z" class="carousel slide carousel-fade" data-ride="carousel">
+                <div id="main-carousel" class="carousel slide carousel-fade" data-ride="carousel">
                 <!--Indicators-->
                 <ol class="carousel-indicators">
-                    <li data-target="#carousel-example-1z" data-slide-to="0" class="active"></li>
-                    <li data-target="#carousel-example-1z" data-slide-to="1"></li>
-                    <li data-target="#carousel-example-1z" data-slide-to="2"></li>
+                    <li data-target="#main-carousel" data-slide-to="0" class="active"></li>
+                    <li data-target="#main-carousel" data-slide-to="1"></li>
+                    <li data-target="#main-carousel" data-slide-to="2"></li>
                 </ol>
                 <!--/.Indicators-->
                 <!--Slides-->
@@ -42,11 +42,11 @@
                 </div>
                 <!--/.Slides-->
                 <!--Controls-->
-                <a class="carousel-control-prev" href="#carousel-example-1z" role="button" data-slide="prev">
+                <a class="carousel-control-prev" href="#main-carousel" role="button" data-slide="prev">
                     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                     <span class="sr-only">Previous</span>
                 </a>
-                <a class="carousel-control-next" href="#carousel-example-1z" role="button" data-slide="next">
+                <a class="carousel-control-next" href="#main-carousel" role="button" data-slide="next">
                     <span class="carousel-control-next-icon" aria-hidden="true"></span>
                     <span class="sr-only">Next</span>
                 </a>
@@ -69,7 +69,7 @@
     <div class="row py-4 justify-content-center">
         <div class="col-md-11">
             <div class="card o-h">
-                <div class="card-body text-center px-5 py-5 quienes-somos o-h">
+                <div class="card-body text-center quienes-somos o-h">
                     <h2 class="mt-2 mb-4">¿Quienes somos?</h2>
                     <p class="mx-5">
                         Somos una Organización de la Sociedad Civil (OSC), que tiene como objetivo disminuir el hambre y la desnutrición a través del recupero de alimentos.
@@ -81,22 +81,7 @@
             </div>
         </div>
     </div>
-    <!-- -->
-</div>
-
-<div class="call-register-div my-5 card">
-    <div class="h-100 w-100 mask-custom">
-        <!-- Dona hoy! -->
-        <div class="row justify-content-center h-100 p-5">
-            <div class="col-md-12 text-center">
-                <h1 class="mb-5">Asociate como donante hoy mismo</h1>
-                <a href="register" class="btn btn-primary c-btn btn-lg btn-link">
-                    Asociate
-                </a>
-            </div>
-        </div>
-        <!-- /.Dona hoy! -->
-    </div>
+    <!-- Nuestro trabajo-->
 </div>
 
 <div class="container">
@@ -108,11 +93,11 @@
             <!-- Card image -->
             <div class="view overlay mxl-2">
                 <!--Carousel Wrapper-->
-                <div id="carousel-example-1z" class="carousel slide carousel-fade" data-ride="carousel">
+                <div id="card-carousel" class="carousel slide carousel-fade" data-ride="carousel">
                 <!--Indicators-->
                 <ol class="carousel-indicators">
-                    <li data-target="#carousel-example-1z" data-slide-to="0" class="active"></li>
-                    <li data-target="#carousel-example-1z" data-slide-to="1"></li>
+                    <li data-target="#card-carousel" data-slide-to="0" class="active"></li>
+                    <li data-target="#card-carousel" data-slide-to="1"></li>
                 </ol>
                 <!--/.Indicators-->
                 <!--Slides-->
@@ -132,11 +117,11 @@
                 </div>
                 <!--/.Slides-->
                 <!--Controls-->
-                <a class="carousel-control-prev" href="#carousel-example-1z" role="button" data-slide="prev">
+                <a class="carousel-control-prev" href="#card-carousel" role="button" data-slide="prev">
                     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                     <span class="sr-only">Previous</span>
                 </a>
-                <a class="carousel-control-next" href="#carousel-example-1z" role="button" data-slide="next">
+                <a class="carousel-control-next" href="#card-carousel" role="button" data-slide="next">
                     <span class="carousel-control-next-icon" aria-hidden="true"></span>
                     <span class="sr-only">Next</span>
                 </a>

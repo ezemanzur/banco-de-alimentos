@@ -18,27 +18,32 @@
                 <!-- Authentication Links -->
                 @guest
                     <li class="nav-item">
-                        <a class="btn btn-primary py-2 px-4 m-0" href="{{ route('login') }}">{{ __('Iniciar sesión') }}</a>
+                        <a class="btn btn-login py-2 px-4 m-0" href="{{ route('login') }}">{{ __('Iniciar sesión') }}</a>
+                        <a class="btn btn-register px-4 m-0 ml-4" href="{{ route('register') }}">{{ __('Registrate') }}</a>
                     </li>
                 @else
                     @php
-                        //Rol url profile
                         if(Auth::user()->rol == 'giver') {
                             $link = 'donante';
                         }
-                        //Ampliar
+                        else
+                            $link = 'empleado';
                     @endphp
                     <div class="dropdown">
                         <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         {{ Auth::user()->name }}
                         </button>
                         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                <a class="dropdown-item" href="/profile"><i class="fas fa-user mr-2"></i>Mi perfil</a>
-                            <a class="dropdown-item" href="{{ $link }}"><i class="fas fa-columns mr-2"></i>Panel</a>
-                            <a class="dropdown-item" href="{{ route('logout') }}"
+                            <a class="dropdown-item color7" href="{{ url('/profile') }}"><i class="fas fa-user-alt mr-2 color7"></i>Mi perfil</a>
+                            <a class="dropdown-item color7" href="{{ url($link) }}"><i class="fas fa-tachometer-alt mr-2 color7"></i>Mi Panel</a>
+                            @if(Auth::user()->isAdmin)
+                                <!-- Muesta el link de admin -->
+                                <a class="dropdown-item color7" href="{{ url('/administrador') }}"><i class="fas fa-user-shield mr-2 color7"></i>Administración</a>
+                            @endif
+                            <a class="dropdown-item color7" href="{{ route('logout') }}"
                                onclick="event.preventDefault();
                                              document.getElementById('logout-form').submit();">
-                                <i class="fas fa-sign-out-alt mr-2"></i>Cerrar sesión
+                                <i class="fas fa-sign-out-alt mr-2 color7"></i>Cerrar sesión
                             </a>
 
                             <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">

@@ -1,4 +1,8 @@
 /*--------------------------------------------------------------
+    Fonts   
+--------------------------------------------------------------*/
+@import url('https://fonts.googleapis.com/css?family=Montserrat:200,300,400|Source+Sans+Pro:200,300,400&display=swap');
+/*--------------------------------------------------------------
     Root
 --------------------------------------------------------------*/
 :root {
@@ -9,18 +13,18 @@
     --color-4:#faeeea;
     --color-5: #ff8767;
         /*Text*/
-    --color-6: #444;
-    --color-7: #575757;
+    --color-6: #555;
+    --color-7: #656565;
     --color-8: #777;
     --color-9: #999; 
         /*Link*/
     --color-10: #3e64ff;
-    --color-11: #5edfff;
+    --color-11: #1138d4;
     /*Transition*/
     --base-transition: 0.09s all !important;
     /* Fonts */
     --font-1: 'Open Sans', sans-serif;
-    --font-2: 'Lato', sans-serif;
+    --font-2: 'Montserrat', sans-serif;
 }
 
 /*--------------------------------------------------------------
@@ -29,17 +33,12 @@
 * {
     color: var(--color-6);
 }
-
 body {
     background: #eee;
 }
-
 .o-h { overflow: hidden !important; }
-
 .shadow-none { box-shadow: none !important; }
-
 .cursor-p { cursor: pointer !important; }
-
 .uns {
     user-select: none;
     -moz-user-select: none;
@@ -47,52 +46,41 @@ body {
     -webkit-user-select: none;
     -o-user-select: none;
 }
-
 .link {
     color: blue !important;
     cursor: pointer !important;
     transition: 0.09s all !important;
 }
-
 .link:hover {
     color: #039dfc !important;
 }
-
 .simple-margin {
     margin-top: 4em;
 }
-
 .mxl-2 {
     margin-left: -14px !important;
     margin-right: -14px !important;
 }
-
 ::placeholder {
     color: #aaa !important;
     opacity: 1; /* Firefox */
 }
-
 :-ms-input-placeholder { /* Internet Explorer 10-11 */
     color: #aaa !important;
 }
-
 ::-ms-input-placeholder { /* Microsoft Edge */
     color: #aaa !important;
 }
-
 .m-auto {
     margin: 4em auto 0 auto !important;
     vertical-align: bottom;
 }
-
 .big-icon {
     font-size: 36px;
 }
-
-.bl-1 {
-    border-left: 1px solid #ddd;
+.br-1 {
+    border-right: 1px solid #ddd;
 }
-
 .c-checkbox {
     padding: 2px !important;
     border: 3px solid #eee !important;
@@ -130,10 +118,13 @@ body {
 #collapseProduct {
     display: none;
 }
-
+.hidden {
+    display: none !important;
+}
 .formato-24 {
-    color: #777 !important;
-    font-size: 15px;
+    display: block;
+    color: #888 !important;
+    font-size: 12px;
     margin: 0 !important;
     padding: 0 !important;
     text-align: left;
@@ -146,128 +137,192 @@ body {
     overflow-x: hidden;
 }
 
+.color-inherit {
+    color: inherit !important;
+}
+
 .donationResumeVigente, .modifyAmountForm , .donationResumeCompletada, .donationResumeRechazada{
     display: none;
 }
 
 /*--------------------------------------------------------------
+    Text
+--------------------------------------------------------------*/
+h1 { font-size: 32px; }
+h2 { font-size: 26px; }
+h3 { font-size: 23px; }
+h4 { font-size: 21px; }
+h5 { font-size: 19px; }
+h6 { font-size: 18px; }
+p { font-size: 16px; }
+h1, h2, h3, h4, h5, h6, p {
+    font-family: var(--font-1);
+    font-weight: 200 !important;
+    color: var(--color-7);
+}
+a {
+    transition: 0.08s all !important;
+    color: var(--color-10); 
+}
+a:hover {
+    color: var(--color-11);
+    text-decoration: none;
+}
+.font-1 { font-family: var(--font-1); }
+.font-2 { font-family: var(--font-2); }
+
+
+/*--------------------------------------------------------------
     Buttons
 --------------------------------------------------------------*/
 .btn {
-	margin: 0;
+    margin: 0;
 	font-family: var(--font-1) !important;
     font-weight: 300;
-    padding: 8px 18px;
     transition: 0.15s all !important;
     cursor: pointer !important;
     font-family: var(--font-1) !important;
-	border-radius: 5px;
-	box-shadow: 0 1px 3px rgba(34, 25, 25, 0.4);
-	
+    border-radius: 5px;
+    box-shadow: 0 .07em .125em 0 rgba(0,0,0,.15) !important;
 }
-
-.btn-rounded {
-	border-radius: 50px !important;
-}
-
 .btn:hover {
-    opacity: 0.85 !important;
-	text-decoration: none !important;
+    opacity: 0.9 !important;
+    text-decoration: none;
+}
+.btn-rounded {
+    border-radius: 50px !important;
+}
+.btn-white {
+    background-color: var(--white) !important;
+}
+.btn-success {
+    background-color: var(--success) !important;
+}
+.btn-success-dark {
+    background-color: var(--success-dark) !important;
+}
+.btn-warning {
+    background-color: var(--warning) !important;
+}
+.btn-warning-dark {
+    background-color: var(--warning-dark) !important;
+}
+.btn-danger {
+    background-color: var(--danger) !important;
+}
+.btn-danger-dark {
+    background-color: var(--danger-dark) !important;
+}
+.btn-info {
+    background-color: var(--info) !important;
+}
+.btn-info-dark {
+    background-color: var(--info-dark) !important;
 }
 
 .btn-unselected {
     opacity: 0.3 !important;
     cursor: pointer;
 }
-
+.btn-cancel {
+    background: #ccc;
+    color: #fff;
+}
 .c-btn {
 	box-sizing: border-box;
 	padding: 15px 28px;
 	border-radius: 18px !important;
 	font-weight: 400;
 }
-
-.btn-n {
-	margin: 0 !important;
-	padding: 8px 16px !important;
-}
-
-.btn-outline-danger {
-	border: solid 1px red !important;
-}
-
 .c-btn-sm {
 	padding: 5px 10px !important;
 }
-
 .btn-1 {
     background: var(--color-1);
     border: 1px var(--color-1) solid;
     color: #fff;
 }
-
 .btn-1:hover {
     color: #fff !important;
 }
-
 .btn-light-blue {
     background: #3882c9 !important;
 }
-
+.btn-avanzar {
+    color: white !important;
+    background: #e45d50;
+}
+.btn-login {
+    color: white !important;
+    background: #28a1b0;
+}
+.btn-register {
+    color: white !important;
+    background: rgba(103, 111, 127, 0.5) !important;
+}
 .btn-outline-1 {
     border: 1px var(--color-1) solid;
     color: var(--color-1);
 }
-
 .btn-outline-1:hover {
     background: var(--color-1);
     color: #fff;
 }
-
 .btn-rounded {
     border-radius: 50px !important;
 }
-
 .btn-rounded-l {
     border-top-left-radius: 50px;
     border-bottom-left-radius: 50px;
 }
-
 .btn-rounded-r {
     border-top-right-radius: 50px;
     border-bottom-right-radius: 50px;
 }
 
 /*--------------------------------------------------------------
+    Icons
+--------------------------------------------------------------*/
+.icon-sm { font-size: 1.2em !important; }
+.icon-md { font-size: 1.5em !important; }
+.icon-lg { font-size: 1.9em !important; }
+
+/*--------------------------------------------------------------
+    Colors
+--------------------------------------------------------------*/
+.color1 { color: var(--color-1) !important;}
+.color2 { color: var(--color-2) !important;}
+.color3 { color: var(--color-3) !important;}
+.color4 { color: var(--color-4) !important;}
+.color5 { color: var(--color-5) !important;}
+.color6 { color: var(--color-6) !important;}
+.color7 { color: var(--color-7) !important;}
+.color8 { color: var(--color-8) !important;}
+.color9 { color: var(--color-9) !important;}
+.color10 { color: var(--color-10) !important;}
+.white { color: var(--white) !important; }
+.success { color: var(--success) !important; }
+.success-dark { color: var(--success-dark) !important; }
+.warning { color: var(--warning) !important; }
+.warning-dark { color: var(--warning-dark) !important; }
+.danger { color: var(--danger) !important; }
+.danger-dark { color: var(--danger-dark) !important; }
+.info { color: var(--info) !important; }
+.info-dark { color: var(--info-dark) !important; }
+
+/*--------------------------------------------------------------
     Cards
 --------------------------------------------------------------*/
 .card {
-    border-radius: 4px !important;
+    border-radius: 3px !important;
     border: 0 none !important;
-    box-shadow: 0 .07em .125em 0 rgba(0,0,0,.15) !important;
+    box-shadow: 0 .07em .125em 0 rgba(0,0,0,.15);
     overflow: hidden !important;
 }
 
 .card-header {
     background: #fbfbfb !important;
 }
-
-/*--------------------------------------------------------------
-    Texto
---------------------------------------------------------------*/
-h1, h2, h3, h4, h5, h6, p, a {
-    font-family: var(--font-1);
-}
-h1, h2, h3, h4, h5, h6, p {
-	color: var(--color-6);
-}
-h1 { font-size: 30px; }
-h2 { font-size: 28px; }
-h3 { font-size: 24px; }
-h4 { font-size: 22px; }
-h5 { font-size: 20px; }
-h6 { font-size: 18px; }
-p, a { font-size: 16px; }
 
 /*--------------------------------------------------------------
     Navbar
@@ -299,7 +354,7 @@ nav .nav-link {
 }
 
 .mask-custom {
-	background: var(--color-3) !important; 
+	background: #; 
 }
 
 .main-content {
@@ -341,18 +396,20 @@ nav .nav-link {
 .req-tooltip {
     position: relative;
     display: inline-block;
+    cursor: default !important;
 }
 
 .req-tooltip .req-tooltip-text {
     visibility: hidden;
-    width: 150px;
-    background-color: rgba(0, 0, 0, 0.04);
-    border: 1px solid #ddd;
-    color: #444;
+    width: 15em;
+    background-color: rgba(0, 0, 0, 0.02);
+    font-size: 13px !important;
+    border: 1px solid #eee;
+    color: #575757;
     text-align: center;
-    border-radius: 6px;
+    border-radius: 18px;
     margin: -7px 0 0 10px;
-    padding: 1px 5px !important;
+    padding: 8px 15px !important;
     box-shadow: 0 10px 10px rgba(0,0,0,0.05), 0 3px 3px rgba(0,0,0,0.1);
     /* Position the tooltip */
     position: absolute;

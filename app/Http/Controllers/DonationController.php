@@ -56,6 +56,17 @@ class DonationController extends Controller
         return redirect()->back()->with(['success' => 'Has creado una nueva donación con éxito.']);
     }
 
+    public function back() {
+        //Obtengo donación creando
+        $donacion = DB::table('donations')->where([
+            ['user_id', '=', Auth::user()->id],
+            ['status', '=', 'FINALIZANDO'],
+        ])
+        ->update(['status' => 'CREANDO']);
+
+        return redirect()->back();
+    }
+
     public function delete()
     {
         //Obtengo donación creando

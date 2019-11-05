@@ -10,18 +10,15 @@
     <title>Banco Alimentario</title>
 
     <!-- Scripts -->
-    <!--script src="{{ asset('js/bootstrap.min.js') }}" ></script>
+    <script src="{{ asset('js/bootstrap.min.js') }}" ></script>
     <script src="{{ asset('js/mdb.min.js') }}" ></script>
     <script src="{{ asset('js/jquery-3.4.1.min.js') }}" ></script>
-    <script src="{{ asset('js/popper.min.js') }}" ></script-->
+    <script src="{{ asset('js/popper.min.js') }}" ></script>
     <script src="{{ asset('js/app.js') }}" ></script>
     <script src="{{ asset('js/main.js') }}" ></script>
 
-    <!-- Fonts -->
-    <link href="https://fonts.googleapis.com/css?family=Lato|Open+Sans&display=swap" rel="stylesheet">
-    
     <!-- Styles -->
-    <link href="{{ asset('fonts/fontawesome/css/all.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css">
     <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
     <link href="{{ asset('css/mdb.min.css') }}" rel="stylesheet">
     <link href="{{ asset('css/main.css') }}" rel="stylesheet">

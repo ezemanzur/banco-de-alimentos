@@ -23,6 +23,8 @@ Route::get('/contact', 'HomeController@contactView')->name('contacto');
 --------------------------------------------------------------*/
 Auth::routes();
 Route::get('/donante', 'GiverController@index')->name('donante');
+Route::get('/empleado', 'EmployeeController@index')->name('empleado');
+Route::get('/administrador', 'AdminController@index')->name('administrador');
 Route::get('/profile', 'UserController@showProfile')->name('profile');
 
 //Route::get('donation/create', 'DonationController@create');
@@ -34,6 +36,7 @@ Route::get('/profile', 'UserController@showProfile')->name('profile');
 --------------------------------------------------------------*/
 Route::post('donation/end', 'DonationController@end');
 Route::post('donation/save', 'DonationController@save');
+Route::post('donation/back', 'DonationController@back');
 Route::get('donation/delete', 'DonationController@delete');
 
 /*--------------------------------------------------------------

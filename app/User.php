@@ -38,6 +38,16 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
+    //Retorna el nombre del tipo de empleado que es
+    public function getRolName() {
+        switch ($this->rol) {
+            case 'giver':
+                return "Donante";
+            case 'employee':
+                return "Empleado";
+        }
+    }
+    
     public static function updateUser($request, $id) {
         //Actualizo en giver
         DB::table('users')

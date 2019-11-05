@@ -2,15 +2,15 @@
 
 namespace App\Http\Controllers;
 
-use App\Donation;
 use Illuminate\Http\Request;
 use Auth;
-use App\Neighborhood;
-use App\Giver;
-use App\User;
 use DB;
+use App\Donation;
+use App\Giver;
+use App\Neighborhood;
+use App\User;
 
-class GiverController extends Controller
+class EmployeeController extends Controller
 {
     public function __construct()
     {
@@ -19,7 +19,7 @@ class GiverController extends Controller
 
     public function index(){
         //Redirección
-        if (Auth::user()->rol === 'giver'){
+        if (Auth::user()->rol === 'employee'){
             //Donante
             $giver = DB::table('givers')->where('user_id', Auth::user()->id)->get();
             //Barrios
@@ -55,7 +55,7 @@ class GiverController extends Controller
                 }
             }
 
-            return view('user/donante', [
+            return view('user/empleado', [
                 'giver' => $giver,
                 'categories' => $categories,
                 'types' => $types,
