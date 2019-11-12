@@ -52,8 +52,10 @@
                                 <li class="list-group-item menuItem color7" onclick="panelSwitch(0)"><i class="far fa-user-circle mr-2 p-2 color7"></i>Modificar perfil</li>
                                 <!-- Cambiar contraseña -->
                                 <li class="list-group-item menuItem color7" onclick="panelSwitch(1)"><i class="fas fa-unlock-alt mr-2 p-2 color7"></i>Cambiar contraseña</li>
-                                <!-- Solicitar dejar de ser donante -->
-                                <li class="list-group-item menuItem color7" onclick="panelSwitch(2)"><i class="far fa-times-circle mr-2 p-2 color7"></i>Solicitar baja de cuenta</li>
+                                @if(Auth::user()->rol == 'giver')
+                                    <!-- Solicitar dejar de ser donante -->
+                                    <li class="list-group-item menuItem color7" onclick="panelSwitch(2)"><i class="far fa-times-circle mr-2 p-2 color7"></i>Solicitar baja de cuenta</li>
+                                @endif
                                 <!-- Cerrar sesión -->
                                 <a href="{{ route('logout') }}" class="list-group-item menuItem color7"
                                     onclick="event.preventDefault();
@@ -80,7 +82,9 @@
                             @include('user.components.change_password')
 
                             <!-- Estado de cuenta -->
-                            @include('user.components.account_status')
+                            @if(Auth::user()->rol == 'giver')
+                                @include('user.components.account_status')
+                            @endif
 
                         </div>
                         <!-- /.Row -->

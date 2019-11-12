@@ -77,6 +77,7 @@
 
                             <!-- Solicitudes de donacion -->
                             <div class="col-md-12 subItem">
+                                @include('user.components.donation_requests')
                             </div>
                             <!-- /.Solicitudes de donacion -->
 

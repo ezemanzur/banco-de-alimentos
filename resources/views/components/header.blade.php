@@ -19,7 +19,7 @@
                 @guest
                     <li class="nav-item">
                         <a class="btn btn-login py-2 px-4 m-0" href="{{ route('login') }}">{{ __('Iniciar sesión') }}</a>
-                        <a class="btn btn-register px-4 m-0 ml-4" href="{{ route('register') }}">{{ __('Registrate') }}</a>
+                        <a class="btn btn-register py-2 px-4 m-0 ml-3" href="{{ route('register') }}">{{ __('Registrate') }}</a>
                     </li>
                 @else
                     @php
@@ -30,7 +30,7 @@
                             $link = 'empleado';
                     @endphp
                     <div class="dropdown">
-                        <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <button class="btn btn-primary dropdown-toggle py-2 px-4" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         {{ Auth::user()->name }}
                         </button>
                         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
