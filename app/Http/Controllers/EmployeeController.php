@@ -33,7 +33,7 @@ class EmployeeController extends Controller
             //Donaciones
             $donations= Donation::all()->where('user_id', Auth::user()->id);
             //Donantes
-            $givers = User::all()->where('isActive','1')->where('rol','giver');
+            $givers = User::all()->where('isActive','0')->where('rol','giver');
             //Donación actual
             $products = DB::table('products')
                 ->join('donations', 'products.donation_id', '=', 'donations.donation_id')
