@@ -32,6 +32,8 @@ class EmployeeController extends Controller
             $requests = DB::table('unsubscribe_requests')->where('user_id', '=', Auth::user()->id)->get();
             //Donaciones
             $donations= Donation::all()->where('user_id', Auth::user()->id);
+            //Donantes
+            $givers = User::all()->where('isActive','1')->where('rol','giver');
             //Donación actual
             $products = DB::table('products')
                 ->join('donations', 'products.donation_id', '=', 'donations.donation_id')
@@ -40,6 +42,7 @@ class EmployeeController extends Controller
                     ['donations.user_id', '=', Auth::user()->id]
                 ])
                 ->get();
+
             $allproducts = DB::table('products')
                 ->join('donations', 'products.donation_id', '=', 'donations.donation_id')
                 ->where('donations.user_id', '=', Auth::user()->id)
@@ -64,7 +67,8 @@ class EmployeeController extends Controller
                 'donations' => $donations,
                 'products' => $products,
                 'allproducts' => $allproducts,
-                'status' => $status
+                'status' => $status,
+                'givers' => $givers
             ]);
         }
         else {
