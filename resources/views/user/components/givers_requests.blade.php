@@ -17,8 +17,8 @@
                     <a class="link" onclick="showResumeDonation({{ $count }},'infoUser')">Ver información de la persona responsable</a>
                 </div>
                 <div class="info-givers  col-4">
-                    <button class="btn btn-n btn-light-green ">Aceptar</button>
-                    <button class="btn btn-n btn-light-green">Rechazar</button>
+                    <a class="btn btn-n btn-light-green" href="{{route('acceptGiver', ['id' => $g->giver->giver_id]) }}">Aceptar</a>
+                    <a class="btn btn-n btn-light-green" href="{{route('refuseGiver', ['id' => $g->giver->giver_id]) }}">Rechazar</a>
                 </div>
                 <div class="card my-4 col-12 infoUser">
                     <div class="card-header py-2 px-3">

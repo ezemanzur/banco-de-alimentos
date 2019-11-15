@@ -52,3 +52,9 @@ Route::post('product/update_amount', 'ProductController@updateAmount');
 Route::post('change_password', 'UserController@changePassword');
 Route::post('unsubscribe/request', 'UserController@unsubscribeRequest');
 Route::post('change_giver_profile', 'UserController@changeGiverProfile');
+
+/*--------------------------------------------------------------
+   Empleado - Aceptar y rechazar donantes
+--------------------------------------------------------------*/
+Route::get('empleado/refuse_giver/{id}','EmployeeController@refuseGiver')->name('refuseGiver');
+Route::get('empleado/accept_giver/{id}','EmployeeController@acceptGiver')->name('acceptGiver');
