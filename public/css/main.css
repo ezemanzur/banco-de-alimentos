@@ -1,5 +1,5 @@
 /*--------------------------------------------------------------
-    Fonts   
+    Fonts
 --------------------------------------------------------------*/
 @import url('https://fonts.googleapis.com/css?family=Montserrat:200,300,400|Source+Sans+Pro:200,300,400&display=swap');
 /*--------------------------------------------------------------
@@ -16,7 +16,7 @@
     --color-6: #555;
     --color-7: #656565;
     --color-8: #777;
-    --color-9: #999; 
+    --color-9: #999;
         /*Link*/
     --color-10: #3e64ff;
     --color-11: #1138d4;
@@ -141,7 +141,7 @@ body {
     color: inherit !important;
 }
 
-.donationResumeVigente, .modifyAmountForm , .donationResumeCompletada, .donationResumeRechazada{
+.donationResumeVigente, .modifyAmountForm , .donationResumeCompletada, .donationResumeRechazada, .infoUser{
     display: none;
 }
 
@@ -162,7 +162,7 @@ h1, h2, h3, h4, h5, h6, p {
 }
 a {
     transition: 0.08s all !important;
-    color: var(--color-10); 
+    color: var(--color-10);
 }
 a:hover {
     color: var(--color-11);
@@ -354,7 +354,7 @@ nav .nav-link {
 }
 
 .mask-custom {
-	background: #; 
+	background: #;
 }
 
 .main-content {
@@ -378,7 +378,7 @@ nav .nav-link {
 }
 
 /*--------------------------------------------------------------
-    Login Page & Register Page 
+    Login Page & Register Page
 --------------------------------------------------------------*/
 .donate-image {
     width: 60%;
@@ -472,4 +472,26 @@ nav .nav-link {
     background: #fff !important;
     border: 1px solid #eee !important;
     width: 80% !important;
+}
+
+/*--------------------------------------------------------------
+    Employee panel
+--------------------------------------------------------------*/
+li.item-givers {
+    list-style: none;
+    /*border: solid 1px;*/
+    padding: 10px;
+    width: 100%;
+}
+ul.list-givers{
+    padding-left: 0px;
+}
+.info-givers{
+  display: inline-block;
+}
+.infoUser{
+    /*clear: both;*/
+}
+.info-givers .btn-light-green{
+    padding: 4.5% !important;
 }
