@@ -681,8 +681,6 @@
         'mainIcon' => 'fas fa-exclamation-triangle',
         'mainContent' => "Todos los productos que hayas agregado a la donación se eliminarán junto con la donación.",
         'cancelLink' => '/donation/delete',
-        'cancel' => "Si, cancelar",
-        'accept' => "No, seguir",
     ])
     @include('components.modal', [
         'modal_id' => 'cancelarDonacionLastProduct',
@@ -690,10 +688,8 @@
         'mainIcon' => 'fas fa-exclamation-triangle',
         'mainContent' => "Si elimina el producto ahora, se cancelara la donación completa.",
         'cancelLink' => '/donation/delete',
-        'cancel' => "Si, cancelar",
-        'accept' => "No, seguir",
     ])
-    @endif
+
 
     </div>
 

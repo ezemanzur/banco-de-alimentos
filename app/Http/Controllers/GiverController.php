@@ -19,7 +19,7 @@ class GiverController extends Controller
 
     public function index(){
         //Redirección
-        if (Auth::user()->rol === 'giver'){
+        if (Auth::user()->rol == 'giver'){
             //Donante
             $giver = DB::table('givers')->where('user_id', Auth::user()->id)->get();
             //Barrios
