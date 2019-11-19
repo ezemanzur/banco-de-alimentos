@@ -9,6 +9,7 @@ use App\Donation;
 use App\Giver;
 use App\Neighborhood;
 use App\User;
+use phpDocumentor\Reflection\Types\Null_;
 
 class EmployeeController extends Controller
 {
@@ -33,7 +34,9 @@ class EmployeeController extends Controller
             //Donaciones
             $donations= Donation::all()->where('user_id', Auth::user()->id);
             //Donantes
-            $givers = User::all()->where('isActive','0')->where('rol','giver');
+            $givers = User::all()->where('isActive','0')->where('rol','giver')->filter(function ($user, $key) {
+                return is_null($user->isAccepted);
+            });
             //Donación actual
             $products = DB::table('products')
                 ->join('donations', 'products.donation_id', '=', 'donations.donation_id')
@@ -75,4 +78,17 @@ class EmployeeController extends Controller
             return view('/home');
         }
     }
+    public function acceptGiver($id){
+        session(['codigo' => 2]);
+        $user=User::find($id);
+        $user->update(['isAccepted' => true, 'isActive' => true]);
+        return redirect()->back()->with(['success' => "Se acepto al donante: ".$user->giver->company_name]);
+    }
+    public function refuseGiver($id){
+        session(['codigo' => 2]);
+        $user=User::find($id);
+        $user->update(['isAccepted' => false, 'isActive' => true]);
+        return redirect()->back()->with(['success' => "Se rechazo al donante: ".$user->giver->company_name]);
+    }
+
 }

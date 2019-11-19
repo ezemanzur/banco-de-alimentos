@@ -17,7 +17,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password', 'dni', 'phone', 'rol', 'isActive',
+        'name', 'email', 'password', 'dni', 'phone', 'rol', 'isActive', 'isAccepted'
     ];
 
     /**
@@ -47,7 +47,7 @@ class User extends Authenticatable
                 return "Empleado";
         }
     }
-    
+
     public static function updateUser($request, $id) {
         //Actualizo en giver
         DB::table('users')
