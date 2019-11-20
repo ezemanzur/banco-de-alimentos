@@ -23,7 +23,7 @@ Route::get('/contact', 'HomeController@contactView')->name('contacto');
 --------------------------------------------------------------*/
 Auth::routes();
 Route::get('/donante', 'GiverController@index')->name('donante');
-Route::get('/empleado', 'EmployeeController@index')->name('empleado');
+Route::get('/empleado/{panel?}/{list?}/{detail?}/{id?}', 'EmployeeController@index')->name('empleado');
 Route::get('/administrador', 'AdminController@index')->name('administrador');
 Route::get('/profile', 'UserController@showProfile')->name('profile');
 
@@ -38,6 +38,10 @@ Route::post('donation/end', 'DonationController@end');
 Route::post('donation/save', 'DonationController@save');
 Route::post('donation/back', 'DonationController@back');
 Route::get('donation/delete', 'DonationController@delete');
+Route::post('donation/retirement_date', 'DonationController@retirement_date')->name('retirementDate');
+Route::post('donation/refuse', 'DonationController@refuse');
+
+
 
 /*--------------------------------------------------------------
     Carga de productos
@@ -58,3 +62,6 @@ Route::post('change_giver_profile', 'UserController@changeGiverProfile');
 --------------------------------------------------------------*/
 Route::get('empleado/refuse_giver/{id}','EmployeeController@refuseGiver')->name('refuseGiver');
 Route::get('empleado/accept_giver/{id}','EmployeeController@acceptGiver')->name('acceptGiver');
+
+
+Route::get('empleado/resumeDonation/{id}', 'EmployeeController@resumeDonation')->name('resumeDonation');

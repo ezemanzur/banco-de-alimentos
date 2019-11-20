@@ -46,6 +46,8 @@ body {
     -webkit-user-select: none;
     -o-user-select: none;
 }
+
+
 .link {
     color: blue !important;
     cursor: pointer !important;
@@ -354,7 +356,7 @@ nav .nav-link {
 }
 
 .mask-custom {
-	background: #;
+	/*background: #;*/
 }
 
 .main-content {
@@ -495,3 +497,4 @@ ul.list-givers{
 .info-givers .btn-light-green{
     padding: 4.5% !important;
 }
+

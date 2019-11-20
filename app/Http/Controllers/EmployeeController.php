@@ -18,9 +18,15 @@ class EmployeeController extends Controller
         $this->middleware('auth');
     }
 
-    public function index(){
-        //Redirección
-        if (Auth::user()->rol === 'employee'){
+    public function index($panel = null, $list = true, $detail = false, $current_donation = null)
+    {
+
+        if ($panel)
+            session(['codigo' => $panel]);
+        if($current_donation)
+            $current_donation = Donation::where('donation_id', $current_donation)->first();
+
+        if (Auth::user()->rol === 'employee') {
             //Donante
             $giver = DB::table('givers')->where('user_id', Auth::user()->id)->get();
             //Barrios
@@ -32,9 +38,9 @@ class EmployeeController extends Controller
             //Request
             $requests = DB::table('unsubscribe_requests')->where('user_id', '=', Auth::user()->id)->get();
             //Donaciones
-            $donations= Donation::all()->where('user_id', Auth::user()->id);
+            $donations = Donation::all();
             //Donantes
-            $givers = User::all()->where('rol','giver')->filter(function ($user, $key) {
+            $givers = User::all()->where('rol', 'giver')->filter(function ($user, $key) {
                 return is_null($user->isAccepted);
             });
 
@@ -72,24 +78,30 @@ class EmployeeController extends Controller
                 'products' => $products,
                 'allproducts' => $allproducts,
                 'status' => $status,
-                'givers' => $givers
+                'givers' => $givers,
+                'listDonations' => $list,
+                'resumeDonation' => $detail,
+                'current_donation' => $current_donation
             ]);
-        }
-        else {
+        } else {
             return view('/home');
         }
     }
-    public function acceptGiver($id){
+
+    public function acceptGiver($id)
+    {
         session(['codigo' => 2]);
-        $user=User::find($id);
+        $user = User::find($id);
         $user->update(['isAccepted' => true, 'isActive' => true]);
-        return redirect()->back()->with(['success' => "Se acepto al donante: ".$user->giver->company_name]);
+        return redirect()->back()->with(['success' => "Se acepto al donante: " . $user->giver->company_name]);
     }
-    public function refuseGiver($id){
+
+    public function refuseGiver($id)
+    {
         session(['codigo' => 2]);
-        $user=User::find($id);
+        $user = User::find($id);
         $user->update(['isAccepted' => false, 'isActive' => true]);
-        return redirect()->back()->with(['success' => "Se rechazo al donante: ".$user->giver->company_name]);
+        return redirect()->back()->with(['success' => "Se rechazo al donante: " . $user->giver->company_name]);
     }
 
 }
