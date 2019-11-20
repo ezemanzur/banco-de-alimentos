@@ -72,6 +72,7 @@
 
                             <!-- Listado de donaciones vigentes a retirar -->
                             <div class="col-md-12 subItem">
+                                @include('user.components.donation_accepted_requests')
                             </div>
                             <!-- /.Listado de donaciones vigentes a retirar -->
 
@@ -84,14 +85,12 @@
                             <!-- Solicitudes de donantes -->
                             <div class="col-md-12 subItem">
                                 @include('user.components.givers_requests')
-
                             </div>
                             <!-- /.Solicitudes de donantes -->
 
                             <!-- Listado de donaciones pasadas -->
                             <div class="col-md-12 subItem">
                                 @include('user.components.donation_completed_requests')
-
                             </div>
                             <!-- /.Listado de donaciones pasadas -->
 

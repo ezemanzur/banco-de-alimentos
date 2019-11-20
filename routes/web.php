@@ -40,6 +40,8 @@ Route::post('donation/back', 'DonationController@back');
 Route::get('donation/delete', 'DonationController@delete');
 Route::post('donation/retirement_date', 'DonationController@retirement_date')->name('retirementDate');
 Route::post('donation/refuse', 'DonationController@refuse');
+Route::get('donation/completed/{donation_id}', 'DonationController@completed')->name('donationCompleted');
+
 
 
 

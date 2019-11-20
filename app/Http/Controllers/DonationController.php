@@ -136,4 +136,18 @@ class DonationController extends Controller
         session(['codigo' => 1]);
         return redirect()->route('empleado')->with(['success' => "La donación ha sido rechazada correctamente"]);
     }
+
+    public function completed($donation_id){
+
+        DB::table('donations')
+            ->where([
+                    ['donation_id', '=', $donation_id]]
+            )
+            ->update([
+                'status' => Donation::ESTADO_COMPLETADO,
+
+            ]);
+        session(['codigo' => 0]);
+        return redirect()->route('empleado')->with(['success' => "La donación ha sido completada"]);
+    }
 }

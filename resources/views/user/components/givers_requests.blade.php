@@ -1,5 +1,4 @@
 <div class="table-responsive resume-table">
-
     @php $count = 0; @endphp
     <ul class="list-givers container">
         @forelse ($givers as $g)
@@ -14,7 +13,7 @@
                         @if($g->myGiver()->address_apartment != NULL) Depto: {{$g->myGiver()->address_apartment }} @endif
                         ,
                         {{$neighborhoods->where('neighborhood_id', $g->myGiver()->neighborhood_id)->first()->name}} </p>
-                    <a class="link" onclick="showResumeDonation({{ $count }},'infoUser')">Ver información de la persona responsable</a>
+                    <a class="link" onclick="showResumeDonation({{$count}},'infoUser')">Ver información de la persona responsable</a>
                 </div>
                 <div class="info-givers  col-4">
                     <a class="btn btn-n btn-light-green" href="{{route('acceptGiver', ['id' => $g->myGiver()->giver_id]) }}">Aceptar</a>

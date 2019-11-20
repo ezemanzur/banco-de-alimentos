@@ -2,8 +2,8 @@
     {{-- Listado de donaciones --}}
     @if($listDonations)
         <table class="table table-bordered">
-            <thead class="list-donations">
-            <tr class="list-donations">
+            <thead>
+            <tr>
                 <th scope="col">Nombre de donante</th>
                 <th scope="col">Barrio</th>
                 <th scope="col">Responsable del retiro</th>
@@ -13,7 +13,7 @@
             <tbody>
             @php $count = 0; @endphp
             @forelse ($donations->where('status', \App\Donation::ESTADO_COMPLETADO) as $d)
-                <tr class="list-donations">
+                <tr>
                     <th scope="row">
                         {{ $d->myUser()->name }}
                     </th>
@@ -86,13 +86,16 @@
                     </table>
                     <h3>Información del responsable:</h3>
                     <p>Nombre: {{$current_donation->myUser()->name}}</p>
-                    <p>DNI:  {{$current_donation->myUser()->dni}}</p>
+                    <p>DNI: {{$current_donation->myUser()->dni}}</p>
                     <p>Email: {{ $current_donation->myUser()->email}}</p>
                     <p>Número de teléfono: {{$current_donation->myUser()->phone}}</p>
 
-                    <p>Dirección de retiro: Calle {{ $current_donation->myUser()->myGiver()->address_street}}, #{{ $current_donation->myUser()->myGiver()->address_number}}
-                        @if($current_donation->myUser()->myGiver()->address_floor != NULL) Piso: {{ $current_donation->myUser()->myGiver()->address_floor }} @endif
-                        @if($current_donation->myUser()->myGiver()->address_apartment != NULL) Depto: {{$current_donation->myUser()->myGiver()->address_apartment }} @endif
+                    <p>Dirección de retiro: Calle {{ $current_donation->myUser()->myGiver()->address_street}},
+                        #{{ $current_donation->myUser()->myGiver()->address_number}}
+                        @if($current_donation->myUser()->myGiver()->address_floor != NULL)
+                            Piso: {{ $current_donation->myUser()->myGiver()->address_floor }} @endif
+                        @if($current_donation->myUser()->myGiver()->address_apartment != NULL)
+                            Depto: {{$current_donation->myUser()->myGiver()->address_apartment }} @endif
                         ,
                         {{$neighborhoods->where('neighborhood_id', $current_donation->myUser()->myGiver()->neighborhood_id)->first()->name}} </p> </p>
 
@@ -106,5 +109,4 @@
             </div>
         @endif
     @endif
-</div>
 </div>
