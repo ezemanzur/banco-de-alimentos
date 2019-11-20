@@ -90,6 +90,8 @@
 
                             <!-- Listado de donaciones pasadas -->
                             <div class="col-md-12 subItem">
+                                @include('user.components.donation_completed_requests')
+
                             </div>
                             <!-- /.Listado de donaciones pasadas -->
 

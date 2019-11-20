@@ -24,7 +24,8 @@
                         {{$d->nearestExpiration()->exp_date}}
                     </td>
                     <td class="text-center">
-                        <a href="{{route('empleado', ['id' => $d->donation_id,'panel' => 1, 'list' => 0, 'detail' => 1]) }}" class="link">Ver
+                        <a href="{{route('empleado', ['id' => $d->donation_id,'panel' => 1, 'list' => 0, 'detail' => 1]) }}"
+                           class="link">Ver
                             resumen</a>
                     </td>
                 </tr>
@@ -104,12 +105,12 @@
 
                         <!-- Modal body -->
                         <div class="modal-body">
-                            <form action="/donation/refuse"  method="POST">
+                            <form action="/donation/refuse" method="POST">
                                 @csrf
                                 <label for="">Motivo de rechazo:</label><br>
                                 <textarea name="reason" style="width:100%; margin:10px;"> </textarea> <br>
                                 <input type="hidden" value="{{$current_donation->donation_id}}" name="donation_id">
-                                <button type="submit" class="btn btn-light-green" >Aceptar</button>
+                                <button type="submit" class="btn btn-light-green">Aceptar</button>
                                 <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
                             </form>
                         </div>
@@ -126,7 +127,7 @@
             <div class="resume-donation col-12 " style=" width: 100%;height: 100%">
                 <div class="card-header py-2 px-3">
                     Resumen donación:
-                    <a  class="link close" href=" {{route('empleado', ['panel' => 1]) }} ">
+                    <a class="link close" href=" {{route('empleado', ['panel' => 1]) }} ">
                         Volver al listado
                     </a>
                 </div>
@@ -162,3 +163,4 @@
 
                 @endif
             </div>
+</div>
