@@ -6,19 +6,19 @@
 
             <li class="item-givers  row">
                 <div class="info-givers  col-8">
-                    <p> Nombre: {{ $g->giver->company_name }}</p>
-                    <p>CUIT: {{ $g->giver->company_cuit}}</p>
-                    <p>Número de teléfono: {{ $g->giver->company_phone}}</p>
-                    <p>Dirección: Calle {{ $g->giver->address_street}}, #{{ $g->giver->address_number}}
-                        @if($g->giver->address_floor != NULL) Piso: {{ $g->giver->address_floor }} @endif
-                        @if($g->giver->address_apartment != NULL) Depto: {{$g->giver->address_apartment }} @endif
+                    <p> Nombre: {{ $g->myGiver()->company_name }}</p>
+                    <p>CUIT: {{ $g->myGiver()->company_cuit}}</p>
+                    <p>Número de teléfono: {{ $g->myGiver()->company_phone}}</p>
+                    <p>Dirección: Calle {{ $g->myGiver()->address_street}}, #{{ $g->myGiver()->address_number}}
+                        @if($g->myGiver()->address_floor != NULL) Piso: {{ $g->myGiver()->address_floor }} @endif
+                        @if($g->myGiver()->address_apartment != NULL) Depto: {{$g->myGiver()->address_apartment }} @endif
                         ,
-                        {{$neighborhoods->where('neighborhood_id', $g->giver->neighborhood_id)[0]->name}} </p>
+                        {{$neighborhoods->where('neighborhood_id', $g->myGiver()->neighborhood_id)->first()->name}} </p>
                     <a class="link" onclick="showResumeDonation({{ $count }},'infoUser')">Ver información de la persona responsable</a>
                 </div>
                 <div class="info-givers  col-4">
-                    <a class="btn btn-n btn-light-green" href="{{route('acceptGiver', ['id' => $g->giver->giver_id]) }}">Aceptar</a>
-                    <a class="btn btn-n btn-light-green" href="{{route('refuseGiver', ['id' => $g->giver->giver_id]) }}">Rechazar</a>
+                    <a class="btn btn-n btn-light-green" href="{{route('acceptGiver', ['id' => $g->myGiver()->giver_id]) }}">Aceptar</a>
+                    <a class="btn btn-n btn-light-green" href="{{route('refuseGiver', ['id' => $g->myGiver()->giver_id]) }}">Rechazar</a>
                 </div>
                 <div class="card my-4 col-12 infoUser">
                     <div class="card-header py-2 px-3">

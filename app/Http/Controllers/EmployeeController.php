@@ -34,9 +34,10 @@ class EmployeeController extends Controller
             //Donaciones
             $donations= Donation::all()->where('user_id', Auth::user()->id);
             //Donantes
-            $givers = User::all()->where('isActive','0')->where('rol','giver')->filter(function ($user, $key) {
+            $givers = User::all()->where('rol','giver')->filter(function ($user, $key) {
                 return is_null($user->isAccepted);
             });
+
             //Donación actual
             $products = DB::table('products')
                 ->join('donations', 'products.donation_id', '=', 'donations.donation_id')

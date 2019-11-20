@@ -64,6 +64,9 @@ class User extends Authenticatable
     {
         return $this->hasOne('App\Giver','giver_id');
     }
+    public function myGiver(){
+        return Giver::where('user_id', $this->id)->first();
+    }
     public function donations(){
         return $this->hasMany('App\Donation');
     }
