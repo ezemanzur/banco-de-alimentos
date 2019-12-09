@@ -75,7 +75,11 @@
                                     {{$p->amount}}
                                 </td>
                                 <td class="text-center">
-                                    ??
+                                    @if($p->need_refrigeration)
+                                        Si
+                                    @else
+                                        No
+                                    @endif
                                 </td>
                             </tr>
 
