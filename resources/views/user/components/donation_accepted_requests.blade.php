@@ -8,7 +8,7 @@
                 <th scope="col">Barrio</th>
                 <th scope="col">Responsable del retiro</th>
                 <th scope="col">Resumen</th>
-                <th scope="col"></th>
+                <th scope="col">Marcar como</th>
             </tr>
             </thead>
             <tbody>
@@ -30,7 +30,7 @@
                             resumen</a>
                     </td>
                     <td>
-                        <a href="{{route('donationCompleted', ['donation_id' => $d->donation_id]) }}" class="btn btn-green">Retirada</a>
+                        <a href="{{route('donationCompleted', ['donation_id' => $d->donation_id]) }}" class="btn btn-success btn-rounded">Retirada</a>
                     </td>
                 </tr>
 

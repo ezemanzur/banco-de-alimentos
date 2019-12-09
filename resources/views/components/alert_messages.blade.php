@@ -3,7 +3,7 @@
     <div class="col-md-9">
         @if(Session::has('success'))
             <div class="alert alert-success alert-dismissible fade show" role="alert">
-                <strong><i class="fas fa-check-circle mr-2"></i>{{ Session::get('success') }}</strong>
+                <strong><i class="fas fa-check-circle mr-2"></i>asd{{ Session::get('success') }}</strong>
                 <button type="button" class="close text-right" data-dismiss="alert" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>

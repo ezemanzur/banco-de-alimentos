@@ -37,9 +37,6 @@
         </div>
         <!-- /.Rol de usuario -->
 
-        @include('components.alert_messages')
-
-
         <div class="row justify-content-center">
             <div class="col-md-9 card">
                 <div class="row">

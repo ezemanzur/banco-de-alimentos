@@ -17,6 +17,9 @@
 Route::get('/', 'HomeController@index')->name('home');
 Route::get('/home', 'HomeController@index')->name('/home');
 Route::get('/contact', 'HomeController@contactView')->name('contacto');
+Route::get('/register_volunteer', 'HomeController@registerVolunteerView');
+Route::post('/new_volunteer', 'HomeController@newVolunteer');
+
 
 /*--------------------------------------------------------------
     Autenticacion
@@ -43,8 +46,6 @@ Route::post('donation/refuse', 'DonationController@refuse');
 Route::get('donation/completed/{donation_id}', 'DonationController@completed')->name('donationCompleted');
 
 
-
-
 /*--------------------------------------------------------------
     Carga de productos
 --------------------------------------------------------------*/
@@ -65,5 +66,14 @@ Route::post('change_giver_profile', 'UserController@changeGiverProfile');
 Route::get('empleado/refuse_giver/{id}','EmployeeController@refuseGiver')->name('refuseGiver');
 Route::get('empleado/accept_giver/{id}','EmployeeController@acceptGiver')->name('acceptGiver');
 
-
 Route::get('empleado/resumeDonation/{id}', 'EmployeeController@resumeDonation')->name('resumeDonation');
+
+/*--------------------------------------------------------------
+   Administrador
+--------------------------------------------------------------*/
+Route::get('/accept_new_volunteer/{id}', 'AdminController@acceptVolunteer');
+Route::get('/reject_new_volunteer/{id}', 'AdminController@rejectVolunteer');
+Route::get('/admin_to_employee/{id}', 'AdminController@adminToEmployee');
+Route::get('/employee_to_admin/{id}', 'AdminController@employeeToAdmin');
+Route::get('/delete_user/{id}', 'AdminController@deleteUser');
+Route::post('/create_employee', 'AdminController@createEmployee');

@@ -3,8 +3,8 @@
     <ul class="list-givers container">
         @forelse ($givers as $g)
 
-            <li class="item-givers  row">
-                <div class="info-givers  col-8">
+            <li class="item-givers row">
+                <div class="info-givers col-8">
                     <p> Nombre: {{ $g->myGiver()->company_name }}</p>
                     <p>CUIT: {{ $g->myGiver()->company_cuit}}</p>
                     <p>Número de teléfono: {{ $g->myGiver()->company_phone}}</p>
@@ -15,9 +15,9 @@
                         {{$neighborhoods->where('neighborhood_id', $g->myGiver()->neighborhood_id)->first()->name}} </p>
                     <a class="link" onclick="showResumeDonation({{$count}},'infoUser')">Ver información de la persona responsable</a>
                 </div>
-                <div class="info-givers  col-4">
-                    <a class="btn btn-n btn-light-green" href="{{route('acceptGiver', ['id' => $g->myGiver()->giver_id]) }}">Aceptar</a>
-                    <a class="btn btn-n btn-light-green" href="{{route('refuseGiver', ['id' => $g->myGiver()->giver_id]) }}">Rechazar</a>
+                <div class="info-givers col-4 text-right">
+                    <a class="btn btn-light-green" href="{{route('refuseGiver', ['id' => $g->id]) }}">Rechazar</a>
+                    <a class="btn btn-light-green" href="{{route('acceptGiver', ['id' => $g->id]) }}">Aceptar</a>
                 </div>
                 <div class="card my-4 col-12 infoUser">
                     <div class="card-header py-2 px-3">

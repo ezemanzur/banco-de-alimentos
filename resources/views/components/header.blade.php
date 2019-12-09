@@ -19,6 +19,8 @@
                 @guest
                     <li class="nav-item">
                         <a class="btn btn-login py-2 px-4 m-0" href="{{ route('login') }}">{{ __('Iniciar sesión') }}</a>
+                    </li>
+                    <li class="nav-item">
                         <a class="btn btn-register py-2 px-4 m-0 ml-3" href="{{ route('register') }}">{{ __('Registrate') }}</a>
                     </li>
                 @else
@@ -29,13 +31,15 @@
                         else
                             $link = 'empleado';
                     @endphp
+                    <li class="nav-item">
+                        <a class="btn btn-light black2" href="{{ url($link) }}"><i class="fas fa-tachometer-alt mr-2 color7"></i>Panel</a>
+                    </li>
                     <div class="dropdown">
                         <button class="btn btn-primary dropdown-toggle py-2 px-4" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         {{ Auth::user()->name }}
                         </button>
                         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                             <a class="dropdown-item color7" href="{{ url('/profile') }}"><i class="fas fa-user-alt mr-2 color7"></i>Mi perfil</a>
-                            <a class="dropdown-item color7" href="{{ url($link) }}"><i class="fas fa-tachometer-alt mr-2 color7"></i>Mi Panel</a>
                             @if(Auth::user()->isAdmin)
                                 <!-- Muesta el link de admin -->
                                 <a class="dropdown-item color7" href="{{ url('/administrador') }}"><i class="fas fa-user-shield mr-2 color7"></i>Administración</a>

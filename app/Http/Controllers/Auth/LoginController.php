@@ -30,7 +30,13 @@ class LoginController extends Controller
     {
       if (Auth::user()->rol=='giver') {
         return '/donante';
-      } else {
+      } 
+      else if (Auth::user()->rol=='employee' and (!Auth::user()->isAdmin)){
+        return '/empleado';
+      }
+      else if (Auth::user()->rol=='employee' and (Auth::user()->isAdmin))
+        return '/administrador';
+      else {
         return '/home';
       }
     }

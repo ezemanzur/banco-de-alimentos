@@ -31,9 +31,7 @@
             </div>
         </div>
         <!-- /.Rol de usuario -->
-
-        @include('components.alert_messages')
-
+        
         <!-- Row -->
         <div class="row justify-content-center">
             <!-- Col -->
