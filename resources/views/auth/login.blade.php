@@ -1,22 +1,19 @@
 @extends('layouts.app')
-
-@include('components.header_basic')
-
-@include('components.nav')
-
+@include('components.header')
 @section('content')
-
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card my-5">
                 <div class="card-body">
-                    <div class="row">
+                    <div class="row justify-content-center">
+                        <div class="col-12 text-center">
+                            <h1 class="h3 p-3 mb-3">Iniciar sesión</h1>
+                        </div>
                         <div class="col-md-5 text-center">
                             <img src="{{ asset('img/login.png') }}" class="donate-image uns">
                         </div>
                         <div class="col-md-7 pt-5">
-                            <h1 class="pt-2 pb-4">Iniciar sesión</h1>
                             <form method="POST" action="{{ route('login') }}">
                                 @csrf
 

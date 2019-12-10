@@ -1,17 +1,12 @@
 @extends('layouts.app')
-
 @include('components.header')
-
-@include('components.nav')
-
 @section('content')
-
 <!-- Container -->
-<div class="container-fluid my-5">
+<div class="container-fluid">
     <!-- Row -->
-    <div class="row justify-content-center">
+    <div class="row my-5 justify-content-center">
         <!-- Col -->
-        <div class="col-md-8">
+        <div class="col-12 col-md-8">
             <div class="card">
                 <div class="card-header pb-1">
                     <h5>Formulario de contacto</h5>
@@ -113,7 +108,5 @@
     <!-- /.Row -->
 </div>
 <!-- /.Container -->
-
 @include('components.footer')
-
 @endsection

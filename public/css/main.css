@@ -2,6 +2,7 @@
     Fonts
 --------------------------------------------------------------*/
 @import url('https://fonts.googleapis.com/css?family=Nunito:300,400,600,700,800&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Lato:300,400,700,900&display=swap');
 /*--------------------------------------------------------------
     Root
 --------------------------------------------------------------*/
@@ -12,11 +13,6 @@
     --color-3:#fbd8c9;
     --color-4:#faeeea;
     --color-5: #ff8767;
-        /*Text*/
-    --color-6: #555;
-    --color-7: #656565;
-    --color-8: #777;
-    --color-9: #999;
         /*White*/
     --white-1: #fff;
     --white-2: #fcfcfc;
@@ -24,7 +20,7 @@
     --white-4: #d8d8d8;
     --white-5: #d0d0d0;
         /*Black*/
-    --black-1: #414141;
+    --black-1: #404040;
     --black-2: #606060;
     --black-3: #777;
     --black-4: #979797;
@@ -55,6 +51,7 @@
 * {
     color: var(--black-1);
     font-family: 'Nunito', sans-serif;
+    transition: .2s all;
 }
 body {
     background: rgba(81, 67, 240, .04) !important;
@@ -73,6 +70,7 @@ body {
           -ms-user-select: none;
               user-select: none;
 }
+.opacity-7:hover { opacity: 0.7;}
 .link {
     color: blue !important;
     cursor: pointer !important;
@@ -179,8 +177,11 @@ h1,h2,h3,h4,h5,h6,p,label {
     color: var(--black-2);
     font-weight: 300;
 }
+.h1-b { font-size: 6.20em; }
+.h2-b { font-size: 5.00em; }
+.h3-b { font-size: 2.40em; }
 .h1 { font-size: 3.00em; }
-.h2 { font-size: 2.50em; }
+.h2 { font-size: 2.70em; }
 .h3 { font-size: 2.00em; }
 .h4 { font-size: 1.70em; }
 .h5 { font-size: 1.34em; }
@@ -188,6 +189,11 @@ h1,h2,h3,h4,h5,h6,p,label {
 .h7 { font-size: 1.09em; }
 .p1 { font-size: 1em; }
 .p2 { font-size: .8em; }
+
+.text-shadow {
+    text-shadow: 2px 3px 10px rgba(0,0,0,1);
+}
+
 label {
     font-size: 1em;
 }
@@ -248,12 +254,17 @@ a:hover {
 .btn-warning-dark {background-color: var(--warning-dark) !important;}
 .btn-danger {background-color: var(--danger) !important;}
 .btn-danger-dark {background-color: var(--danger-dark) !important;}
+    /*Button home (Asociate) */
+.btn-home { background-color: #7dff81 !important; }
+.btn-home * { transition: .2s all !important; }
+.btn-home:hover { background-color: #fff470 !important; }
+
 .btn-unselected {
     opacity: 0.3 !important;
     cursor: pointer;
 }
 .btn-cancel {
-    background: #ccc;
+    background: #999;
     color: #fff;
 }
 .c-btn {
@@ -325,11 +336,6 @@ a:hover {
 .color3 { color: var(--color-3) !important;}
 .color4 { color: var(--color-4) !important;}
 .color5 { color: var(--color-5) !important;}
-.color6 { color: var(--color-6) !important;}
-.color7 { color: var(--color-7) !important;}
-.color8 { color: var(--color-8) !important;}
-.color9 { color: var(--color-9) !important;}
-.color10 { color: var(--color-10) !important;}
 
 .white1 { color: var(--white-1) !important; }
 .white2 { color: var(--white-2) !important; }
@@ -424,7 +430,7 @@ a:hover {
 .card {
     border-radius: 1px !important;
     border: 0 none !important;
-    box-shadow: 0 .07em .32em 0 rgba(0,0,0,.15);
+    box-shadow: 0 .07em .6em 0 rgba(0,0,0,.15);
     overflow: hidden !important;
 }
 .card-header {
@@ -434,20 +440,91 @@ a:hover {
 /*--------------------------------------------------------------
     Navbar
 --------------------------------------------------------------*/
-nav {
-    background: var(--color-5) !important;
+    /* Black top navbar */
+.top-navbar {
+    width: 85vw !important;
+    height: 36px !important;
+    background: #333 !important;
+    margin: 0 auto;
+    position: fixed;
+    left: 0;
+    right: 0;
+    z-index: 1000000;
 }
-.img-logo {
-    height: 100px;
+.top-navbar h1 {
+    font-size: 1em;
+    letter-spacing: .05em;
+    color: #aaa;
 }
-nav .nav-item {
-    margin: 0 20px !important;
+.top-navbar-s {
+    height: 0 !important;
+    padding: 0 !important;
 }
-nav .nav-link {
-    font-family: var(--font-2) !important;
-    font-size: 20px;
-    margin: 0px 30px;
+.top-navbar-s h1 {
+    display: none;
 }
+    /* Home navbar and normal navbar */
+.main-navbar {
+    background: #fff;
+    width: 85vw;
+    margin: 0 auto;
+    position: fixed;
+    top: 36px;
+    z-index: 1000;
+    left: 0;
+    right: 0;
+}
+@media (max-width: 992px) {
+    .main-navbar {
+        padding: 16px 30px;
+    }
+}
+.main-navbar-s {
+    width: 100%;
+    top: 0 !important;
+}
+@media (min-width: 992px) {
+    .main-navbar-s {
+        padding: 9px;
+    }
+}
+
+.navbar-brand img {
+    margin: 0 !important;
+    padding: 0 !important;
+    height: 6.5vh !important;
+}
+
+.main-navbar .nav-item, .normal-navbar .nav-item{
+    margin: 0 0 0 85px;
+}
+.main-navbar .nav-link, .normal-navbar .nav-link{
+    color: var(--black-2) !important;
+    margin: 0;
+    padding: 0 0 0 0px !important;
+    font-size: 1.1em;
+    font-weight: 700 !important;
+    letter-spacing: .06em;
+}
+.main-navbar .nav-link {
+    font-size: 1.1em !important;
+}
+.main-navbar .nav-link:hover, .normal-navbar .nav-link:hover {
+    color: #3e64ff !important;
+}
+.main-navbar .nav-link img, .normal-navbar .nav-link img {
+    width: 50px;
+    margin: 0 !important;
+    padding: 0 !important;
+}
+.home-container {
+    padding-left: 7.5vw;
+    padding-right: 7.5vw;
+}
+/*--------------------------------------------------------------
+    Header
+--------------------------------------------------------------*/
+
 
 /*--------------------------------------------------------------
     Home Page
@@ -477,14 +554,8 @@ nav .nav-link {
     Login Page & Register Page
 --------------------------------------------------------------*/
 .donate-image {
-    width: 60%;
-    margin: 35% auto;
-}
-.register-form {
-    overflow-y: scroll;
-    overflow-x: hidden;
-    max-height: 65vh;
-    border-left: 1px solid #f3f3f3;
+    width: 50%;
+    margin: 30% auto;
 }
 
 /* Campos obligatorios */

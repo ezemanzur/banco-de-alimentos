@@ -1,31 +1,31 @@
 @extends('layouts.app')
-
-@include('components.header_basic')
-
-@include('components.nav')
-
+@include('components.header')
 @section('content')
-
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-10">
                 <div class="card my-5">
                     <div class="card-body">
-                        <div class="row">
-                            <div class="col-md-5 text-center">
+                        <div class="row justify-content-center">
+                            <div class="col-12 text-center">
+                                <h1 class="h3 p-3 mb-3">Registrarse como donante</h1>
+                            </div>
+                            <div class="col-12 col-md-5 text-center">
                                 <img src="{{ asset('img/login.png') }}" class="donate-image uns">
                                 <h3 class="my-2">¿Ya tienes una cuenta?</h3>
                                 <a class="link" href="{{ route('login') }}">
                                     {{ __('Inicia sesión') }}
                                 </a>
                             </div>
-                            <div class="col-md-7 register-form">
-                                <h1 class="p-4">Registrarse como donante</h1>    
+                            <div class="col-12 col-md-7">    
                                 <form method="POST" action="{{ route('register') }}" class="px-4">
                                     @csrf
+                                    <!-- Dirección -->
+                                    <h3 class="mt-5 py-3">Datos de empresa</h3>
                                     <!-- Nombre de la empresa -->
                                     <div class="form-group row">
                                         <div class="col-md-10">
+                                            
                                             <label for="company_name" class="req-tooltip">Nombre de la empresa @include('components.required_tool')</label>
 
                                             <input id="company_name" type="text" class="form-control @error('company_name') is-invalid @enderror" name="company_name" placeholder="Enterprise SRL" value="{{ old('company_name') }}" required autocomplete="company_name" autofocus>
@@ -208,8 +208,10 @@
                                         </div>
                                     </div>
 
+                                    <!-- Dirección -->
+                                    <h3 class="mt-5 py-3">Contraseña</h3>
                                     <!-- Contraseña -->
-                                    <div class="form-group row pt-5">
+                                    <div class="form-group row">
                                         <div class="col-md-10">
                                             <label for="password" class="req-tooltip">Ingrese la nueva contraseña @include('components.required_tool')</label>
 
@@ -235,7 +237,7 @@
                                     <!-- Botones -->
                                     <div class="form-group row pt-5 mb-0">
                                         <div class="col-md-6 text-left">
-                                            <button type="button" class="btn btn-outline-danger btn-n m-0" data-toggle="modal" data-target="#cancelRegisterModal">
+                                            <button type="button" class="btn btn-cancel btn-n m-0" data-toggle="modal" data-target="#cancelRegisterModal">
                                                 Cancelar
                                             </button>
                                         </div>
@@ -253,7 +255,6 @@
             </div>
         </div>
     </div>
-
     <!-- Modal cancelar registro -->
     @include('components.modal', [
         'modal_id' => 'cancelRegisterModal',
@@ -264,5 +265,4 @@
         'cancel' => "Si, volver al inicio",
         'accept' => "No, seguir aquí",
     ])
-
 @endsection

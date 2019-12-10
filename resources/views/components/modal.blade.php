@@ -19,8 +19,8 @@
             </div>
         </div>
         <div class="modal-footer">
-            <a href="{{ $cancelLink }}" type="button" class="btn btn-primary btn-rounded py-2 ml-3">Aceptar</a>
-            <button class="btn btn-cancel btn-rounded py-2" data-dismiss="modal">Cancelar</button>
+            <a href="{{ $cancelLink }}" type="button" class="btn btn-primary btn-rounded py-2">Aceptar</a>
+            <button class="btn btn-cancel btn-rounded py-2 ml-4" data-dismiss="modal">Cancelar</button>
         </div>
         </div>
     </div>

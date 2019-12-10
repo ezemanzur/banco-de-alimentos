@@ -16,7 +16,7 @@
 --------------------------------------------------------------*/
 Route::get('/', 'HomeController@index')->name('home');
 Route::get('/home', 'HomeController@index')->name('/home');
-Route::get('/contact', 'HomeController@contactView')->name('contacto');
+Route::get('/contacto', 'HomeController@contactView')->name('contacto');
 Route::get('/register_volunteer', 'HomeController@registerVolunteerView');
 Route::post('/new_volunteer', 'HomeController@newVolunteer');
 

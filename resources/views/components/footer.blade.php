@@ -1,31 +1,30 @@
 <!-- Footer -->
-<footer class="page-footer font-small cyan darken-3 mt-4">
-
+<footer class="page-footer font-small bg-black2 mt-4">
     <!-- Footer Elements -->
     <div class="container">
 
         <!-- Grid row-->
-        <div class="row">
+        <div class="row justify-content-center">
 
         <!-- Grid column -->
-        <div class="col-md-12 py-5">
-            <div class="mb-5 flex-center">
+        <div class="col-10 py-3">
+            <div class="mb-5 flex-center text-center">
 
                 <!-- Facebook -->
-                <a class="fb-ic" href="https://www.facebook.com/BancoAlimentarioLaPlata">
-                    <i class="fab fa-facebook-f fa-lg white-text mr-md-5 mr-3 fa-2x"> </i>
+                <a class="mx-4" href="https://www.facebook.com/BancoAlimentarioLaPlata">
+                    <i class="fab fa-facebook-f white2 icon-lg"></i>
                 </a>
                 <!-- Twitter -->
-                <a class="tw-ic" href="https://twitter.com/bancoalimlp">
-                    <i class="fab fa-twitter fa-lg white-text mr-md-5 mr-3 fa-2x"> </i>
+                <a class="mx-4" href="https://twitter.com/bancoalimlp">
+                    <i class="fab fa-twitter white2 icon-lg"></i>
                 </a>
                 <!--Linkedin -->
-                <a class="li-ic" href="https://www.linkedin.com/company/banco-alimentario-de-la-plata/about/">
-                    <i class="fab fa-linkedin-in fa-lg white-text mr-md-5 mr-3 fa-2x"> </i>
+                <a class="mx-4" href="https://www.linkedin.com/company/banco-alimentario-de-la-plata/about/">
+                    <i class="fab fa-linkedin-in white2 icon-lg"></i>
                 </a>
                 <!--Instagram-->
-                <a class="ins-ic" href="https://www.instagram.com/bancoalimentariolp/">
-                    <i class="fab fa-instagram fa-lg white-text mr-md-5 mr-3 fa-2x"> </i>
+                <a class="mx-4" href="https://www.instagram.com/bancoalimentariolp/">
+                    <i class="fab fa-instagram white2 icon-lg"></i>
                 </a>
             </div>
         </div>
@@ -38,7 +37,7 @@
     <!-- Footer Elements -->
 
     <!-- Copyright -->
-    <div class="footer-copyright text-center py-3">© 2019 Copyright:
+    <div class="footer-copyright text-center py-2">© 2019 Copyright:
         <a href="/"> Banco alimentario</a>
     </div>
     <!-- Copyright -->

@@ -1,217 +1,122 @@
 @extends('layouts.app')
-
-@include('components.header')
-
 @include('components.nav')
-
+@section('header')
+<style type="text/css">
+    * {
+        font-family: 'Lato', sans-serif;
+    }
+    html, body, header, .view-home {
+        height: 100vh;
+    }
+    .view-home .container-fluid {
+        padding-top: 65vh;
+    }
+    .view-subhome {
+        height: 50vh;
+        margin: 8vh 0 0 0 ;
+    }
+    @media (max-width: 740px) {
+        html, body, header, .view-home {
+            height: 1000px;
+        }
+        .view-home .container-fluid {
+            padding-top: 35vh;
+        }
+    }
+    @media (min-width: 800px) and (max-width: 850px) {
+          html, body, header, .view-home {
+            height: 650px;
+        }
+    }
+    @media (min-width: 800px) and (max-width: 850px) {
+        .navbar:not(.top-nav-collapse) {
+            background: #1C2331!important;
+        }
+    }
+</style>
+@endsection
 @section('content')
 
-<div class="container">
-    <div class="row py-5">
-        <!-- Noticias -->
-        <div class="col-md-6">
-            <!--Carousel Wrapper-->
-                <div id="main-carousel" class="carousel slide carousel-fade" data-ride="carousel">
-                <!--Indicators-->
-                <ol class="carousel-indicators">
-                    <li data-target="#main-carousel" data-slide-to="0" class="active"></li>
-                    <li data-target="#main-carousel" data-slide-to="1"></li>
-                    <li data-target="#main-carousel" data-slide-to="2"></li>
-                </ol>
-                <!--/.Indicators-->
-                <!--Slides-->
-                <div class="carousel-inner" role="listbox">
-                    <!--First slide-->
-                    <div class="carousel-item active">
-                    <img class="d-block w-100" src="{{ asset('img/slide1_1.jpg') }}"
-                        alt="First slide">
-                    </div>
-                    <!--/First slide-->
-                    <!--Second slide-->
-                    <div class="carousel-item">
-                    <img class="d-block w-100" src="{{ asset('img/slide1_2.jpg') }}"
-                        alt="Second slide">
-                    </div>
-                    <!--/Second slide-->
-                    <!--Third slide-->
-                    <div class="carousel-item">
-                    <img class="d-block w-100" src="{{ asset('img/slide1_3.jpg') }}"
-                        alt="Third slide">
-                    </div>
-                    <!--/Third slide-->
-                </div>
-                <!--/.Slides-->
-                <!--Controls-->
-                <a class="carousel-control-prev" href="#main-carousel" role="button" data-slide="prev">
-                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                    <span class="sr-only">Previous</span>
-                </a>
-                <a class="carousel-control-next" href="#main-carousel" role="button" data-slide="next">
-                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                    <span class="sr-only">Next</span>
-                </a>
-                <!--/.Controls-->
-                </div>
-                <!--/.Carousel Wrapper-->
-        </div>
-        <div class="col-md-6">
-            <div class="card main-content">
-                <div class="card-body text-left">
-                    <!--h3>Titulo 2</h3-->
-                    <p>
-                        Recuperamos y recibimos donaciones de alimentos que no son comercializables, pero sí aptos para el consumo humano, con el objeto de entregarlos a entidades de bien público de la región.
-                    </p>
-                </div>
+<!-- Full Page Intro -->
+<div class="view-home full-page-intro" style="background-image: url('{{ asset('img/homewallpaper.png') }}'); background-repeat: no-repeat; background-size: cover;">
+    <div class="container-fluid home-container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-md-7 text-left">
+                <h1 class="white1 h2-b w500 text-uppercase text-shadow">Conciencia</h1>
+                <h1 class="white1 h1-b w500 text-uppercase text-shadow">Por el hambre</h1>
+            </div>
+            <div class="col-12 col-md-5 text-right">
+                <h2 class="white1 h3-b w500 text-uppercase mb-4 mt-2 text-shadow">¡Asociate como voluntario!</h2>
+                <a href="/register_volunteer" class="btn btn-home btn-rounded btn-lg">Asociate<i class="fas fa-angle-right ml-3"></i></a>
             </div>
         </div>
     </div>
-    <!-- Nuestro Trabajo -->
-    <div class="row py-4 justify-content-center">
-        <div class="col-md-11">
-            <div class="card o-h">
-                <div class="card-body text-center quienes-somos o-h">
-                    <h2 class="mt-2 mb-4">¿Quienes somos?</h2>
-                    <p class="mx-5">
-                        Somos una Organización de la Sociedad Civil (OSC), que tiene como objetivo disminuir el hambre y la desnutrición a través del recupero de alimentos.
+</div>
+<!-- Full Page Intro -->
+
+<!-- Full Page Intro -->
+<div class="view-subhome full-page-intro" style="background-image: url('{{ asset('img/homesecondwallpaper.jpg') }}'); background-repeat: no-repeat; background-size: cover;">
+    <div class="mask rgba-black-light justify-content-center align-items-center h-100 my-5 py-4">
+        <div class="container-fluid home-container my-4">
+            <div class="row justify-content-center">
+                <div class="col-10 text-center">
+                    <h1 class="white1 h2-b w500 text-uppercase text-shadow mb-5">¿Quienes somos?</h1>
+                </div>
+                <div class="col-10">
+                    <p class="h4 white1 text-shadow text-center" style="line-height: 120%; letter-spacing: .05em;">Somos una Organización de la Sociedad Civil (OSC), que tiene como objetivo disminuir el hambre y la desnutrición a través del recupero de alimentos.
                         Nacimos como Asociación Civil sin fines de lucro en el año 2000, como uno de los primeros Bancos de Alimentos del país.
                         Somos socios fundadores de la Red Argentina de Bancos de Alimentos, que nuclea a otros 14 Bancos constituidos en el país, 3 en formación, 2 organizaciones adherentes y 4 iniciativas de Bancos de Alimentos.
-                        Defendemos el Derecho Humano a una alimentación saludable, logrado a través del esfuerzo de nuestro staff, voluntarios y la solidaridad de empresarios, productores y donantes. 
-                    </p>
+                        Defendemos el Derecho Humano a una alimentación saludable, logrado a través del esfuerzo de nuestro staff, voluntarios y la solidaridad de empresarios, productores y donantes.<p>
                 </div>
             </div>
         </div>
     </div>
-    <!-- Nuestro trabajo-->
 </div>
+<!-- Full Page Intro -->
 
-<div class="container">
-    <div class="row py-4 row-eq-height">
-        <div class="col-md-4">
-            <!-- Card -->
-            <div class="card h-100">
-
-            <!-- Card image -->
-            <div class="view overlay mxl-2">
-                <!--Carousel Wrapper-->
-                <div id="card-carousel" class="carousel slide carousel-fade" data-ride="carousel">
-                <!--Indicators-->
-                <ol class="carousel-indicators">
-                    <li data-target="#card-carousel" data-slide-to="0" class="active"></li>
-                    <li data-target="#card-carousel" data-slide-to="1"></li>
-                </ol>
-                <!--/.Indicators-->
-                <!--Slides-->
-                <div class="carousel-inner" role="listbox">
-                    <!--First slide-->
-                    <div class="carousel-item active">
-                    <img class="d-block w-100" src="{{ asset('img/slide2_1.jpg') }}"
-                        alt="First slide">
-                    </div>
-                    <!--/First slide-->
-                    <!--Second slide-->
-                    <div class="carousel-item">
-                    <img class="d-block w-100" src="{{ asset('img/slide2_2.jpg') }}"
-                        alt="Second slide">
-                    </div>
-                    <!--/Second slide-->
+<div class="container-fluid home-container mt-5 p-0">
+    <div class="row py-5 px-0 my-0 mx-0 row-eq-height">
+        <div class="col-6 py-2 px-5" style="background: #d7f0bc !important;">
+            <h1 class="text-uppercase w600 black2 my-4">Nuestra misión</h1>
+            <img src="{{ asset('img/icon_a.png') }}" class="icon-home">
+            <style>
+                .icon-home {
+                    position:absolute;
+                    width:80px;
+                    top: 20px;
+                    right: 20px;
+                }
+            </style>
+            <div class="card mt-5 mx-5 h-100" style="margin-bottom: -60px !important;">
+                <div class="card-body p-5">
+                    <p class="h4 black2" style="line-height: 125%; letter-spacing: .08em;">Disminuir el hambre, la desnutrición y las malas prácticas alimentarias en la región, mediante el recupero de alimentos, para ser distribuidos a organizaciones comunitarias que presten servicio alimentario a sectores necesitados, desarrollando acciones conjuntas con la sociedad, basadas en nuestros valores y capacidades.</p>
                 </div>
-                <!--/.Slides-->
-                <!--Controls-->
-                <a class="carousel-control-prev" href="#card-carousel" role="button" data-slide="prev">
-                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                    <span class="sr-only">Previous</span>
-                </a>
-                <a class="carousel-control-next" href="#card-carousel" role="button" data-slide="next">
-                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                    <span class="sr-only">Next</span>
-                </a>
-                <!--/.Controls-->
-                </div>
-                <!--/.Carousel Wrapper-->
             </div>
-
-            <!-- Card content -->
-            <div class="card-body">
-
-                <!-- Title -->
-                <h4 class="card-title">Misión</h4>
-                <!-- Text -->
-                <p class="card-text">Disminuir el hambre, la desnutrición y las malas prácticas alimentarias en la región, mediante el recupero de alimentos, para ser distribuidos a organizaciones comunitarias que presten servicio alimentario a sectores necesitados, desarrollando acciones conjuntas con la sociedad, basadas en nuestros valores y capacidades.</p>
-            </div>
-
-            </div>
-            <!-- Card -->
         </div>
-
-        <div class="col-md-4">
-            <!-- Card -->
-            <div class="card h-100">
-
-            <!-- Card image -->
-            <div class="view overlay">
-                <img class="card-img-top" src="{{ asset('img/home_vision.jpg') }}" alt="Card image cap">
-                <a href="#!">
-                <div class="mask rgba-white-slight"></div>
-                </a>
-            </div>
-
-            <!-- Card content -->
-            <div class="card-body">
-
-                <!-- Title -->
-                <h4 class="card-title">Visión</h4>
-                <!-- Text -->
-                <p class="card-text">Una sociedad sin hambre, nutrida, con conciencia socio-ambiental, donde no se desperdicien alimentos aptos para el consumo.</p>
-
-            </div>
-
-            </div>
-            <!-- Card -->
-        </div>
-        <div class="col-md-4">
-            <!-- Card -->
-            <div class="card h-100">
-
-            <!-- Card image -->
-            <div class="view overlay">
-                <img class="card-img-top" src="{{ asset('img/home_valores.jpg') }}" alt="Card image cap">
-                <a href="#!">
-                <div class="mask rgba-white-slight"></div>
-                </a>
-            </div>
-
-            <!-- Card content -->
-            <div class="card-body">
-
-                <!-- Title -->
-                <h4 class="card-title">Valores</h4>
-                <!-- Text -->
-                <p class="card-text">
-                    <ul>
-                        <li>Compromiso social</li>
-                        <li>Solidaridad</li>
-                        <li>Responsabilidad</li>
-                        <li>Transparencia</li>
-                        <li>Educación</li>
-                        <li>Respeto al prójimo</li>
-                        <li>Conciencia socio ambiental</li>
+        <div class="col-6 py-2 px-5" style="background: #fcf0ad !important;">
+            <h1 class="text-uppercase w600 black2 my-4">Nuestros valores</h1>
+            <img src="{{ asset('img/icon_b.png') }}" class="icon-home">
+            <div class="card mt-5 mx-5 h-100" style="margin-bottom: -60px !important;">
+                <div class="card-body p-5">
+                    <ul class="h4 black2" style="line-height: 120%; letter-spacing: .08em;">
+                        <li class="black2">Compromiso social</li>
+                        <li class="black2">Solidaridad</li>
+                        <li class="black2">Responsabilidad</li>
+                        <li class="black2">Transparencia</li>
+                        <li class="black2">Educación</li>
+                        <li class="black2">Respeto al prójimo</li>
+                        <li class="black2">Conciencia socio ambiental</li>
                     </ul>
-                </p>
-
+                </div>
             </div>
-
-            </div>
-            <!-- Card -->
         </div>
     </div>
 </div>
-<div class="container-fluid px-5">
+
+<div class="container-fluid my-5 pt-5">
     <!-- Nuestro equipo -->
-    <div class="row py-4 justify-content-center">
-        <div class="col-md-10">
-            <div class="card nuestro-equipo">
-                <div class="card-body text-center">
-                    <h1 class="my-3 mb-5">Equipo</h1>
+    <div class="row mt-4 py-4 justify-content-center">
+        <div class="col-md-12 text-center">
                     <div class="row row-eq-height">
                         <div class="col-md-6">
                             <div class="card h-100">
@@ -334,12 +239,9 @@
                             </div>
                         </div>
                     </div>
-                </div>
-            </div>
+                
         </div>
     </div>
 </div>
-
 @include('components.footer')
-
 @endsection

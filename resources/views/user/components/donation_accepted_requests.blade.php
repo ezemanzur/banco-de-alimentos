@@ -1,4 +1,4 @@
-<div class=>
+<div>
     {{-- Listado de donaciones --}}
     @if($listDonations)
         <table class="table table-bordered">
@@ -29,9 +29,9 @@
                            class="link">Ver
                             resumen</a>
                     </td>
-                    <td>
+                    <td class="text-center">
                         <a href="{{route('donationCompleted', ['donation_id' => $d->donation_id]) }}"
-                           class="btn btn-green">Retirada</a>
+                           class="btn btn-home btn-rounded waves effect">Retirada</a>
                     </td>
                 </tr>
 
