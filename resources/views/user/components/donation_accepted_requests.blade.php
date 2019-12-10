@@ -30,7 +30,8 @@
                             resumen</a>
                     </td>
                     <td>
-                        <a href="{{route('donationCompleted', ['donation_id' => $d->donation_id]) }}" class="btn btn-success btn-rounded">Retirada</a>
+                        <a href="{{route('donationCompleted', ['donation_id' => $d->donation_id]) }}"
+                           class="btn btn-green">Retirada</a>
                     </td>
                 </tr>
 
@@ -79,7 +80,11 @@
                                     {{$p->amount}}
                                 </td>
                                 <td class="text-center">
-                                    ??
+                                    @if($p->need_refrigeration)
+                                        Si
+                                    @else
+                                        No
+                                    @endif
                                 </td>
                             </tr>
 

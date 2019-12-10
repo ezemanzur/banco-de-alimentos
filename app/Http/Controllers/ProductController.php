@@ -46,7 +46,6 @@ class ProductController extends Controller
                 $has_exp_date = 0;
                 $exp_date = NULL;
             }
-
             DB::table('products')->insert([[
                 'name' => $info['product-title'],
                 'amount' => $info['amount'],
@@ -54,10 +53,11 @@ class ProductController extends Controller
                 'exp_date' => $exp_date,
                 'category_id' => $info['product-category'],
                 'type_id' => $info['product-type'],
-                'donation_id' => $id
+                'donation_id' => $id,
+                'need_refrigeration' => isset($info['need_refrigeration'])
                 ]]);
         }
-    
+
         //Obtener donación actual
         function getActualDonation() {
             $actual = DB::table('donations')
@@ -81,7 +81,7 @@ class ProductController extends Controller
 
         //Chequeo donacion actual
         $donacion_actual = getActualDonation();
-        
+
         if (count($donacion_actual) > 0) {
             //Agrego el producto a la donación
             saveProduct($request,$donacion_actual[0]->donation_id);
@@ -91,7 +91,7 @@ class ProductController extends Controller
             //$b = $a->format('d-m-Y');
             //Creo una donación
             /*$donation = new Donation();
-            $donation->user_id = Auth::user()->id; 
+            $donation->user_id = Auth::user()->id;
             $donation->status = 'CREANDO';
             $donation->date_from = $date;
             $donation->date_to = $date;
@@ -106,6 +106,7 @@ class ProductController extends Controller
                 'date_to' => NULL,
                 'time_from' => NULL,
                 'time_to' => NULL,
+                'responsible_for_retirement' => '',
                 ]]);
             //Obtengo la donación
             $donation = getActualDonation();
